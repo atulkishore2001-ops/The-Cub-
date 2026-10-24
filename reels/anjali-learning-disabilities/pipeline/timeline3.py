@@ -1,11 +1,11 @@
 # Output timeline: explainer cut list -> frame map, scene blocks, aligned caption words; promo voice placement.
 import json, os, re, wave, difflib
 import numpy as np
-import edl2
+import edl2, edl3
 
 W = os.environ["WORK"]
 FPS = 30
-SPEED = float(os.environ.get("SPEED", "1.04"))
+SPEED = float(os.environ.get("SPEED", "1.025"))
 
 # Hard cuts inside each source clip (seconds), from ffmpeg scene detection, and the location of each stretch.
 SCENE = {1: [21.1833], 2: [20.1333], 3: []}
@@ -71,9 +71,7 @@ def snap_first(name, toks, a):
 
 def build_explainer():
     segs = json.load(open(f"{W}/segments.json"))
-    for s in segs:                          # a natural breath either side of every sentence
-        s.setdefault("pad_in", 0.09); s.setdefault("pad_out", 0.14)
-    edl, total, _ = edl2.build(W, segs, DURS, inner_gap=float(os.environ.get("INNER_GAP", "0.18")))
+    edl, total, _ = edl3.build(W, segs, DURS, SCENE, float(os.environ.get("MIN_CUT", "0.6")), float(os.environ.get("KEEP", "0.32")))
     cum, pieces = 0, []
     for p in edl:
         n = p["f_out"] - p["f_in"]
@@ -147,21 +145,26 @@ def align(label, toks):
     return list(zip(lw, [r[0] for r in res], [r[1] for r in res]))
 
 
+def src2out(pieces, shot, t):
+    """Source time in a clip -> output time (a time inside a removed pause snaps to the next kept frame)."""
+    ps = [p for p in pieces if p["shot"] == shot]
+    for p in ps:
+        a, b = p["f_in"] / FPS, p["f_out"] / FPS
+        if t < a:
+            return p["o_in"] / FPS
+        if t < b:
+            return p["o_in"] / FPS + (t - a) / SPEED
+    return ps[-1]["o_out"] / FPS
+
+
 def explainer_words(segs, pieces):
     words = {i: json.load(open(f"{W}/shot{i}_words.json")) for i in (1, 2, 3)}
     out = []
     for seg in segs:
-        ps = [p for p in pieces if p["label"] == seg["label"]]
-        toks = []
-        for p in ps:
-            a, b = p["f_in"] / FPS, p["f_out"] / FPS
-            src = [dict(t) for t in words[p["shot"]]
-                   if (a - 0.12 <= t["s"] < b - 0.01) or (t["s"] < a - 0.12 and t["e"] > a + 0.05)]   # incl. a word whose recognised start is lead-in
-            snap_first(f"shot{p['shot']}", src, a)
-            for t in src:
-                s = p["o_in"] / FPS + (max(t["s"], a) - a) / SPEED
-                e = p["o_in"] / FPS + (min(t["e"], b) - a) / SPEED
-                toks.append(dict(w=t["w"], s=s, e=e))
+        sh = seg["shot"]
+        src = [dict(t) for t in words[sh] if seg["in"] - 0.3 <= t["s"] < seg["out"] - 0.02]
+        snap_first(f"shot{sh}", src, seg["in"] - 0.12)
+        toks = [dict(w=t["w"], s=src2out(pieces, sh, t["s"]), e=src2out(pieces, sh, t["e"])) for t in src]
         for w, s, e in align(seg["label"], toks):
             out.append(dict(w=w, s=s, e=max(e, s + 0.08), seg=seg["label"]))
     return out
