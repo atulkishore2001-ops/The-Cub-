@@ -18,7 +18,7 @@
 | Speaker not sped up excessively | 1.04× (pitch preserved). This is below what's noticeable and keeps her natural, calm pace |
 | On-screen text matches the dialogue | Captions are word-for-word from her audio (including "point out to", "forgets in exam", "He just learns differently"). Graphics use her own words. See section 5 for the two places where her wording differs from the brief |
 | Clean audio | Light noise reduction, high-pass, de-mud and presence EQ, gentle de-esser and compressor, each sentence levelled to the same loudness |
-| Face never covered | Checked automatically with a face detector on every third frame (see section 6): 0 frames where a graphic or caption touches her face, hair or chin |
+| Face never covered | Checked automatically with a face detector on 696 frames (every third frame): 0 frames where a graphic or caption touches her face, hair or chin |
 | Brand colours, original logo | Orange `#F0853E`, charcoal `#2B2B2B`, cream `#FDF6EE`, white only. Original logo (cut to a transparent PNG) on the name card, the call-to-action card and the closing frame |
 | Elegant tagline reveal | "Every Child Deserves To Be Seen" in **Playfair Display Italic**, revealed with a soft left-to-right ink wipe after the logo fades in, then a short orange rule; held for about 2.2s |
 | No abrupt ending | The picture cross-fades into the cream brand frame. The music settles on a final chord and fades out over the last 2.6s |
@@ -123,7 +123,7 @@ Captions run word by word across the whole reel (charcoal pill, cream text, the 
 
 ## 6. Quality checks done
 
-- **Face safety:** a face detector ran on every third frame of the reel up to the brand frame. It checked that no graphic or caption pixel falls inside her face box, enlarged to include hair (30% above), sides (10%) and chin (5% below). Result: see the pipeline run log below.
+- **Face safety:** a face detector ran on every third frame of the reel up to the brand frame. It checked that no graphic or caption pixel falls inside her face box, enlarged to include hair (30% above), sides (10%) and chin (5% below). The face was found on all 696 frames checked; **0 violations**.
 - **Voice cuts:** the finished voice track was transcribed again to confirm no word is clipped at any splice.
 - **Timing:** each sentence's first word is snapped to the true start of the voice, so captions and graphics land with the words.
 - **Loudness:** final mix −14.0 LUFS integrated, peak below −1.5 dBTP.
