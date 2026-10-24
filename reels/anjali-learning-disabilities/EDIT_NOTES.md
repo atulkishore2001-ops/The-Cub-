@@ -126,7 +126,7 @@ Captions run word for word throughout (charcoal pill, cream text, the spoken wor
 
 ## 6. Quality checks done
 
-- **Face safety:** a face detector ran on every third frame up to the brand frame (QA_FRAMES frames, face found on all of them). It checked that no card or caption pixel falls inside her face box, enlarged to include hair (30% above), sides (10%) and chin (5% below). **0 violations.**
+- **Face safety:** a face detector ran on every third frame up to the brand frame (754 frames, face found on all of them). It checked that no card or caption pixel falls inside her face box, enlarged to include hair (30% above), sides (10%) and chin (5% below). **0 violations.**
 - **Voice cuts:** the finished voice track was transcribed again; no word is clipped at any of the 15 cuts.
 - **Timing:** each sentence's first word is snapped to the true start of the voice, so captions and list items land with the words.
 - **Loudness:** −14.0 LUFS integrated, loudness range 2.7 LU, peak −1.5 dBFS.
