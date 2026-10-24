@@ -118,6 +118,7 @@ Captions run word by word across the whole reel (charcoal pill, cream text, the 
 - **Wording that differs from the brief.** The brief asks for "not a reflection of intelligence", "seek an appropriate assessment", "early support can make a meaningful difference" and "children aren't lazy; they learn differently". She says "nothing to do with intelligence", "get an assessment", "with early help, your child can do wonders" and "your child is not lazy, he just learns differently". The brief also asks that text match the dialogue, so **the on-screen text uses her words**, highlighted in the same spots. If you'd rather use the brief's phrasing for the takeaway cards, it's a quick change.
 - **"forgets in exam":** kept as spoken in both the captions and the card (not "in the exam").
 - **Contact route:** none was supplied (see section 2, point 5).
+- **Cover image:** `cover_option_1.jpg` ("Struggling in academics?", 0:01) or `cover_option_2.jpg` ("Your child is not lazy. He just learns differently.", 1:05).
 
 ---
 
@@ -126,6 +127,6 @@ Captions run word by word across the whole reel (charcoal pill, cream text, the 
 - **Face safety:** a face detector ran on every third frame of the reel up to the brand frame. It checked that no graphic or caption pixel falls inside her face box, enlarged to include hair (30% above), sides (10%) and chin (5% below). The face was found on all 696 frames checked; **0 violations**.
 - **Voice cuts:** the finished voice track was transcribed again to confirm no word is clipped at any splice.
 - **Timing:** each sentence's first word is snapped to the true start of the voice, so captions and graphics land with the words.
-- **Loudness:** final mix −14.0 LUFS integrated, peak below −1.5 dBTP.
+- **Loudness (measured on the final file):** −14.0 LUFS integrated, loudness range 2.4 LU, sample peak −0.7 dBFS.
 
 The editing pipeline (transcription, cut list, face tracking, graphics, sound, render) is in `pipeline/` (see `pipeline/README.md`).
