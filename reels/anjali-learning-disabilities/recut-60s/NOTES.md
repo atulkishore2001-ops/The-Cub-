@@ -1,6 +1,6 @@
 # 59.5-second re-cut, full quality
 
-**File:** `TheCub_LearningDisabilities_Reel_60s.mp4`: **59.47s** (1784 frames), 1080×1920, 30 fps, H.264 High (CRF 12) + AAC 320 kbps, −14 LUFS
+**File:** `TheCub_LearningDisabilities_Reel_60s.mp4`: **59.47s** (1784 frames), 1080×1920, 30 fps, H.264 High, two-pass 11.5 Mbps (just under GitHub's 100 MB file limit; SSIM 0.996 against the lossless-quality CRF 12 master) + AAC 320 kbps, −14 LUFS
 **Alt:** `TheCub_LearningDisabilities_Reel_60s_NoMusic.mp4`: the same cut without the music bed.
 
 This is a frame-accurate, full-resolution rebuild of the re-cut you sent as `WhatsApp Video 2026-10-24 at 6.02.32 PM.mp4` (576×1024, about 1.3 Mbps). Every frame is rendered again from the original Anjali 1/2/3 clips, through the same pipeline as revision 3, and encoded only once. Nothing is upscaled from the WhatsApp file.
