@@ -39,8 +39,9 @@ SCN = [b["scene"] for b in BLK]
 Z_SCN = {}
 for sc in set(SCN):
     fw = np.median([FACES[i]["w"] for i in range(len(BLK)) if SCN[i] == sc])
-    Z_SCN[sc] = 1.04                                       # one location, one framing
+    Z_SCN[sc] = 1.05                                       # one location, one framing
 CUTS = [b["o_in"] for b in BLK[1:]]
+H_MED = float(np.median([f["h"] for f in FACES]))
 TRACK = None
 
 # cinematic but natural grade: per-clip exposure match (clip 1 was ~4% darker), gentle filmic S-curve with lifted
@@ -129,7 +130,9 @@ def cam(i, n):
         ax, ay = float(TRACK[n][0]), float(TRACK[n][1])
     else:
         ax, ay = FACES[i]["cx"], FACES[i]["cy"]
-    ty = min(max(FACE_Y, OUT_H - (OUT_H - ay) * z), ay * z)
+    h = float(TRACK[n][3]) if TRACK is not None and n < len(TRACK) and TRACK[n][3] > 0 else FACES[i]["h"]
+    lean = max(0.0, h - H_MED)                                 # leaning toward the lens: lift the frame so the chin
+    ty = min(max(FACE_Y - 0.6 * lean * z, OUT_H - (OUT_H - ay) * z), ay * z)   # stays clear of the cards
     tx = min(max(OUT_W / 2, OUT_W - (OUT_W - ax) * z), ax * z)
     return dict(z=z, tx=tx, ty=ty, ax=ax, ay=ay)
 

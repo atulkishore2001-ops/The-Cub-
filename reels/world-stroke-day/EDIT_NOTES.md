@@ -24,7 +24,7 @@
 | Sound effects | 20 very quiet cues: soft ticks as cards appear, soft swipes between FAST screens, a soft whoosh as the blur comes in, a chime on the logo. Nothing dramatic |
 | Brand | Orange `#F0853E`, charcoal `#2B2B2B`, cream `#FDF6EE`, white; DM Sans + Playfair Display Italic accents; small logo mark on the World Stroke Day card |
 | Closing | The standard closing animation from `brand/outro/` (as in the Anjali reel): soft fade to cream, logo reveal, "*Every Child Deserves To Be Seen*" in Playfair Display Italic, gentle music fade-out |
-| Face never covered | Checked automatically with a face detector on every third frame outside the FAST sequence (where the speaker is deliberately blurred behind the card) |
+| Face never covered | Checked automatically with a face detector on every third frame outside the FAST sequence (384 frames; the speaker is deliberately blurred behind the card in FAST): **0** frames where a card or caption touches the face, hair or chin. The check caught one moment (0:22) where the speaker leans toward the lens; the framing now lifts slightly when that happens |
 
 ---
 

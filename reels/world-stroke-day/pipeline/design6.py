@@ -24,7 +24,7 @@ BRAND = os.environ.get("BRAND", "/tmp/claude-0/-home-user-The-Cub-/6a3c4bc0-104a
 SPRITES, SFX, TEXTS = [], [], []
 MUTED = G.a(CHAR, 190)
 CAP_Y = 458                  # captions: just above the head, below Instagram's top bar
-LOW_TOP = 1100               # explanation cards hang from here (below the chin, over the shirt)
+LOW_TOP = 1120               # explanation cards hang from here (below the chin, over the shirt)
 SH = 22 * 2 + 10             # shadow() padding (blur 22, offset 10)
 FADE_IN, FADE_OUT = 0.45, 0.4
 
@@ -210,10 +210,10 @@ def right_col(t):
 
 
 q_title = line([("What is a ", "b"), ("stroke", "pf", 1.2), ("?", "b")], 50)
-c2 = content(960, 400, [(q_title, 480, 46, None),
+c2 = content(960, 390, [(q_title, 480, 46, None),
                         (brain_img, 40 + 344 / 2, 240, T_BR0),
                         (right_col, 400 + 520 / 2, 240, T_BR0)])
-States([(0, c2)], t_q - 0.1, E["So, what are"][0] - 0.25, 980, 410)
+States([(0, c2)], t_q - 0.1, E["So, what are"][0] - 0.25, 980, 396)
 sfx(t_blocked - 0.1, "tick", -16, pitch=0.9); sfx(t_burst - 0.1, "tick", -16, pitch=0.85)
 
 # =============================================================== 3. CAUSES -> PREVENTION
@@ -253,7 +253,7 @@ def blur_amount(t):
 
 LETTERS = "FAST"
 WORDS4 = ["Face", "Arms", "Speech", "Time"]
-FW, FH = 960, 450                                     # FAST card content size (same lower position as every card)
+FW, FH = 960, 430                                     # FAST card content size (same lower position as every card)
 
 
 def tile(ch, active, size=60):
@@ -326,7 +326,7 @@ ALSO = [(lambda t: icon_row(sc(IL.ic_dizzy(t), 0.8), [("Sudden ", "n"), ("dizzin
         (lambda t: icon_row(sc(IL.ic_vision(t), 0.8), [("Vision ", "n"), ("trouble", "pf", 1.15)]), tw("And also", "vision") - 0.1),
         (lambda t: icon_row(sc(IL.ic_headache(t), 0.8), [("Severe ", "n"), ("headache", "pf", 1.15)]), tw("And also", "severe") - 0.1)]
 SC_ALSO = content(FW, FH, [(progress(-1), 480, PROG_Y, None), left(line([("Also watch for", "m")], 40), 60, 125)] +
-                  [(fn, 40 + 440, 200 + k * 92, ti) for k, (fn, ti) in enumerate(ALSO)])
+                  [(fn, 40 + 440, 190 + k * 88, ti) for k, (fn, ti) in enumerate(ALSO)])
 
 call_pill = pill(row([IL.ic_phone(64), line([("Call ", "w"), ("108", "w", 1.25), (" or ", "wr"), ("112", "w", 1.25)], 54)], gap=16),
                  ORANGE, 40, 22)
@@ -335,15 +335,15 @@ SC_T = content(FW, FH, [(progress(3), 480, PROG_Y, None),
                         (lambda t: IL.ic_clock(clamp((t - t_T) / 6.0), 230), 40 + ILL / 2, 270, None),
                         left(hT, RX, 160),
                         (lambda t: line([("See even ", "n"), ("one sign", "pf", 1.15), ("?", "n")], 48), RX + 210, 238, t_ifever - 0.1),
-                        (call_pill, RX + call_pill.width / 2 - 20, 322, t_call - 0.15),
-                        (pill(line([("immediately", "cream")], 40), G.a(CHAR, 250), 30, 12), RX + 120, 410, t_now - 0.1)])
+                        (call_pill, RX + call_pill.width / 2 - 20, 312, t_call - 0.15),
+                        (pill(line([("immediately", "cream")], 40), G.a(CHAR, 250), 30, 12), RX + 120, 392, t_now - 0.1)])
 
 DO = [(sc(IL.ic_clock(1.0, 96), 0.72), [("Note when ", "n"), ("symptoms started", "pf", 1.12)], t_note - 0.1),
       (sc(IL.ic_hospital(96), 0.72), [("Go to the ", "n"), ("hospital", "pf", 1.12), (", even if they go away", "n")], E["Even if"][0] - 0.1),
       (sc(IL.ic_no_food(96), 0.72), [("No food, water or ", "n"), ("medicine", "pf", 1.12)], E["Neither"][0] - 0.1),
       (sc(IL.ic_hourglass(96), 0.72), [("Never ", "n"), ("wait", "pf", 1.12), (" for it to pass", "n")], tw("Neither", "nor") - 0.1)]
 SC_DO = content(FW, FH, [(progress(3), 480, PROG_Y, None), left(line([("Act fast", "m")], 40), 60, 122)] +
-                [(icon_row(ic, lab, 40, 900, 74), 40 + 450, 182 + k * 76, ti) for k, (ic, lab, ti) in enumerate(DO)])
+                [(icon_row(ic, lab, 40, 900, 74), 40 + 450, 172 + k * 72, ti) for k, (ic, lab, ti) in enumerate(DO)])
 
 FAST_STATES = [(T_FAST0, SC_INTRO), (t_F - 0.1, SC_F), (t_A - 0.1, SC_A), (t_S - 0.1, SC_S), (t_also - 0.1, SC_ALSO),
                (t_T - 0.1, SC_T), (t_note - 0.15, SC_DO)]
