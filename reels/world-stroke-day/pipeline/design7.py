@@ -296,7 +296,7 @@ BR_TEXT = [(T_BR0, lambda t: ctext([[("Blood flow to the brain", "n")], [("is ",
            (t_about - 0.1, lambda t: col([line([("about ", "n"), ("2 million", "o", 1.5)], 60), line([("brain cells every minute", "n")], 50)], gap=10))]
 BR_TITLE = line([("What is a ", "b"), ("stroke", "pf", 1.25), ("?", "b")], 60)
 _brt = swap(BR_TEXT)
-layer_fade(t_it - 0.15, t_causes - 0.35, centred([(BR_TITLE, 330, None), (big_brain, 800, None), (_brt, 1290, None)]), din=0.5, dout=0.3)
+layer_fade(t_it + 0.12, t_causes - 0.35, centred([(BR_TITLE, 330, None), (big_brain, 800, None), (_brt, 1290, None)]), din=0.5, dout=0.3)
 sfx(t_blocked - 0.1, "tick", -16, pitch=0.9); sfx(t_burst - 0.1, "tick", -16, pitch=0.85)
 
 # ======================================================================= 3. SPLIT: causes -> prevention
