@@ -24,10 +24,16 @@
   "out": 16.78
  },
  {
-  "label": "Without blood, brain cells start dying within minutes, or about 2 million every minute.",
+  "label": "Without blood, brain cells start dying within minutes, about 2 million every minute.",
   "shot": 1,
   "in": 16.64,
-  "out": 23.58
+  "out": 23.58,
+  "drop": [
+   [
+    20.13,
+    20.45
+   ]
+  ]
  },
  {
   "label": "So, what are the causes?",

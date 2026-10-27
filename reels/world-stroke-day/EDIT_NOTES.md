@@ -1,17 +1,30 @@
 # Reel: World Stroke Day awareness
 
 **Source:** `Ash_1.mp4`, `Ash_2.mp4`, `Ash_3.mp4` (34.6s + 32.7s + 23.0s, one continuous recording, 1080×1920 @ 60 fps)
-**Output:** `TheCub_WorldStrokeDay_Reel.mp4`: **78.5s**, 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
+**Output:** `TheCub_WorldStrokeDay_Reel.mp4`: **78.2s** (revision 2), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
 **Alt version:** `TheCub_WorldStrokeDay_Reel_NoMusic.mp4` has the same edit and sound effects without the music bed.
 
 ---
 
-## 1. Brief checklist
+## 0. Revision 2 (feedback: layouts, B-roll, fumbles, alignment)
+
+| Feedback | Change |
+|---|---|
+| Full-screen, split-screen and side-by-side layouts | Four layouts, each used for a whole section: **full-screen speaker** for the opening (0:00–0:08); **full-screen animated B-roll** for "What is a stroke?" (0:08–0:19); **split screen** (speaker on top, cream graphics panel below) for causes and prevention (0:19–0:31) and for the World Stroke Day message (1:07–1:14); **blurred-background FAST** (0:31–1:07). Only 5 layout changes in the whole reel, each a 0.6s eased move |
+| B-roll with continuous voice-over | The stroke explanation plays as a full-screen animation (large brain, vessel blocked, vessel bursting, brain cells fading, "about 2 million brain cells every minute") while the voice continues. Stock-footage sites (Pexels, Pixabay) can't be reached from the editing environment, so the B-roll is animated in the reel's own illustration style. If you have stock clips you'd like used, send them and they can be cut in |
+| FAST: speaker slightly blurred in the background | The speaker stays softly blurred, slightly enlarged and high in the frame, so the face is still recognisable above the FAST card |
+| Remove verbal fumbles | The stray "or" in "within minutes, **or** about 2 million" is cut out. The other small extra words ("die from *the* stroke", "*the* stress", "T is *the* time") run straight into the next word; cutting them would leave audible jumps, so they stay |
+| Consistent alignment, spacing and symmetry (especially FAST) | Every FAST screen now uses one centred grid inside the same card: F-A-S-T row at the top, title on the next line, then a centred body (illustration with the question beneath it, or a centred block of icon rows with icons in one column and text in another). Everything is centred on the frame's vertical axis; the hook card, the B-roll and the split-screen panel use the same centre line and spacing |
+| Captions never cover the face or graphics | Captions now sit in one fixed place near the bottom in every layout (over the shirt, the cream panel or the blurred background), clear of the face and of every card |
+
+---
+
+## 1. Brief checklist (original brief)
 
 | Requirement | Result |
 |---|---|
 | Three clips combined seamlessly | Clip 1 → 2 → 3 in order. Each join is a straight cut placed in a pause. The camera position never changes between clips, so the joins read as one take |
-| ~75s, natural pacing | **78.5s**: 74.2s of speech + the standard 4.3s logo ending. The spoken content alone is about 66s; trimming further would have meant speeding the speaker up noticeably, so pauses were shortened to a short breath instead (1.025× playback, pitch preserved) |
+| ~75s, natural pacing | **78.2s**: 73.9s of speech + the standard 4.3s logo ending. The spoken content alone is about 66s; trimming further would have meant speeding the speaker up noticeably, so pauses were shortened to a short breath instead (1.025× playback, pitch preserved) |
 | Pauses removed | Pauses longer than 0.4s (including breaths) are shortened to 0.25s. 16 pieces in total. The 13 cuts inside a clip use a soft 0.33s optical-flow blend, so they don't jump |
 | Smooth, steady framing | One framing for the whole reel (1.04× with slow face-following). No zoom steps or punch-ins |
 | Cinematic but realistic grade | Clip 1 brightened about 3.5% to match clips 2 and 3. Gentle filmic contrast curve with slightly lifted blacks, cool shadows / warm highlights, +4% saturation and a soft vignette. Skin tones stay natural |
@@ -83,7 +96,7 @@
 - **"29 October":** one model hears "20th of October"; two hear "29 October", which is World Stroke Day, so the captions and card say 29 October.
 - **Pronoun in the brief:** the brief refers to the speaker as "her". The notes and graphics don't refer to the speaker at all, so nothing on screen depends on it.
 - **Name card:** the brief didn't ask for one, so there isn't one. If you'd like the speaker's name and designation on screen (as in the earlier reels), send them and I'll add it.
-- **Length:** 78.5s rather than 75s, to keep the speaker's natural pace (see section 1). A 75s version is possible by speeding up to about 1.07×, but it would sound rushed.
+- **Length:** 78.2s rather than 75s, to keep the speaker's natural pace (see section 1). A 75s version is possible by speeding up to about 1.07×, but it would sound rushed.
 
 ---
 

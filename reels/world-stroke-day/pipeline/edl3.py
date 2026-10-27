@@ -39,6 +39,16 @@ def build(work, segs, durs, scene_cuts, min_cut=0.75, keep=0.42):
                 k = j
             k += 1
         pieces.append([cur, to])
+        for s in ss:                                        # verbal fumbles removed on purpose: [[from, to], ...]
+            for d0, d1 in s.get("drop", []):
+                out_p = []
+                for p0, p1 in pieces:
+                    if p0 < d0 < p1 and p0 < d1 < p1:
+                        out_p += [[p0, d0], [d1, p1]]
+                        log.append(f"shot{shot} fumble removed {d0:.2f}-{d1:.2f}")
+                    else:
+                        out_p.append([p0, p1])
+                pieces = out_p
         for p in pieces:
             f0 = int(np.floor(p[0] * FPS + 1e-6)); f1 = int(np.ceil(p[1] * FPS - 1e-6))
             mid = (p[0] + p[1]) / 2
