@@ -15,7 +15,7 @@
 | FAST: speaker slightly blurred in the background | The speaker stays softly blurred, slightly enlarged and high in the frame, so the face is still recognisable above the FAST card |
 | Remove verbal fumbles | The stray "or" in "within minutes, **or** about 2 million" is cut out. The other small extra words ("die from *the* stroke", "*the* stress", "T is *the* time") run straight into the next word; cutting them would leave audible jumps, so they stay |
 | Consistent alignment, spacing and symmetry (especially FAST) | Every FAST screen now uses one centred grid inside the same card: F-A-S-T row at the top, title on the next line, then a centred body (illustration with the question beneath it, or a centred block of icon rows with icons in one column and text in another). Everything is centred on the frame's vertical axis; the hook card, the B-roll and the split-screen panel use the same centre line and spacing |
-| Captions never cover the face or graphics | Captions now sit in one fixed place near the bottom in every layout (over the shirt, the cream panel or the blurred background), clear of the face and of every card |
+| Captions never cover the face or graphics | Captions now sit in one fixed place near the bottom in every layout (over the shirt, the cream panel or the blurred background), clear of the face and of every card. Face check on every third frame where the speaker is sharp and visible (270 frames): **0** frames with a card or caption over the face |
 
 ---
 
