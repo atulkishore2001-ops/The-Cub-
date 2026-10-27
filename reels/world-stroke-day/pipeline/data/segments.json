@@ -1,9 +1,15 @@
 [
  {
-  "label": "Every year around 7 million people die from the stroke.",
+  "label": "Every year around 7 million people die from stroke.",
   "shot": 1,
   "in": 0.64,
-  "out": 4.22
+  "out": 4.22,
+  "drop": [
+   [
+    3.52,
+    3.72
+   ]
+  ]
  },
  {
   "label": "And you know what? It can happen to anyone at any age.",
