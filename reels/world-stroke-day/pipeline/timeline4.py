@@ -76,7 +76,7 @@ def build_explainer():
     cum, pieces = 0, []
     for p in edl:
         n = p["f_out"] - p["f_in"]
-        o0 = round(cum / SPEED); cum += n; o1 = round(cum / SPEED)
+        o0 = round(cum); cum += n * p.get("slow", 1.0) / SPEED; o1 = round(cum)      # a slowed word plays longer
         pieces.append(dict(p, o_in=o0, o_out=o1))
     return segs, pieces
 
@@ -86,7 +86,8 @@ def frame_map(pieces, sliver=8):
     fm = []
     for p in pieces:
         n = p["o_out"] - p["o_in"]
-        src = [min(p["f_in"] + int(k * SPEED + 1e-6), p["f_out"] - 1, SRC_FRAMES[p["shot"]] - 1) for k in range(n)]
+        sp = SPEED / p.get("slow", 1.0)
+        src = [min(p["f_in"] + int(k * sp + 1e-6), p["f_out"] - 1, SRC_FRAMES[p["shot"]] - 1) for k in range(n)]
         ids = [scene_id(p["shot"], f) for f in src]
         run = sum(1 for x in ids if x == ids[-1])
         if run < sliver and run < n:
@@ -154,7 +155,7 @@ def src2out(pieces, shot, t):
         if t < a:
             return p["o_in"] / FPS
         if t < b:
-            return p["o_in"] / FPS + (t - a) / SPEED
+            return p["o_in"] / FPS + (t - a) / (SPEED / p.get("slow", 1.0))
     return ps[-1]["o_out"] / FPS
 
 

@@ -49,9 +49,24 @@ def build(work, segs, durs, scene_cuts, min_cut=0.75, keep=0.42):
                     else:
                         out_p.append([p0, p1])
                 pieces = out_p
+        for s in ss:                                        # words slowed for clarity: [[from, to, factor], ...]
+            for d0, d1, fac in s.get("slow", []):
+                out_p = []
+                for p in pieces:
+                    p0, p1 = p[0], p[1]
+                    if p0 < d1 and d0 < p1:
+                        a0, a1 = max(p0, d0), min(p1, d1)
+                        if p0 < a0: out_p.append([p0, a0])
+                        out_p.append([a0, a1, fac])
+                        if a1 < p1: out_p.append([a1, p1])
+                        log.append(f"shot{shot} slowed {a0:.2f}-{a1:.2f} x{fac}")
+                    else:
+                        out_p.append(p)
+                pieces = out_p
         for p in pieces:
             f0 = int(np.floor(p[0] * FPS + 1e-6)); f1 = int(np.ceil(p[1] * FPS - 1e-6))
             mid = (p[0] + p[1]) / 2
             lab = next((s["label"] for s in ss if s["in"] - 0.6 <= mid <= s["out"] + 0.6), ss[0]["label"])
-            out.append({"label": lab, "shot": shot, "f_in": f0, "f_out": f1, "t_in": p[0], "t_out": p[1]})
+            out.append({"label": lab, "shot": shot, "f_in": f0, "f_out": f1, "t_in": p[0], "t_out": p[1],
+                        "slow": p[2] if len(p) > 2 else 1.0})
     return out, sum((e["f_out"] - e["f_in"]) / FPS for e in out), log

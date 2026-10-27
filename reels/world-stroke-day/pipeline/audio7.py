@@ -68,7 +68,10 @@ def voice():
     out = []
     for p in D.PIECES:
         a, b = int(p["f_in"] / FPS * SR), int(p["f_out"] / FPS * SR)
-        out.append(fade(src[p["shot"]][a:b] * gain[p["shot"]][a:b, None], 12))
+        x = fade(src[p["shot"]][a:b] * gain[p["shot"]][a:b, None], 12)
+        if p.get("slow", 1.0) != 1.0:                               # slowed word: stretch first, pitch preserved
+            x = fade(ffilter(x, f"atempo={1 / p['slow']:.4f}"), 6)
+        out.append(x)
     return ffilter(np.concatenate(out), f"atempo={SPEED},{VOICE_CHAIN}")
 
 
