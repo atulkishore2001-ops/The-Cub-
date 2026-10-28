@@ -13,8 +13,8 @@
     --line: #ECE4DA;
     --muted: #6B6560;
     --display: 'Playfair Display', Georgia, serif;
-    --body: 'Lexend', system-ui, sans-serif;
-    --label: 'Glacial Indifference', 'Lexend', sans-serif;
+    --body: 'Glacial Indifference', system-ui, sans-serif;
+    --label: 'Lexend', sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { width: 1440px; background: var(--white); color: var(--charcoal); font-family: var(--body); -webkit-font-smoothing: antialiased; }
@@ -25,27 +25,27 @@
   .title { text-align: right; }
   .title h1 { font-family: var(--display); font-weight: 600; font-size: 52px; letter-spacing: -0.5px; line-height: 1.05; }
   .title h1 em { font-style: italic; font-weight: 400; color: var(--orange); }
-  .title p { font-family: var(--label); font-weight: 700; font-size: 15px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
+  .title p { font-family: var(--label); font-weight: 600; font-size: 15px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
 
   section { padding-top: 64px; }
   .pill { display: block; width: max-content; margin: 0 auto 48px; background: var(--cream); padding: 14px 34px; border-radius: 999px;
-          font-family: var(--label); font-weight: 700; font-size: 19px; letter-spacing: 3px; text-transform: uppercase; }
+          font-family: var(--label); font-weight: 600; font-size: 19px; letter-spacing: 3px; text-transform: uppercase; }
 
   .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; }
   .chip { aspect-ratio: 1 / 1.05; border-radius: 22px; margin-bottom: 30px; }
   .chip.bordered { border: 1.5px solid #D9D2C9; }
-  .sw h3 { font-family: var(--body); font-weight: 600; font-size: 24px; margin-bottom: 14px; }
+  .sw h3 { font-family: var(--body); font-weight: 700; font-size: 24px; margin-bottom: 14px; }
   .codes { display: flex; gap: 18px; align-items: baseline; margin-bottom: 22px; }
-  .hex { font-family: var(--label); font-weight: 700; font-size: 21px; letter-spacing: 1.5px; }
+  .hex { font-family: var(--label); font-weight: 600; font-size: 21px; letter-spacing: 1.5px; }
   .rgb { font-family: var(--label); font-size: 15px; letter-spacing: 1px; color: var(--muted); }
-  .use { font-weight: 300; font-size: 18px; line-height: 1.5; color: #3E3B38; }
+  .use { font-weight: 400; font-size: 19px; line-height: 1.5; color: #3E3B38; }
 
   .type { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
   .tc { background: var(--cream); border-radius: 22px; padding: 36px 34px 34px; display: flex; flex-direction: column; }
-  .role { align-self: flex-start; font-family: var(--label); font-weight: 700; font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase;
+  .role { align-self: flex-start; font-family: var(--label); font-weight: 600; font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase;
           color: var(--white); background: var(--orange); padding: 7px 14px; border-radius: 999px; }
   .aa { font-size: 132px; line-height: 1; margin: 34px 0 22px; }
-  .tc h3 { font-family: var(--body); font-weight: 600; font-size: 24px; margin-bottom: 6px; }
+  .tc h3 { font-family: var(--body); font-weight: 700; font-size: 24px; margin-bottom: 6px; }
   .weights { font-family: var(--label); font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
   .alpha { font-size: 17px; line-height: 1.65; white-space: nowrap; letter-spacing: 0.3px; padding-top: 22px; border-top: 1px solid #EADFD2; margin-bottom: 22px; }
   .sample { margin-top: auto; }
@@ -56,7 +56,7 @@
   .logos { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
   .lt { border-radius: 22px; height: 340px; display: flex; align-items: center; justify-content: center; position: relative; }
   .lt img { height: 230px; }
-  .lt span { position: absolute; left: 26px; bottom: 22px; font-family: var(--label); font-weight: 700; font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; }
+  .lt span { position: absolute; left: 26px; bottom: 22px; font-family: var(--label); font-weight: 600; font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; }
   .lt.light { background: var(--cream); }
   .lt.light span { color: var(--muted); }
   .lt.dark { background: var(--charcoal); }
@@ -116,19 +116,19 @@
       </div>
       <div class="tc">
         <span class="role">Body &amp; UI</span>
-        <div class="aa f-body" style="font-weight:400">Aa</div>
-        <h3>Lexend</h3>
-        <p class="weights">Light · Regular · Medium · SemiBold</p>
-        <p class="alpha f-body" style="font-weight:300">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp;?!@</p>
-        <p class="sample f-body" style="font-size:18px;line-height:1.6;font-weight:300">Clear, friendly and easy to read: built for paragraphs, buttons, menus and everyday copy.</p>
+        <div class="aa f-body">Aa</div>
+        <h3>Glacial Indifference</h3>
+        <p class="weights">Regular · Bold</p>
+        <p class="alpha f-body">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp;?!@</p>
+        <p class="sample f-body" style="font-size:19px;line-height:1.6">Clear, friendly and easy to read: built for paragraphs, buttons, menus and everyday copy.</p>
       </div>
       <div class="tc">
         <span class="role">Labels &amp; Subheads</span>
         <div class="aa f-label">Aa</div>
-        <h3>Glacial Indifference</h3>
-        <p class="weights">Regular · Bold</p>
-        <p class="alpha f-label">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp;?!@</p>
-        <p class="sample f-label" style="font-size:20px;font-weight:700;letter-spacing:3px;text-transform:uppercase">New Arrivals · Shop Now</p>
+        <h3>Lexend</h3>
+        <p class="weights">Light · Regular · Medium · SemiBold</p>
+        <p class="alpha f-label" style="font-weight:300">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp;?!@</p>
+        <p class="sample f-label" style="font-size:18px;font-weight:600;letter-spacing:3px;text-transform:uppercase">New Arrivals · Shop Now</p>
       </div>
     </div>
   </section>
