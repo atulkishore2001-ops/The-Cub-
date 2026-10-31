@@ -1,0 +1,92 @@
+[
+ {
+  "label": "Does your child hate doing homework or studying at home?",
+  "shot": 1,
+  "f_in": 15,
+  "f_out": 114
+ },
+ {
+  "label": "Congratulations, you might have a little scientist at your home without even knowing it.",
+  "shot": 1,
+  "f_in": 139,
+  "f_out": 275
+ },
+ {
+  "label": "Hi, I am Ashaar, the Science Educator at The Cub.",
+  "shot": 1,
+  "f_in": 320,
+  "f_out": 406
+ },
+ {
+  "label": "We often call children lazy or irresponsible when they struggle to sit still, concentrate or finish their homework.",
+  "shot": 1,
+  "f_in": 439,
+  "f_out": 592
+ },
+ {
+  "label": "We often call children lazy or irresponsible when they struggle to sit still, concentrate or finish their homework.",
+  "shot": 1,
+  "f_in": 593,
+  "f_out": 658
+ },
+ {
+  "label": "But what if we are looking at it the wrong way?",
+  "shot": 1,
+  "f_in": 696,
+  "f_out": 789
+ },
+ {
+  "label": "Some children, especially those with ADHD, find traditional ways of learning more difficult.",
+  "shot": 2,
+  "f_in": 0,
+  "f_out": 5
+ },
+ {
+  "label": "Some children, especially those with ADHD, find traditional ways of learning more difficult.",
+  "shot": 2,
+  "f_in": 13,
+  "f_out": 192
+ },
+ {
+  "label": "But that doesn't mean they lack intelligence or creativity.",
+  "shot": 2,
+  "f_in": 212,
+  "f_out": 316
+ },
+ {
+  "label": "Sometimes they just need a different way to learn.",
+  "shot": 2,
+  "f_in": 348,
+  "f_out": 429
+ },
+ {
+  "label": "For example, instead of asking your child to read about why things float or sink,",
+  "shot": 2,
+  "f_in": 447,
+  "f_out": 536
+ },
+ {
+  "label": "For example, instead of asking your child to read about why things float or sink,",
+  "shot": 2,
+  "f_in": 538,
+  "f_out": 589
+ },
+ {
+  "label": "Fill a bucket with water and let them experiment with everyday objects.",
+  "shot": 3,
+  "f_in": 10,
+  "f_out": 136
+ },
+ {
+  "label": "Now they are predicting, testing, asking questions and learning from their own experience.",
+  "shot": 3,
+  "f_in": 171,
+  "f_out": 314
+ },
+ {
+  "label": "And what if your child could take that curiosity to another level?",
+  "shot": 3,
+  "f_in": 339,
+  "f_out": 452
+ }
+]

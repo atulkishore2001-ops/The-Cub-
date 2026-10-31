@@ -1,0 +1,136 @@
+[
+ {
+  "label": "Every year around 7 million people die from stroke.",
+  "shot": 1,
+  "in": 0.64,
+  "out": 4.22,
+  "drop": [
+   [
+    3.52,
+    3.72
+   ]
+  ],
+  "slow": [
+   [
+    3.72,
+    4.2,
+    1.4
+   ]
+  ]
+ },
+ {
+  "label": "And you know what? It can happen to anyone at any age.",
+  "shot": 1,
+  "in": 4.32,
+  "out": 8.46
+ },
+ {
+  "label": "So, what is a stroke?",
+  "shot": 1,
+  "in": 8.64,
+  "out": 10.78
+ },
+ {
+  "label": "It happens when the blood flow to the brain is blocked, or a blood vessel in the brain bursts.",
+  "shot": 1,
+  "in": 10.64,
+  "out": 16.78
+ },
+ {
+  "label": "Without blood, brain cells start dying within minutes, about 2 million every minute.",
+  "shot": 1,
+  "in": 16.64,
+  "out": 23.58,
+  "drop": [
+   [
+    20.13,
+    20.45
+   ]
+  ]
+ },
+ {
+  "label": "So, what are the causes?",
+  "shot": 1,
+  "in": 24.08,
+  "out": 25.82
+ },
+ {
+  "label": "High blood pressure, diabetes, smoking and the stress are the common causes,",
+  "shot": 1,
+  "in": 25.68,
+  "out": 30.62
+ },
+ {
+  "label": "but the good news is that it can be prevented.",
+  "shot": 1,
+  "in": 30.8,
+  "out": 34.46,
+  "snap_out": true
+ },
+ {
+  "label": "But first, learn the signs and just remember one word: FAST.",
+  "shot": 2,
+  "in": 0.72,
+  "out": 5.58
+ },
+ {
+  "label": "F is Face: does one side droop when they smile?",
+  "shot": 2,
+  "in": 7.36,
+  "out": 11.34
+ },
+ {
+  "label": "A is Arms: does one arm drift down or feel weak?",
+  "shot": 2,
+  "in": 11.2,
+  "out": 15.42
+ },
+ {
+  "label": "S is Speech: is it slurred or hard to understand?",
+  "shot": 2,
+  "in": 15.28,
+  "out": 18.94
+ },
+ {
+  "label": "And also, watch for the sudden dizziness, vision trouble or a severe headache.",
+  "shot": 2,
+  "in": 18.8,
+  "out": 24.54
+ },
+ {
+  "label": "And finally, T is the Time.",
+  "shot": 2,
+  "in": 24.4,
+  "out": 26.86
+ },
+ {
+  "label": "If you ever see one sign, call 108 or 112 immediately.",
+  "shot": 2,
+  "in": 26.72,
+  "out": 32.14
+ },
+ {
+  "label": "Note when the symptoms started.",
+  "shot": 3,
+  "in": 0.56,
+  "out": 3.34
+ },
+ {
+  "label": "Even if they go away, still go to the hospital.",
+  "shot": 3,
+  "in": 3.2,
+  "out": 6.78
+ },
+ {
+  "label": "Neither give food, water or medicine, nor wait for it to pass.",
+  "shot": 3,
+  "in": 6.96,
+  "out": 12.94
+ },
+ {
+  "label": "This World Stroke Day, 29 October, save this reel and share with your friends and family, as it could save a life.",
+  "shot": 3,
+  "in": 14.08,
+  "out": 22.46
+ }
+]
