@@ -298,8 +298,8 @@ t_cur, t_cre, t_full = W("curious"), W("creative"), W("full")
 BOY.key(t_cur - 0.4, 0.4, looky=0.6, lookx=-0.5, ra1=70, ra2=-20, brows="raised", mouth="o", lean=-6)
 prop(t_cur - 0.4, W("ADHD", 3) - 0.3, lambda c, t, a: PR.flower(c, 190, GROUND, 1.0, a, (0.95, 0.75, 0.3)))
 prop(t_cur - 0.4, t_full, lambda c, t, a: PR.magnifier(c, *[v for v in D.hand_pos("boy", BOY.at(t), 1)], a, -40))
-STROKES = [[(640 + i * 9, 640 + 40 * math.sin(i / 5)) for i in range(40)], [(660 + i * 9, 720 + 30 * math.cos(i / 4)) for i in range(36)],
-           [(700 + 80 * math.cos(i / 6), 560 + 50 * math.sin(i / 6)) for i in range(38)]]
+STROKES = [[(700 + i * 8, 520 + 40 * math.sin(i / 5)) for i in range(38)], [(720 + i * 8, 600 + 30 * math.cos(i / 4)) for i in range(34)],
+           [(900 + 70 * math.cos(i / 6), 450 + 45 * math.sin(i / 6)) for i in range(38)]]      # above and beside her, clear of the head
 for k, (pts, col) in enumerate(zip(STROKES, ((0.94, 0.52, 0.24), (0.36, 0.62, 0.86), (0.55, 0.78, 0.4)))):
     tk = t_cre - 0.1 + k * 0.35
     prop(tk, W("ADHD", 3) - 0.3, lambda c, t, a, pts=pts, tk=tk, col=col: PR.scribble(c, pts, (t - tk) / 0.5, a, col, 12))
