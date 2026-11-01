@@ -24,6 +24,38 @@ def ffilter(x, af):
     return np.frombuffer(p.stdout, np.float32).reshape(-1, 2).copy()
 
 
+def retimed_voice(x):
+    """Rebuild the voiceover on the reel's time map: speech chunks sped up (atempo, pitch preserved), long pauses
+    shortened by keeping their first and last parts (cross-faded). Each piece is placed at its mapped time."""
+    p = f"{W}/retime.json"
+    if not os.path.exists(p):
+        return x
+    rt = json.load(open(p))
+    vo, out, speed = rt["vo"], rt["out"], rt["speed"]
+    N = int((out[-2] + 10) * SR)
+    y = np.zeros((N, 2), np.float32)
+    f = int(0.012 * SR)
+    for v0, v1, o0, o1 in zip(vo[:-2], vo[1:-1], out[:-2], out[1:-1]):
+        if v1 - v0 < 1e-3:
+            continue
+        a, b = int(v0 * SR), int(v1 * SR)
+        seg = x[a:b]
+        dur_out = o1 - o0
+        if abs((v1 - v0) / max(dur_out, 1e-6) - speed) < 0.02:          # speech: time-stretch
+            seg = ffilter(seg, f"atempo={speed:.4f}")
+        elif dur_out < (v1 - v0) - 1e-3:                                 # long pause: keep its head and tail
+            h = int(dur_out / 2 * SR)
+            seg = np.concatenate([seg[:h], seg[-h:]]) if h > 0 else seg[:0]
+        seg = seg.copy()
+        if len(seg) > 2 * f:
+            seg[:f] *= np.linspace(0, 1, f)[:, None]; seg[-f:] *= np.linspace(1, 0, f)[:, None]
+        i = int(round(o0 * SR))
+        y[i:i + len(seg)] += seg[:N - i]
+    tail = x[int(vo[-2] * SR):]                                          # after the last word, unchanged
+    i = int(round(out[-2] * SR)); y[i:i + len(tail)] += tail[:N - i]
+    return y
+
+
 def master(mix):
     p = subprocess.run(["ffmpeg", "-hide_banner", "-f", "f32le", "-ac", "2", "-ar", str(SR), "-i", "-", "-af",
                         "loudnorm=I=-14:TP=-1.5:LRA=9:print_format=json", "-f", "null", "-"], input=mix.astype(np.float32).tobytes(),
@@ -44,7 +76,7 @@ def place(buf, x, t, g):
 
 def main():
     N = int(round(S.T_END * SR))
-    v = ffilter(decode(f"{W}/vo.mp3"), VOICE_CHAIN)
+    v = ffilter(retimed_voice(decode(f"{W}/vo.mp3")), VOICE_CHAIN)
     vbuf = np.zeros((N, 2), np.float32)
     vbuf[:min(N, len(v))] = v[:N]
     sbuf = np.zeros((N, 2), np.float32)

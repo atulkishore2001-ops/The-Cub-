@@ -1,8 +1,10 @@
 # Reel: ADHD awareness (animated doodle story)
 
 **Voiceover:** `WhatsApp Audio 2026-10-31 at 10.16.27 AM_clean.mp3` (81.1s), Saanchi, RCI-certified special educator
-**Output:** `TheCub_ADHD_Reel.mp4`: **85.3s** (81.1s voiceover + the standard 4.3s closing), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
+**Output:** `TheCub_ADHD_Reel.mp4`: **75.0s** (70.6s voiceover + the standard 4.3s closing), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
 **Alt version:** `TheCub_ADHD_Reel_NoMusic.mp4` has the same animation and sound effects without the music bed.
+
+**Shortened to 75s (from 85.3s):** every pause in the voiceover longer than 0.38s is shortened to 0.38s, and the speech plays at 1.025× (pitch preserved), which is not noticeable. The animation was re-timed to the new voiceover word by word, so every action still lands on its word, and walks and gestures keep their natural speed. The closing logo animation keeps its full 4.3s. Nothing that is said was removed; the shortened voiceover was transcribed again and matches the script word for word. The story-beat times below are from the original 85s version; each beat now comes slightly earlier.
 
 ---
 

@@ -5,9 +5,17 @@ import numpy as np
 import doodle as D
 import props as PR
 
-VO_WORDS = json.load(open(os.environ["WORK"] + "/vo_words.json"))
+_RT = json.load(open(os.environ["WORK"] + "/retime.json")) if os.path.exists(os.environ["WORK"] + "/retime.json") else None
+
+
+def G(t):
+    """Original voiceover time -> reel time (pauses shortened, speech slightly faster). Identity if no retime map."""
+    return float(np.interp(t, _RT["vo"], _RT["out"])) if _RT else t
+
+
+VO_WORDS = [dict(w, s=G(w["s"]), e=G(w["e"])) for w in json.load(open(os.environ["WORK"] + "/vo_words.json"))]
 FPS = 30
-T_LAST = 80.95                              # end of the last word ("child.")
+T_LAST = G(80.95)                           # end of the last word ("child.")
 T_CREAM0 = T_LAST + 0.05
 T_CREAM1 = T_CREAM0 + 1.0
 T_END = T_CREAM0 + 4.3
@@ -80,16 +88,16 @@ def sfx(t, name, gain=-14, **kw):
 # ---------------------------------------------------------------- 1. "We hear about ADHD all the time, but do we really understand it?"
 BOY.key(0.0, 0.0, x=540, alpha=0.0, bob=60).key(0.15, 0.6, alpha=1.0, bob=0)
 t_hear, t_but, t_und = W("hear"), W("but"), W("understand")
-BOY.key(0.9, 0.4, turn=-0.6, lookx=-1).key(1.6, 0.4, turn=0.6, lookx=1).key(2.3, 0.4, turn=-0.3, lookx=-0.5)
+BOY.key(G(0.9), 0.4, turn=-0.6, lookx=-1).key(G(1.6), 0.4, turn=0.6, lookx=1).key(G(2.3), 0.4, turn=-0.3, lookx=-0.5)
 BOY.key(t_but - 0.1, 0.5, turn=0, lookx=0, ra1=150, ra2=75, tilt=-8, brows="raised", mouth="o", la1=18)
-BOY.key(4.7, 0.5, mouth="flat")
-for k, (tt, x, y) in enumerate(((0.8, 230, 760), (1.25, 850, 700), (1.75, 270, 1000), (2.2, 820, 980))):
+BOY.key(G(4.7), 0.5, mouth="flat")
+for k, (tt, x, y) in enumerate(((G(0.8), 230, 760), (G(1.25), 850, 700), (G(1.75), 270, 1000), (G(2.2), 820, 980))):
     prop(tt, t_but + 0.2, lambda c, t, a, tt=tt, x=x, y=y, k=k: PR.bubble(c, x, y + 6 * math.sin(t * 2 + k), "ADHD", a,
                                                                        PR.pop((t - tt) / 0.35), tail=(1 if x < 540 else -1, 1), size=48))
     sfx(tt, "pop", -15, pitch=0.9 + 0.08 * k)
-prop(t_und, 5.1, lambda c, t, a: PR.question(c, 600, 610 - 10 * math.sin(t * 3), a, PR.pop((t - t_und) / 0.35)))
+prop(t_und, G(5.1), lambda c, t, a: PR.question(c, 600, 610 - 10 * math.sin(t * 3), a, PR.pop((t - t_und) / 0.35)))
 sfx(t_und, "pop", -13)
-text(t_but - 0.1, 5.0, [("Do we really ", "n"), ("understand", "pf"), (" ADHD?", "n")])
+text(t_but - 0.1, G(5.0), [("Do we really ", "n"), ("understand", "pf"), (" ADHD?", "n")])
 
 # ---------------------------------------------------------------- 2. "Hey, this is Saanchi, RCI-certified special educator..."
 t_hey = W("hey")
