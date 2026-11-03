@@ -1,0 +1,17 @@
+[
+ {"label":"Is your child also struggling in academics?","shot":1,"in":1.80,"out":4.30},
+ {"label":"As a parent, do you also feel that my child is smart, but his marks are low?","shot":1,"in":4.55,"out":10.40},
+ {"label":"He can read but doesn't understand what he has read.","shot":1,"in":10.65,"out":13.60},
+ {"label":"He knows the answer at home but forgets in exam, or does not know how to write it down.","shot":1,"in":13.95,"out":21.05},
+ {"label":"Hi, this is Anjali Rawat. I'm a clinical psychologist.","shot":1,"in":21.95,"out":25.40},
+ {"label":"These concerns may point out to the specific learning disability, and it has nothing to do with intelligence.","shot":1,"in":25.85,"out":32.50,"snap_out":false},
+ {"label":"These signs can appear as early as 6 to 8 years, like mixing up of alphabets b and d, slow handwriting,","shot":2,"in":0.75,"out":9.70},
+ {"label":"spelling the same words differently each time, messy handwriting despite having several attempts, trouble with numbers and avoiding homework.","shot":2,"in":10.35,"out":19.90},
+ {"label":"And these are not because they aren't bright, but because their brain works differently.","shot":2,"in":20.90,"out":26.30},
+ {"label":"Many of the children do best when their learning is broken down into small and specific steps.","shot":2,"in":26.50,"out":31.95,"snap_out":false},
+ {"label":"Don't label your child. Get an assessment.","shot":3,"in":0.50,"out":3.40},
+ {"label":"A formal one is usually done once the schooling begins, but support can start much earlier.","shot":3,"in":3.50,"out":9.85},
+ {"label":"With early help, your child can do wonders.","shot":3,"in":10.55,"out":13.30},
+ {"label":"Your child is not lazy. He just learns differently.","shot":3,"in":14.45,"out":18.20},
+ {"label":"If you notice the signs, please reach out to us at The Cub, as we are here to help you.","shot":3,"in":19.00,"out":24.50,"snap_out":false}
+]
