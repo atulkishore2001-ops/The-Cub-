@@ -1,0 +1,141 @@
+[
+ {
+  "label": "The school bus is five minutes away.",
+  "shot": 1,
+  "in": 2.62,
+  "out": 4.8
+ },
+ {
+  "label": "And you've told your child to put on their shoes at least three times now.",
+  "shot": 1,
+  "in": 6.7,
+  "out": 10.12
+ },
+ {
+  "label": "They're still looking for their socks.",
+  "shot": 1,
+  "in": 10.99,
+  "out": 12.96,
+  "snap_in": false
+ },
+ {
+  "label": "Does this sound familiar?",
+  "shot": 1,
+  "in": 12.96,
+  "out": 14.3
+ },
+ {
+  "label": "Hi, I'm Saisha and I'm a developmental psychologist.",
+  "shot": 1,
+  "in": 14.38,
+  "out": 17.22
+ },
+ {
+  "label": "Your child might know exactly what they need to do,",
+  "shot": 1,
+  "in": 21.74,
+  "out": 24.72
+ },
+ {
+  "label": "but knowing and doing are two completely different things.",
+  "shot": 1,
+  "in": 25.0,
+  "out": 28.05
+ },
+ {
+  "label": "So the skills that help us plan, follow instructions, get started and avoid distractions,",
+  "shot": 1,
+  "in": 28.64,
+  "out": 35.55,
+  "snap_in": false
+ },
+ {
+  "label": "they're called executive skills.",
+  "shot": 1,
+  "in": 37.24,
+  "out": 38.95
+ },
+ {
+  "label": "You can think of them as the brain's management system",
+  "shot": 1,
+  "in": 38.95,
+  "out": 41.6
+ },
+ {
+  "label": "These skills don't come fully developed.",
+  "shot": 1,
+  "in": 46.22,
+  "out": 48.14
+ },
+ {
+  "label": "They grow gradually through childhood and",
+  "shot": 1,
+  "in": 48.14,
+  "out": 50.3,
+  "snap_out": false
+ },
+ {
+  "label": "adolescence.",
+  "shot": 2,
+  "in": 0.0,
+  "out": 1.15,
+  "snap_in": false
+ },
+ {
+  "label": "So for some kids, especially those with ADHD or autism, it could be more difficult to use these skills consistently.",
+  "shot": 2,
+  "in": 4.95,
+  "out": 11.45
+ },
+ {
+  "label": "So what might look like ignoring or not listening to you might actually be a child who's struggling to organize themselves.",
+  "shot": 2,
+  "in": 11.6,
+  "out": 18.25
+ },
+ {
+  "label": "So what can you do?",
+  "shot": 2,
+  "in": 18.35,
+  "out": 19.65
+ },
+ {
+  "label": "Instead of repeating the same instructions,",
+  "shot": 2,
+  "in": 19.84,
+  "out": 22.16,
+  "snap_out": false
+ },
+ {
+  "label": "we can try to break down the task.",
+  "shot": 2,
+  "in": 29.66,
+  "out": 31.45,
+  "snap_in": false
+ },
+ {
+  "label": "Give a single instruction at a time, or have a visual schedule that they can follow.",
+  "shot": 2,
+  "in": 32.95,
+  "out": 36.95
+ },
+ {
+  "label": "Keep the morning routine predictable.",
+  "shot": 2,
+  "in": 37.1,
+  "out": 38.9
+ },
+ {
+  "label": "Your child will begin to do things independently",
+  "shot": 2,
+  "in": 44.95,
+  "out": 47.35
+ },
+ {
+  "label": "without you having to remind them.",
+  "shot": 2,
+  "in": 54.37,
+  "out": 56.3,
+  "snap_in": false
+ }
+]

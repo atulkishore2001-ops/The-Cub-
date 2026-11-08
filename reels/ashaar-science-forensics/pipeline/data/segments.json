@@ -1,0 +1,78 @@
+[
+ {
+  "label": "Does your child hate doing homework or studying at home?",
+  "shot": 1,
+  "in": 0.6,
+  "out": 3.55
+ },
+ {
+  "label": "Congratulations, you might have a little scientist at your home without even knowing it.",
+  "shot": 1,
+  "in": 4.68,
+  "out": 9.05
+ },
+ {
+  "label": "Hi, I am Ashaar, the Science Educator at The Cub.",
+  "shot": 1,
+  "in": 10.75,
+  "out": 13.68
+ },
+ {
+  "label": "We often call children lazy or irresponsible when they struggle to sit still, concentrate or finish their homework.",
+  "shot": 1,
+  "in": 14.65,
+  "out": 23.02
+ },
+ {
+  "label": "But what if we are looking at it the wrong way?",
+  "shot": 1,
+  "in": 23.27,
+  "out": 26.3,
+  "snap_out": false
+ },
+ {
+  "label": "Some children, especially those with ADHD, find traditional ways of learning more difficult.",
+  "shot": 2,
+  "in": 0.4,
+  "out": 6.35,
+  "snap_in": true
+ },
+ {
+  "label": "But that doesn't mean they lack intelligence or creativity.",
+  "shot": 2,
+  "in": 7.1,
+  "out": 10.55
+ },
+ {
+  "label": "Sometimes they just need a different way to learn.",
+  "shot": 2,
+  "in": 11.6,
+  "out": 14.25
+ },
+ {
+  "label": "Instead of asking your child to read about why things float or sink,",
+  "shot": 2,
+  "in": 15.83,
+  "out": 19.55,
+  "snap_in": false
+ },
+ {
+  "label": "fill a bucket with water and let them experiment with everyday objects.",
+  "shot": 3,
+  "in": 0.38,
+  "out": 4.42
+ },
+ {
+  "label": "Now they are predicting, testing, asking questions and learning from their own experience.",
+  "shot": 3,
+  "in": 5.7,
+  "out": 10.38,
+  "snap_in": true
+ },
+ {
+  "label": "And what if your child could take that curiosity to another level?",
+  "shot": 3,
+  "in": 11.3,
+  "out": 14.98
+ }
+]
