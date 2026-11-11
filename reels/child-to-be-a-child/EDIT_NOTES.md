@@ -19,7 +19,7 @@
 | Sitaara-style captions | Short phrases of 2 to 5 words, white bold type with a soft dark shadow, no box, sentence case with full punctuation, quotation marks around reported speech, one fixed place in the lower middle of the frame |
 | Sitaara-style cuts and transitions | No transitions. Each new section starts with a straight jump cut, and the framing alternates between a close and a medium shot, as in the reference. Where a pause was shortened inside one sentence, a very short soft blend hides the jump |
 | Big opening title | "Do we allow a child to be a child?" in Playfair Display Bold, white with a soft shadow, over her chest from the first frame. It fades out once she has asked the question (3.3s) |
-| Name card as in the reference | "Saisha Sawhney / Development Psychologist, The Cub" from 3.4s to 8.0s. The tiger logo pops in on a white badge with a soft orange glow, a charcoal band wipes out to the right, and the name slides in |
+| Name card as in the reference | "Saisha Sawhney / Developmental Psychologist, The Cub" from 3.4s to 8.0s. The tiger logo pops in on a white badge with a soft orange glow, a charcoal band wipes out to the right, and the name slides in |
 | Logo reveal recreated | Same layout and timing as the reference clip, made from the supplied logo: the last frame dissolves to white, the logo fades in and settles, "*Everyone Deserves To Be Seen*" appears with a soft left-to-right wipe, and a short orange line draws out under it. A soft chime plays and the music fades out |
 | The Cub branding | Orange `#F0853E`, charcoal `#2B2B2B`, white. Fonts from the brand sheet: Playfair Display (title, tagline), Lexend (name card), Glacial Indifference Bold (captions). Original logo artwork |
 
@@ -68,10 +68,9 @@ Playback is 1.025× with pitch preserved, which is not noticeable. Every section
 
 ## 5. Please check
 
-1. **Designation.** The name card reads "Development Psychologist, The Cub", exactly as given. The usual title is "Development**al** Psychologist", which an earlier Cub reel used for Saisha. It's a one-word change in `pipeline/gfx.py` (`ROLE`).
-2. **Tagline.** The ending reads "Everyone Deserves To Be Seen", as asked. The brand sheet and earlier reels use "Every Child Deserves To Be Seen". It's set in `pipeline/gfx.py` (`TAGLINE`).
-3. **Ending background.** White, to match the reference clip. The earlier reels end on cream (`#FDF6EE`). It's set in `pipeline/gfx.py` (`OUT_BG`).
-4. **Caption font.** Glacial Indifference Bold, the body font on the brand sheet. Earlier reels used DM Sans.
+1. **Tagline.** The ending reads "Everyone Deserves To Be Seen", as asked. The brand sheet and earlier reels use "Every Child Deserves To Be Seen". It's set in `pipeline/gfx.py` (`TAGLINE`).
+2. **Ending background.** White, to match the reference clip. The earlier reels end on cream (`#FDF6EE`). It's set in `pipeline/gfx.py` (`OUT_BG`).
+3. **Caption font.** Glacial Indifference Bold, the body font on the brand sheet. Earlier reels used DM Sans.
 
 ## 6. For the next shoot
 

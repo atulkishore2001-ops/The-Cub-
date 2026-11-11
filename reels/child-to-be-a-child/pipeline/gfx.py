@@ -19,7 +19,7 @@ WHITE = (255, 255, 255)
 TITLE_LINES = [("Do we allow a child", "PlayfairDisplay-700.ttf"), ("to be a child?", "PlayfairDisplay-700.ttf")]
 TITLE_SIZE, TITLE_CY = 104, 1090
 CAP_FONT, CAP_SIZE, CAP_CY = "GlacialIndifference-Bold.ttf", 66, 1352
-NAME, ROLE = "Saisha Sawhney", "Development Psychologist, The Cub"
+NAME, ROLE = "Saisha Sawhney", "Developmental Psychologist, The Cub"
 CARD_X, CARD_CY = 64, 1500
 TAGLINE = "Everyone Deserves To Be Seen"
 
