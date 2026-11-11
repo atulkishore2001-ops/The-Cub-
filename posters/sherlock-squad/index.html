@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Sherlock Squad – The Cub</title>
+<style>
+  @font-face { font-family: "Lilita One"; src: url("assets/fonts/LilitaOne-Regular.ttf"); }
+  @font-face { font-family: "Baloo 2"; font-weight: 800; src: url("assets/fonts/Baloo2-ExtraBold.ttf"); }
+  @font-face { font-family: "Nunito"; font-weight: 400; src: url("assets/fonts/Nunito-Regular.ttf"); }
+  @font-face { font-family: "Nunito"; font-weight: 600; src: url("assets/fonts/Nunito-SemiBold.ttf"); }
+  @font-face { font-family: "Nunito"; font-weight: 800; src: url("assets/fonts/Nunito-ExtraBold.ttf"); }
+
+  :root {
+    --cream: #fcf8ea;
+    --card: #fffcf3;
+    --line: #eadfc8;
+    --navy: #0e2a45;
+    --footer: #08223b;
+    --teal: #0b5e5f;
+    --teal-soft: #d6e6dc;
+    --orange: #f47b20;
+    --orange-soft: #fddbb8;
+    --peach: #fbe3cf;
+    --ink: #24303b;
+  }
+
+  @page { size: 1024px 1536px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1024px; height: 1536px; background: var(--cream); }
+  body { font-family: "Nunito", sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .poster { position: relative; width: 1024px; height: 1536px; overflow: hidden; background: var(--cream); }
+  .abs { position: absolute; }
+  svg.icon { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- background shapes ---------- */
+  .bg { position: absolute; inset: 0; width: 1024px; height: 1536px; }
+
+  /* ---------- header ---------- */
+  .logo { left: 38px; top: 34px; width: 168px; }
+  .hero { left: 640px; top: 0; width: 384px; height: 650px; }
+  .academy {
+    left: 268px; top: 100px; padding: 6px 26px 4px;
+    background: var(--orange-soft); border-radius: 40px;
+    font: 800 25px/1.2 "Baloo 2"; letter-spacing: 1.6px; color: var(--navy);
+    transform: rotate(-2deg);
+  }
+  .title { font-family: "Lilita One"; color: var(--navy); line-height: .9; }
+  .t-the { left: 112px; top: 196px; font-size: 62px; transform: rotate(-3deg); }
+  .t-sherlock { left: 230px; top: 160px; font-size: 101px; letter-spacing: -.5px; }
+  .t-squad { left: 250px; top: 262px; font-size: 108px; color: var(--orange); letter-spacing: 1px; }
+  .magnifier { left: 102px; top: 268px; width: 138px; }
+  .hat { left: 596px; top: 280px; width: 108px; transform: rotate(6deg); }
+
+  .tagline {
+    left: 50px; top: 412px; width: 548px; padding: 14px 18px 10px;
+    background: var(--teal-soft); border-radius: 46px;
+    font: 800 29px/1.12 "Baloo 2"; letter-spacing: .5px; color: var(--navy); text-align: center;
+  }
+  .tagline span { color: var(--orange); }
+
+  .intro { left: 62px; top: 522px; width: 536px; font-size: 19px; line-height: 1.5; color: #1f2a33; }
+  .intro b { font-weight: 800; color: var(--navy); }
+
+  .badge { left: 616px; top: 364px; width: 240px; height: 240px; border-radius: 50%;
+    background: var(--orange); box-shadow: 0 6px 18px rgba(120, 50, 0, .25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--navy); }
+  .badge::before { content: ""; position: absolute; inset: 12px; border: 3px dashed rgba(255,255,255,.9); border-radius: 50%; }
+  .badge .k { font: 800 26px/1 "Baloo 2"; letter-spacing: 1.5px; margin-top: 8px; }
+  .badge .d { font: 62px/1 "Lilita One"; margin-top: 2px; letter-spacing: .5px; }
+  .badge .s { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+  .badge .s i { display: block; width: 30px; height: 3px; background: var(--navy); border-radius: 2px; }
+
+  /* ---------- section header pills ---------- */
+  .pill-h { position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap;
+    padding: 9px 36px 5px; border-radius: 40px; color: #fff; font: 800 27px/1.15 "Baloo 2"; letter-spacing: 1.4px; z-index: 2; }
+  .pill-h.teal { background: var(--teal); }
+  .pill-h.navy { background: var(--navy); }
+
+  .box { position: absolute; left: 40px; width: 944px; background: var(--card); border: 2px solid var(--line); border-radius: 26px; }
+
+  /* ---------- activities ---------- */
+  .act-wrap { top: 692px; height: 190px; }
+  .act-wrap .pill-h { top: -26px; }
+  .acts { display: flex; height: 100%; padding: 40px 20px 18px; }
+  .act { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 14px; padding: 0 12px 0 14px; }
+  .act + .act { border-left: 2px dashed var(--line); }
+  .act .ic { position: relative; flex: none; width: 86px; height: 86px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+  .act .ic svg { width: 48px; height: 48px; stroke-width: 1.7; }
+  .act .num { position: absolute; left: -10px; top: -8px; width: 36px; height: 36px; border-radius: 50%; border: 3px solid var(--card);
+    display: grid; place-items: center; font: 22px/1 "Lilita One"; color: #fff; padding-top: 2px; }
+  .teal-bg { background: var(--teal); }
+  .orange-bg { background: var(--orange); }
+  .navy-bg { background: var(--navy); }
+  .act h3 { font: 800 20px/1.05 "Baloo 2"; letter-spacing: .4px; margin-bottom: 6px; }
+  .act p { font-size: 16px; line-height: 1.36; color: #36424d; }
+  .c-teal { color: var(--teal); }
+  .c-orange { color: var(--orange); }
+
+  /* ---------- benefits ---------- */
+  .ben-wrap { top: 934px; height: 318px; }
+  .ben-wrap .pill-h { top: -26px; }
+  .bens { display: flex; height: 100%; padding: 42px 6px 16px; }
+  .ben { flex: 1 1 0; min-width: 0; text-align: center; padding: 0 9px; }
+  .ben + .ben { border-left: 2px dashed var(--line); }
+  .ben svg { width: 56px; height: 56px; stroke-width: 1.6; margin-bottom: 6px; }
+  .ben h4 { font: 800 18px/1.08 "Baloo 2"; letter-spacing: .2px; margin-bottom: 8px; min-height: 39px; }
+  .ben p { font-size: 15px; line-height: 1.4; color: #36424d; text-wrap: pretty; }
+
+  /* ---------- quick facts ---------- */
+  .facts { top: 1274px; height: 96px; display: flex; align-items: center; padding: 0 30px; }
+  .fact { position: relative; flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 16px; padding-left: 26px; }
+  .fact + .fact { border-left: 2px dashed var(--line); }
+  .fact .ic { flex: none; width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+  .fact .ic svg { width: 38px; height: 38px; stroke-width: 1.8; }
+  .fact .lb { font: 800 15px/1 "Baloo 2"; letter-spacing: 1.2px; color: var(--navy); }
+  .fact .v { font: 40px/1 "Lilita One"; color: var(--navy); margin: 4px 0 0; }
+  .fact .v small { font: 600 16.5px/1 "Nunito"; color: #36424d; margin-left: 6px; letter-spacing: 0; }
+  .fact .tag { position: absolute; left: 112px; top: -30px; transform: rotate(-3deg); padding: 4px 12px 2px; box-shadow: 0 2px 6px rgba(120,50,0,.2); border-radius: 20px; background: var(--orange); color: #fff;
+    font: 800 14px/1.3 "Baloo 2"; letter-spacing: 1px; }
+
+  /* ---------- footer ---------- */
+  .footer { left: 0; top: 1390px; width: 1024px; height: 146px; }
+  .contact { left: 0; top: 1426px; width: 1024px; height: 110px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px 0 40px; color: #fff; }
+  .contact .cta { position: relative; font: 38px/1 "Lilita One"; letter-spacing: 1px; margin-right: 8px; white-space: nowrap; }
+  .contact .cta svg.u { position: absolute; left: 0; bottom: -13px; width: 160px; height: 14px; }
+  .ci { display: flex; align-items: center; gap: 10px; padding: 0 14px; font: 600 17px/1.25 "Nunito"; white-space: nowrap; }
+  .ci + .ci { border-left: 1.5px solid rgba(255,255,255,.28); }
+  .ci .ic { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--teal); display: grid; place-items: center; }
+  .ci .ic svg { width: 24px; height: 24px; stroke-width: 1.9; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Tabler Icons (MIT) -->
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3"/><path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6"/><path d="M12 11v2a14 14 0 0 0 2.5 8"/><path d="M8 15a18 18 0 0 0 1.8 6"/><path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M3 20c1.6-2.2 2.6-3.6 3.4-3.6 1 0 .2 2.6 1.2 2.6s1.7-2.4 2.6-2.4c.8 0 .6 1.9 1.6 1.9.7 0 1.3-.7 2-1.4"/><path d="M14.2 14.6l6.1-6.1a2 2 0 0 0-2.8-2.8l-6.1 6.1-.9 3.7z"/><path d="M16.1 7.1l2.8 2.8"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3l6 0"/><path d="M10 9l4 0"/><path d="M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6"/><path d="M7.5 16h9"/><circle cx="11" cy="18.3" r=".4"/><circle cx="13.6" cy="17.6" r=".4"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8"/><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8"/><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5"/><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0"/><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5"/><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M7 20l10 0"/><path d="M6 6l6 -1l6 1"/><path d="M12 3l0 17"/><path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0"/><path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0"/></symbol>
+    <symbol id="i-summit" viewBox="0 -3 24 27"><path d="M2.5 21h19l-7.4 -14.6a2.3 2.3 0 0 0 -4.2 0z"/><path d="M7.2 12.5l2.3 2.5l2.5 -2.5l2.2 3l2.5 -2.2"/><path d="M12 5.2v-7"/><path d="M12 -1.8h5l-1.6 1.6l1.6 1.6h-5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></symbol>
+    <symbol id="i-users-group" viewBox="0 0 24 24"><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"/><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M17 10h2a2 2 0 0 1 2 2v1"/><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M3 13v-1a2 2 0 0 1 2 -2h2"/></symbol>
+    <symbol id="i-smile" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M9 10l.01 0"/><path d="M15 10l.01 0"/><path d="M9.5 15a3.5 3.5 0 0 0 5 0"/></symbol>
+    <symbol id="i-kid" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M9 10l.01 0"/><path d="M15 10l.01 0"/><path d="M9.5 15a3.5 3.5 0 0 0 5 0"/><path d="M12 3a2 2 0 0 0 0 4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 7v5l3 3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/><path d="M3 7l9 6l9 -6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></symbol>
+
+    <!-- organic edge for the hero photo -->
+    <clipPath id="heroClip" clipPathUnits="userSpaceOnUse">
+      <path d="M96 0 C78 34 58 66 60 112 C62 160 76 196 70 246 C64 300 52 340 56 392 C60 470 40 540 70 588 C104 630 170 612 236 618 C290 622 340 620 384 602 L384 0 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<div class="poster">
+
+  <!-- soft background shapes -->
+  <svg class="bg" viewBox="0 0 1024 1536" aria-hidden="true">
+    <path d="M0 0 H150 C138 42 96 58 64 92 C40 118 26 156 0 170 Z" fill="#fbd5b4" opacity=".7"/>
+    <path d="M0 1180 C40 1150 92 1190 84 1250 C78 1300 30 1330 0 1330 Z" fill="#fbe0c9" opacity=".75"/>
+    <path d="M1024 1100 C980 1110 950 1160 968 1210 C984 1250 1010 1262 1024 1262 Z" fill="#cfe2d9" opacity=".75"/>
+    <!-- accent dashes around the title -->
+    <g stroke="#f47b20" stroke-width="7" stroke-linecap="round">
+      <path d="M78 312 l-24 -10"/><path d="M72 344 h-26"/><path d="M78 376 l-24 10"/>
+    </g>
+  </svg>
+
+  <!-- HEADER -->
+  <img class="abs logo" src="assets/logo-the-cub.png" alt="The Cub">
+
+  <svg class="abs hero" viewBox="0 0 384 650" aria-label="Young detective with a magnifying glass">
+    <image href="assets/hero-detective.jpg" x="0" y="0" width="384" height="650" clip-path="url(#heroClip)" preserveAspectRatio="none"/>
+  </svg>
+
+  <div class="abs academy">JUNIOR FORENSICS ACADEMY</div>
+
+  <div class="abs title t-the">THE</div>
+  <div class="abs title t-sherlock">SHERLOCK</div>
+  <div class="abs title t-squad">SQUAD</div>
+
+  <!-- magnifying glass -->
+  <svg class="abs magnifier" viewBox="0 0 140 140" aria-hidden="true">
+    <path d="M52 92 L18 126" stroke="#0e2a45" stroke-width="20" stroke-linecap="round"/>
+    <circle cx="82" cy="58" r="44" fill="#fff" stroke="#0e2a45" stroke-width="11"/>
+    <circle cx="82" cy="58" r="35" fill="none" stroke="#c9d6cc" stroke-width="5"/>
+    <path d="M62 36 A28 28 0 0 1 86 28" fill="none" stroke="#dfe7e1" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+
+  <!-- deerstalker hat -->
+  <img class="abs hat" src="assets/deerstalker.png" alt="">
+
+  <div class="abs tagline">A HANDS-ON MYSTERY WORKSHOP<br>FOR <span>YOUNG INVESTIGATORS!</span></div>
+
+  <p class="abs intro"><b>Dear Parents,</b> your child has been invited to solve their first real case! Young detectives will crack a mystery using real forensic techniques, while building the exact thinking skills curious minds need most.</p>
+
+  <div class="abs badge">
+    <div class="k">STARTING</div>
+    <div class="d">14 NOV</div>
+    <div class="s"><i></i><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z" fill="#0e2a45"/></svg><i></i></div>
+  </div>
+
+  <!-- ACTIVITIES -->
+  <section class="box act-wrap">
+    <div class="pill-h teal">ACTIVITIES THEY'LL LOVE!</div>
+    <div class="acts">
+      <div class="act">
+        <div class="ic teal-bg"><svg class="icon"><use href="#i-fingerprint"/></svg><span class="num orange-bg">1</span></div>
+        <div><h3 class="c-teal">FINGERPRINTING</h3><p>Find hidden prints and discover the clues.</p></div>
+      </div>
+      <div class="act">
+        <div class="ic orange-bg"><svg class="icon"><use href="#i-pen"/></svg><span class="num teal-bg">2</span></div>
+        <div><h3 class="c-orange">HANDWRITING<br>ANALYSIS</h3><p>Examine writing and uncover the truth.</p></div>
+      </div>
+      <div class="act">
+        <div class="ic teal-bg"><svg class="icon"><use href="#i-flask"/></svg><span class="num orange-bg">3</span></div>
+        <div><h3 class="c-teal">CHEMISTRY</h3><p>Use chromatography and simple lab tests to solve the case.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="box ben-wrap">
+    <div class="pill-h navy">WHY THIS HELPS YOUR CURIOUS CHILD?</div>
+    <div class="bens">
+      <div class="ben">
+        <svg class="icon c-teal"><use href="#i-brain"/></svg>
+        <h4 class="c-teal">DEVELOPS<br>CRITICAL THINKING</h4>
+        <p>Mysteries have layered clues and no single right answer, matching how curious minds naturally like to reason.</p>
+      </div>
+      <div class="ben">
+        <svg class="icon c-orange"><use href="#i-scale"/></svg>
+        <h4 class="c-orange">BUILDS REAL<br>DEDUCTIVE SKILLS</h4>
+        <p>Kids test evidence and live the scientific method, building logic that transfers to math and science.</p>
+      </div>
+      <div class="ben">
+        <svg class="icon c-teal"><use href="#i-summit"/></svg>
+        <h4 class="c-teal">GROWS PATIENCE<br>&amp; RESILIENCE</h4>
+        <p>A mystery can't be solved instantly, which teaches tolerance for ambiguity, a common growth area for sharp, curious kids.</p>
+      </div>
+      <div class="ben">
+        <svg class="icon c-orange"><use href="#i-users"/></svg>
+        <h4 class="c-orange">STRENGTHENS<br>COLLABORATION</h4>
+        <p>Working as a team, kids learn to share theories and value other perspectives.</p>
+      </div>
+      <div class="ben">
+        <svg class="icon c-teal"><use href="#i-smile"/></svg>
+        <h4 class="c-teal">JOYFUL,<br>NOT PRESSURED</h4>
+        <p>It feels like play, not “more school.”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK FACTS -->
+  <section class="box facts">
+    <div class="fact" style="padding-left:0">
+      <div class="ic navy-bg"><svg class="icon"><use href="#i-kid"/></svg></div>
+      <div><div class="lb">AGE GROUP</div><div class="v">9–11<small>years old</small></div></div>
+    </div>
+    <div class="fact">
+      <div class="ic teal-bg"><svg class="icon"><use href="#i-users-group"/></svg></div>
+      <div><div class="lb">GROUP SIZE</div><div class="v">6<small>detectives per case</small></div></div><span class="tag">SPOTS LIMITED!</span>
+    </div>
+    <div class="fact">
+      <div class="ic orange-bg"><svg class="icon"><use href="#i-clock"/></svg></div>
+      <div><div class="lb">SESSION LENGTH</div><div class="v">75<small>mins</small></div></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <svg class="abs footer" viewBox="0 0 1024 144" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 26 C120 2 210 30 330 22 C470 12 560 40 700 30 C830 20 930 0 1024 14 V144 H0 Z" fill="#08223b"/>
+  </svg>
+  <div class="abs contact">
+    <div class="cta">CONTACT US!
+      <svg class="u" viewBox="0 0 190 16" aria-hidden="true"><path d="M4 10 C60 2 130 2 186 9" stroke="#f47b20" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+    </div>
+    <div class="ci"><span class="ic"><svg class="icon"><use href="#i-phone"/></svg></span>+91 72170 24918</div>
+    <div class="ci"><span class="ic"><svg class="icon"><use href="#i-mail"/></svg></span>hello@thecub.co.in</div>
+    <div class="ci"><span class="ic"><svg class="icon"><use href="#i-pin"/></svg></span>S-304 Panchsheel Park,<br>Ground Floor</div>
+  </div>
+
+</div>
+</body>
+</html>
