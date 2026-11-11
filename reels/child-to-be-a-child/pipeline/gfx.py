@@ -192,7 +192,7 @@ def draw_namecard(frame, t, t_in, t_out):
 
 
 # ------------------------------------------------------------------ closing logo reveal
-# Recreated from the reference clip (1080x1920, 3.4 s): the last frame dissolves to white while the full logo fades in
+# Recreated from the reference clip (1080x1920, 3.4 s), given more time (3.7 s): the last frame dissolves to white while the full logo fades in
 # and settles (94% -> 100%); the tagline is revealed by a soft left-to-right ink wipe while rising; a short orange
 # rule draws out under it; hold. Layout measured from the reference: logo 420 px wide centred at y 820, tagline
 # Playfair Display Italic 60 px centred at y 1130, rule 110 x 8 px at y 1212.
@@ -200,10 +200,10 @@ OUT_BG = WHITE
 LOGO_W, LOGO_CY = 420, 820
 TAG_SIZE, TAG_CY = 62, 1130
 RULE_Y, RULE_W, RULE_H = 1212, 110, 8
-R_DISSOLVE = (-0.15, 0.30)
-R_LOGO = (-0.08, 0.50)
-R_TAG = (0.62, 1.70)
-R_RULE = (1.38, 1.85)
+R_DISSOLVE = (0.00, 0.75)     # revision 2: a slower, calmer hand-off than the reference (which dissolves in 0.45 s)
+R_LOGO = (0.30, 1.10)
+R_TAG = (1.15, 2.25)
+R_RULE = (2.00, 2.50)
 
 
 @lru_cache(None)

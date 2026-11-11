@@ -50,13 +50,14 @@ def voice():
     for p in TL["pieces"]:
         x = fade(src[p["shot"]][int(p["a"] * SR):int(p["b_audio"] * SR)])
         if not secs or secs[-1][0] != p["sec"]:
-            secs.append([p["sec"], []])
+            secs.append([p["sec"], [], []])
         secs[-1][1].append(x)
+        secs[-1][2].append(np.zeros((int(round(p["hold"] * SPEED * SR)), 2), np.float32))   # a hold plays as silence
     out = []
-    for _, parts in secs:
-        x = np.concatenate(parts)
-        g = 10 ** (np.clip(VOICE_TARGET_DB - active_db(x), -9, 20) / 20)
-        out.append(x * g)
+    for _, parts, holds in secs:
+        g = 10 ** (np.clip(VOICE_TARGET_DB - active_db(np.concatenate(parts)), -9, 20) / 20)
+        for x, h in zip(parts, holds):
+            out += [x * g, h]
     return ffilter(np.concatenate(out), f"atempo={SPEED},{VOICE_CHAIN}")
 
 
@@ -99,7 +100,7 @@ def music(total, resolve_at, end_at):
     wet = np.stack([signal.fftconvolve(mix[:, c], ir[:, c])[:N] for c in range(2)], 1)
     wet = norm(wet, np.max(np.abs(mix)) * 0.55)
     out = (mix + 0.35 * wet)[:int(total * SR)]
-    a, b = int((end_at - 1.7) * SR), int(end_at * SR)                    # fades over the last 1.7 s, like the reference
+    a, b = int((end_at - 2.0) * SR), int(end_at * SR)                    # natural fade over the last 2 s
     out[a:b] *= (np.cos(np.linspace(0, np.pi / 2, b - a)) ** 1.5)[:, None]
     out[b:] = 0
     return out
@@ -133,8 +134,8 @@ def main():
     t_rev = TL["t_reveal"]
     sbuf = np.zeros((N, 2), np.float32)
     place(sbuf, S.make("whoosh", dur=0.45, pan=0.3), sec0["classes"] + 0.15, -22)       # name card wipes in
-    place(sbuf, S.make("chime"), t_rev + 0.05, -17)                                        # logo settles
-    m = music(total, t_rev - 0.05, total - 0.05)
+    place(sbuf, S.make("chime"), t_rev + 0.40, -17)                                        # logo settles
+    m = music(total, t_rev + 0.30, total - 0.05)
     mbuf = np.zeros((N, 2), np.float32); mbuf[:len(m)] = m[:N]
     vm = np.abs(vbuf.mean(1)); hop = SR // 100; n = len(vm) // hop
     r = np.sqrt((vm[:n * hop].reshape(n, hop) ** 2).mean(1))

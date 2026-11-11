@@ -1,6 +1,6 @@
-# Renders the reel picture: steady framing per section (two framings that alternate at each section join, like the
-# jump cuts in the reference), soft optical-flow morph cuts where a pause was shortened inside one flow of speech,
-# a light warm grade, title / captions / name card, and the closing logo reveal. Writes WORK/video_only.mp4.
+# Renders the reel picture: plain straight cuts, each shot with its own steady framing, alternating close / medium at
+# every cut (the zoom-in / zoom-out jump cuts of the reference), a light warm grade, title / captions / name card, a
+# hold on the last line, and the closing logo reveal. Writes WORK/video_only.mp4.
 #   python render.py                 full render
 #   python render.py --stills 1,5,9  preview frames into WORK/stills
 import os, sys, json, subprocess
@@ -17,7 +17,6 @@ ZOOM = {"close": 1.60, "medium": 1.36}
 FACE_Y = {"close": 560, "medium": 610}       # output height of the face centre
 PIECES = TL["pieces"]
 NTOT = TL["total_frames"]
-MORPH = 8                                     # frames of soft blend on a cut inside one section
 
 # ---------------------------------------------------------------- face anchor per section (median of a few samples)
 _det = cv2.FaceDetectorYN.create(os.environ.get("MODELS", "models") + "/yunet.onnx", "", (OW, OH), 0.6, 0.3, 5000)
@@ -30,25 +29,23 @@ def grab(shot, t):
 
 
 def anchors():
-    path = f"{WORK}/anchors.json"
+    """Face centre per shot (median of a few samples), so each shot is framed steadily on her."""
+    path = f"{WORK}/anchors2.json"
     if os.path.exists(path):
         return {int(k): v for k, v in json.load(open(path)).items()}
     out = {}
-    for si in sorted(set(p["sec"] for p in PIECES)):
-        ps = [p for p in PIECES if p["sec"] == si]
-        ts = []
-        for p in ps:
-            ts += list(np.linspace(p["a"] + 0.1, p["b_audio"] - 0.1, max(2, int((p["b_audio"] - p["a"]) / 1.2))))
+    for p in PIECES:
+        ts = list(np.linspace(p["a"] + 0.1, p["b_audio"] - 0.1, max(3, int((p["b_audio"] - p["a"]) / 1.2))))
         boxes = []
         for t in ts:
-            _, f = _det.detect(cv2.cvtColor(grab(ps[0]["shot"], t), cv2.COLOR_RGB2BGR))
+            _, f = _det.detect(cv2.cvtColor(grab(p["shot"], t), cv2.COLOR_RGB2BGR))
             if f is None:
                 continue
             f = [r for r in f if r[2] > 120 and 400 < r[1] + r[3] / 2 < 1200]
             if f:
                 r = max(f, key=lambda r: r[-1] * r[2]); boxes.append([r[0] + r[2] / 2, r[1] + r[3] / 2, r[2], r[3]])
         m = np.median(np.array(boxes), 0)
-        out[si] = dict(cx=float(m[0]), cy=float(m[1]), w=float(m[2]), n=len(boxes))
+        out[p["k"]] = dict(cx=float(m[0]), cy=float(m[1]), w=float(m[2]), n=len(boxes))
     json.dump(out, open(path, "w"), indent=0)
     return out
 
@@ -57,7 +54,7 @@ ANCH = anchors()
 
 
 def cam(p):
-    z = ZOOM[p["zoom"]]; a = ANCH[p["sec"]]
+    z = ZOOM[p["zoom"]]; a = ANCH[p["k"]]
     ww, wh = OW / z, OH / z
     x0 = min(max(a["cx"] - ww / 2, 0), OW - ww)
     y0 = min(max(a["cy"] - FACE_Y[p["zoom"]] / z, 0), OH - wh)
@@ -135,44 +132,20 @@ def piece_at(n):
 
 
 def src_frame(p, n):
-    return int(round((p["a"] + (n - p["n0"] + 0.5) / FPS * SPEED) * 30))
+    local = (n - p["n0"] + 0.5) / FPS
+    if p["k"] != PIECES[-1]["k"]:                       # a hold freezes the shot's last frame
+        local = min(local, (p["b_audio"] - p["a"]) / SPEED - 1 / FPS)
+    return min(int(round((p["a"] + local * SPEED) * 30)), SRC_LAST[p["shot"]])
 
 
-_DIS = cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_MEDIUM)
-
-
-def morph(A, B, alpha):
-    s = 0.25
-    ga = cv2.cvtColor(cv2.resize(A, None, fx=s, fy=s, interpolation=cv2.INTER_AREA), cv2.COLOR_RGB2GRAY)
-    gb = cv2.cvtColor(cv2.resize(B, None, fx=s, fy=s, interpolation=cv2.INTER_AREA), cv2.COLOR_RGB2GRAY)
-    fab = cv2.GaussianBlur(cv2.resize(_DIS.calc(ga, gb, None), (OW, OH)) / s, (0, 0), 6)
-    fba = cv2.GaussianBlur(cv2.resize(_DIS.calc(gb, ga, None), (OW, OH)) / s, (0, 0), 6)
-    aw = cv2.remap(A, _xx + alpha * fba[..., 0], _yy + alpha * fba[..., 1], cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
-    bw = cv2.remap(B, _xx + (1 - alpha) * fab[..., 0], _yy + (1 - alpha) * fab[..., 1], cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
-    return np.clip(aw.astype(np.float32) * (1 - alpha) + bw.astype(np.float32) * alpha, 0, 255).astype(np.uint8)
-
-
-MORPH_CUTS = [c["n"] for c in TL["cuts"] if c["kind"] == "morph"]
+SRC_LAST = {i: int(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                         f"{WORK}/shot{i}.mp4"], capture_output=True, text=True).stdout) * 30) - 3 for i in (1, 2, 3)}
 
 
 def video(n, dec):
-    i = piece_at(n); p = PIECES[i]
-    img = frame_from(dec.get(p["shot"], src_frame(p, n)), p)
-    for cn in MORPH_CUTS:
-        ia = piece_at(cn - 1); ib = piece_at(cn)
-        pa, pb = PIECES[ia], PIECES[ib]
-        L = min(MORPH, (pa["n1"] - pa["n0"]) // 2, (pb["n1"] - pb["n0"]) // 2)
-        k = n - (cn - L // 2)
-        if L < 2 or not 0 <= k < L:
-            continue
-        if n < cn:      # before the cut: borrow the incoming take's lead-in
-            other = frame_from(grab30(pb["shot"], max(0, src_frame(pb, pb["n0"]) - int(round((cn - n) * SPEED)))), pb)
-            A, B = img, other
-        else:           # after the cut: the outgoing take keeps rolling
-            other = frame_from(grab30(pa["shot"], src_frame(pa, n)), pa)
-            A, B = other, img
-        return morph(A, B, G.ease_io((k + 0.5) / L))
-    return img
+    """Plain straight cuts only (revision 2): each shot has its own steady framing, alternating close / medium."""
+    p = PIECES[piece_at(n)]
+    return frame_from(dec.get(p["shot"], src_frame(p, n)), p)
 
 
 CAPS = TL["captions"]
@@ -187,17 +160,18 @@ NAME_OUT = NAME_IN + 4.6
 def render(n, dec):
     t = n / FPS
     base = Image.fromarray(video(n, dec)).convert("RGBA")
-    if t >= T_REVEAL + G.R_DISSOLVE[0]:
-        frame = G.reveal(base, t - T_REVEAL)
-        return frame.convert("RGB")
     G.draw_title(base, t, TL["hook_end"] - 0.34)            # fully gone before the first cut
     cur = None
     for c in CAPS:
         if c["s"] <= t < c["show_until"]:
             cur = c
-    if cur is not None and t < T_REVEAL - 0.05:
+    if cur is None and t >= T_REVEAL - 0.5:
+        cur = CAPS[-1]                                       # the last line stays up and dissolves with the picture
+    if cur is not None:
         G.draw_caption(base, cur["text"])
     G.draw_namecard(base, t, NAME_IN, NAME_OUT)
+    if t >= T_REVEAL:
+        return G.reveal(base, t - T_REVEAL).convert("RGB")
     return base.convert("RGB")
 
 

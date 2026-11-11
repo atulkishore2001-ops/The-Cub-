@@ -22,11 +22,13 @@ for k, sec in enumerate(EDL["sections"]):
     if sec["id"] not in CAPS:
         continue
     parts = []
+    holds = sec.get("hold", [0.0] * len(sec["ranges"]))
     for j, (a, b) in enumerate(sec["ranges"]):
         if k == len(EDL["sections"]) - 1 and j == len(sec["ranges"]) - 1:
             b = sec["speech_end"] + 0.10
         x = aud[sec["shot"]][int(a * SR):int(b * SR)].copy(); f = int(0.01 * SR)
         x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f); parts.append(x)
+        parts.append(np.zeros(int(holds[j] * EDL["speed"] * SR), np.float32))   # a hold plays as silence
     x = np.concatenate([np.zeros(int(LEAD * SR), np.float32)] + parts + [np.zeros(int(LEAD * SR), np.float32)])
     s = rec.create_stream(); s.accept_waveform(SR, x); rec.decode_stream(s); r = s.result
     rw = []

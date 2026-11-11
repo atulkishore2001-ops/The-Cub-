@@ -1,14 +1,15 @@
 {
- "_doc": "Edit decision list (source seconds). Each section starts with a straight jump cut and a new framing (Sitaara-style). Inside a section the ranges are joined with a short soft morph cut, where a pause was shortened or words were removed inside one flow of speech.",
- "speed": 1.025,
+ "_doc": "Edit decision list, revision 2 (source seconds). Every cut is a plain straight cut, and the framing alternates between close and medium at each one (Sitaara-style zoom in / zoom out). No blends. Each cut leaves about 0.4 s of breath between phrases; 'hold' freezes the last frame for that many seconds (with silence) where the next word starts too soon after.",
+ "speed": 1.03,
+ "end_hold": 0.80,
  "sections": [
-  {"id": "hook",    "shot": 2, "zoom": "close",  "ranges": [[0.86, 4.24]]},
-  {"id": "classes", "shot": 1, "zoom": "medium", "ranges": [[20.46, 28.48]]},
-  {"id": "bored",   "shot": 2, "zoom": "close",  "ranges": [[4.53, 8.20], [8.51, 11.02], [11.22, 14.30], [15.60, 17.12], [17.52, 20.40]]},
-  {"id": "skill",   "shot": 2, "zoom": "medium", "ranges": [[28.86, 31.58], [32.92, 39.45], [41.00, 42.41], [42.60, 48.80]]},
-  {"id": "cub",     "shot": 3, "zoom": "close",  "ranges": [[2.92, 4.44], [4.86, 5.22], [6.70, 13.70]]},
-  {"id": "home",    "shot": 3, "zoom": "medium", "ranges": [[17.34, 18.81], [20.66, 22.92], [24.88, 27.05]]},
-  {"id": "results", "shot": 3, "zoom": "close",  "ranges": [[28.85, 30.57], [30.76, 38.62], [39.40, 40.55]]},
-  {"id": "close",   "shot": 3, "zoom": "medium", "ranges": [[44.70, 54.00]], "speech_end": 50.22}
+  {"id": "hook",    "shot": 2, "ranges": [[0.86, 4.24]], "hold": [0.15]},
+  {"id": "classes", "shot": 1, "ranges": [[20.46, 28.70]]},
+  {"id": "bored",   "shot": 2, "ranges": [[4.53, 14.30], [15.50, 20.50]]},
+  {"id": "skill",   "shot": 2, "ranges": [[28.86, 31.66], [32.86, 39.50], [40.88, 48.85]]},
+  {"id": "cub",     "shot": 3, "ranges": [[2.86, 5.22], [6.68, 13.95]]},
+  {"id": "home",    "shot": 3, "ranges": [[20.94, 27.30]]},
+  {"id": "results", "shot": 3, "ranges": [[28.85, 38.66]]},
+  {"id": "close",   "shot": 3, "ranges": [[44.55, 54.60]], "speech_end": 50.22}
  ]
 }
