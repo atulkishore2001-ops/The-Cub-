@@ -1,0 +1,14 @@
+{
+ "_doc": "Edit decision list (source seconds). Each section starts with a straight jump cut and a new framing (Sitaara-style). Inside a section the ranges are joined with a short soft morph cut, where a pause was shortened or words were removed inside one flow of speech.",
+ "speed": 1.025,
+ "sections": [
+  {"id": "hook",    "shot": 2, "zoom": "close",  "ranges": [[0.86, 4.24]]},
+  {"id": "classes", "shot": 1, "zoom": "medium", "ranges": [[20.46, 28.48]]},
+  {"id": "bored",   "shot": 2, "zoom": "close",  "ranges": [[4.53, 8.20], [8.51, 11.02], [11.22, 14.30], [15.60, 17.12], [17.52, 20.40]]},
+  {"id": "skill",   "shot": 2, "zoom": "medium", "ranges": [[28.86, 31.58], [32.92, 39.45], [41.00, 42.41], [42.60, 48.80]]},
+  {"id": "cub",     "shot": 3, "zoom": "close",  "ranges": [[2.92, 4.44], [4.86, 5.22], [6.70, 13.70]]},
+  {"id": "home",    "shot": 3, "zoom": "medium", "ranges": [[17.34, 18.81], [20.66, 22.92], [24.88, 27.05]]},
+  {"id": "results", "shot": 3, "zoom": "close",  "ranges": [[28.85, 30.57], [30.76, 38.62], [39.40, 40.55]]},
+  {"id": "close",   "shot": 3, "zoom": "medium", "ranges": [[44.70, 54.00]], "speech_end": 50.22}
+ ]
+}
