@@ -53,13 +53,13 @@ def main():
     for word, label in (("SLP", "SLP"), ("OT", "OT"), ("pediatrician", "Pediatrician"), ("neurologist", "Neurologist"), ("physiotherapist", "Physiotherapist")):
         g.append(dict(kind="pill", label=label, t_in=w("hook", word), t_out=end("hook") - 0.05))
     g.append(dict(kind="namecard", t_in=t0["intro"] + 0.15, t_out=end("intro") + 0.6))
-    g.append(dict(kind="photo", img="osit_photo_2_woman_cheek_tool.png", t_in=w("value", "practical"), t_out=end("value") - 0.02))
+    g.append(dict(kind="photo", img="osit_photo_2_woman_cheek_tool.jpg", t_in=w("value", "practical"), t_out=end("value") - 0.02))
     g.append(dict(kind="title", t_in=w("announce", "Oral") - 0.10, t_out=w("announce", "happening") - 0.05))
     g.append(dict(kind="date", t_in=w("announce", "5th") - 0.10, t_out=end("announce") - 0.02))
     g.append(dict(kind="logos", t_in=w("collab", "collaboration") - 0.15, t_out=w("collab", "is") - 0.05))
-    g.append(dict(kind="photo", img="osit_photo_4_therapist_cheek_massage.png", stat=True, t_in=w("collab", "1,000+") - 0.10, t_out=end("collab") - 0.02))
-    g.append(dict(kind="photo", img="osit_photo_3_therapist_lip_tool.png", t_in=w("opportunity", "learn") - 0.05, t_out=w("opportunity", "learn", 2) - 0.05))
-    g.append(dict(kind="photo", img="osit_photo_1_man_tongue_tool.png", t_in=w("opportunity", "learn", 2) - 0.05, t_out=end("opportunity") - 0.02))
+    g.append(dict(kind="photo", img="osit_photo_4_therapist_cheek_massage.jpg", stat=True, t_in=w("collab", "1,000+") - 0.10, t_out=end("collab") - 0.02))
+    g.append(dict(kind="photo", img="osit_photo_3_therapist_lip_tool.jpg", t_in=w("opportunity", "learn") - 0.05, t_out=w("opportunity", "learn", 2) - 0.05))
+    g.append(dict(kind="photo", img="osit_photo_1_man_tongue_tool.jpg", t_in=w("opportunity", "learn", 2) - 0.05, t_out=end("opportunity") - 0.02))
     g.append(dict(kind="fast", t_in=w("register", "already") - 0.10, t_out=w("register", "So") - 0.05))
     g.append(dict(kind="deadline", t_in=w("register", "before") - 0.10, t_out=end("register") - 0.02))
     tl = dict(fps=FPS, speed=SPEED, total=total, total_frames=int(round(total * FPS)), t_speech_end=t_end, t_close=t_close,

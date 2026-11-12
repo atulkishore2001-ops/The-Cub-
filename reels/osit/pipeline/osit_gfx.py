@@ -112,7 +112,7 @@ def draw_pill(frame, t, label, t_in, t_out):
 # ------------------------------------------------------------------ OSIT title card (the poster's own title design)
 @lru_cache(None)
 def title_card(width=1000):
-    t = Image.open(f"{BR}/osit_title_from_poster.png").convert("RGB")
+    t = Image.open(f"{BR}/osit_title_no_bunting.png").convert("RGB")      # poster title, bunting removed
     t = t.resize((width, int(t.height * width / t.width)), Image.LANCZOS)
     return soft_shadow(round_mask(t, 30), blur=24, off=(0, 12), alpha=85)
 
@@ -195,28 +195,16 @@ def photo_card(name, max_w=600, max_h=760):
 
 
 @lru_cache(None)
-def stat_badge():
-    n = ink("1,000+", dm(92, 800), YELLOW)
-    l = ink("professionals trained", dm(34, 600), WHITE)
-    w = max(n.width, l.width) + 80
-    box = rrect(w, n.height + l.height + 64, 28, NAVY + (255,))
-    box.alpha_composite(n, ((w - n.width) // 2, 26)); box.alpha_composite(l, ((w - l.width) // 2, 26 + n.height + 14))
-    return soft_shadow(box, blur=16, off=(0, 8), alpha=90)
-
-
 def count_badge(v):
-    n = ink(f"{v:,}+", dm(92, 800), YELLOW)
-    base = stat_badge()
+    """Navy badge with the running count ("0+" ... "1,000+"); always sized for the final number so it never jumps."""
     full = ink("1,000+", dm(92, 800), YELLOW)
-    if v >= 1000:
-        return base
-    img = base.copy()
-    # cover the number area and redraw the running count in place (badge keeps its final size)
-    pad = 66
-    bw = base.width - 2 * pad
-    ImageDraw.Draw(img).rectangle((pad + 10, pad + 20, pad + bw - 10, pad + 26 + full.height + 4), fill=NAVY + (255,))
-    img.alpha_composite(n, (pad + (bw - n.width) // 2, pad + 26))
-    return img
+    n = ink(f"{v:,}+", dm(92, 800), YELLOW)
+    l = ink("professionals trained", dm(34, 600), WHITE)
+    w = max(full.width, l.width) + 80
+    box = rrect(w, full.height + l.height + 64, 28, NAVY + (255,))
+    box.alpha_composite(n, ((w - n.width) // 2, 26 + (full.height - n.height)))
+    box.alpha_composite(l, ((w - l.width) // 2, 26 + full.height + 14))
+    return soft_shadow(box, blur=16, off=(0, 8), alpha=90)
 
 
 def blur_amount(t, graphics):
@@ -291,7 +279,7 @@ def closing_bg():
 def cta_img():
     l1 = ink("REGISTER NOW!", dm(60, 800), YELLOW)
     l2 = ink("SPOTS ARE LIMITED  ·  LAST DATE 21 NOV", dm(28, 700), WHITE, tracking=2)
-    w = 880
+    w = 820
     box = rrect(w, l1.height + l2.height + 62, 32, NAVY + (255,))
     box.alpha_composite(l1, ((w - l1.width) // 2, 24)); box.alpha_composite(l2, ((w - l2.width) // 2, 24 + l1.height + 14))
     return soft_shadow(box, blur=18, off=(0, 8), alpha=80)
@@ -302,7 +290,7 @@ def date_line():
     return ink("5th – 6th December 2026  ·  9 AM – 5 PM  ·  New Delhi", dm(30, 600), NAVY)
 
 
-QR_W = 560
+QR_W = 500
 
 
 @lru_cache(None)
@@ -322,13 +310,13 @@ def qr_img():
     return soft_shadow(q, blur=20, off=(0, 10), alpha=70)
 
 
-LAYOUT = dict(logos=330, title=497, date=622, cta=712, qr=1055)      # centres; everything inside y 270-1300
+LAYOUT = dict(logos=336, title=508, date=630, cta=750, qr=1124)      # centres; ~40 px between blocks, all inside y 270-1400
 
 
 def closing(t):
     """t = seconds since the closing frame started."""
     img = closing_bg().copy()
-    items = [("logos", logos_img(card=False, scale=0.78), 0.00), ("title", title_card(940), 0.12), ("date", date_line(), 0.24),
+    items = [("logos", logos_img(card=False, scale=0.72), 0.00), ("title", title_card(900), 0.12), ("date", date_line(), 0.24),
              ("cta", cta_img(), 0.34), ("qr", qr_img(), 0.46)]
     for key, im, delay in items:
         p = G.clamp((t - delay) / 0.45)

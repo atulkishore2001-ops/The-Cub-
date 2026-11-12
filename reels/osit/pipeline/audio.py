@@ -16,7 +16,7 @@ TL = json.load(open(f"{W}/timeline.json"))
 SPEED = TL["speed"]
 EDL = json.load(open(f"{HERE}/edl.json"))
 VOICE_TARGET_DB = -23.0
-VOICE_CHAIN = ("afftdn=nr=6:nf=-60:tn=1,highpass=f=80,equalizer=f=250:t=q:w=1.0:g=-2,equalizer=f=3200:t=q:w=1.2:g=2,"
+VOICE_CHAIN = ("afftdn=nr=6:nf=-60:tn=1,highpass=f=80,dynaudnorm=f=150:g=7:p=0.9:m=6:r=0.3,equalizer=f=250:t=q:w=1.0:g=-2,equalizer=f=3200:t=q:w=1.2:g=2,"
                "equalizer=f=8500:t=q:w=1.0:g=1.0,deesser=i=0.2,acompressor=threshold=-22dB:ratio=2.4:attack=8:release=160:makeup=2")
 
 
