@@ -14,6 +14,7 @@ Python + ffmpeg pipeline that produced this reel. The raw clips are not committe
 | 6 | `gfx.py` | Title, captions, name card and the closing logo reveal (brand colours and fonts) |
 | 7 | `render.py` | Decode, reframe per section, morph cuts, grade, graphics → `video_only.mp4`. `--stills t1,t2` for previews |
 | 8 | `audio.py`, `sounds.py`, `sounds2.py` | Voice levelling + clean-up, music bed, sound effects, two −14 LUFS masters |
+| cover | `cover.py` | The reel cover: frame at shot 3, 50.12s, reframed, with the headline card (`python cover.py cover.jpg`) |
 | brand | `logo_cut.py`, `brand/` | Turns the supplied logo JPEG into transparent PNGs |
 
 Run order (with `WORK=<work dir>` and `MODELS=<models dir>` set):
@@ -32,7 +33,7 @@ Models (in `$MODELS`): `sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8/`, `sherpa-on
 (sherpa-onnx release assets) and `yunet.onnx` (OpenCV Zoo `face_detection_yunet_2023mar.onnx`; fetch the real file, not
 the Git LFS pointer). Python deps: `numpy`, `scipy`, `pillow`, `sherpa-onnx`, `opencv-python-headless`.
 
-Fonts in `fonts/` (all SIL Open Font License): Playfair Display, Lexend, Glacial Indifference.
+Fonts in `fonts/` (all SIL Open Font License): Playfair Display, Lexend, Glacial Indifference, DM Sans (cover).
 
 To change the name card, title or tagline text, edit the constants at the top of `gfx.py` and rerun `render.py` and the mux.
 To re-cut, edit `edl.json` (and `captions.json` if words change) and rerun steps 4 to 8.

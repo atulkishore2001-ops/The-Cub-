@@ -7,6 +7,7 @@
 **Output:** `TheCub_ChildToBeChild_Reel.mp4`: **77.7s**, 1080×1920, 30 fps, H.264 + AAC, mastered to −14 LUFS
 **Alt version:** `TheCub_ChildToBeChild_Reel_NoMusic.mp4` has the same edit with voice and sound effects only.
 **Logo reveal on its own:** `TheCub_LogoReveal.mp4` (3.7s), the reel's closing reveal from the start of the dissolve.
+**Cover:** `cover_do_we_allow_a_child.jpg` (1080×1920), in the style of the earlier Cub covers: Saisha smiling to camera (from just after her last line), with a white card reading "Do We Allow a Child to Be a *Child?*" in charcoal DM Sans and orange Playfair Display Italic. The card and her face sit inside the 3:4 crop the profile grid shows.
 
 ---
 
