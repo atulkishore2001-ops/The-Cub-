@@ -1,0 +1,19 @@
+{
+  "source": "OSIT Level-1 flyer, 5th & 6th Dec 2026 (assets/reference/osit-level1-dec-2026-flyer.jpg)",
+  "speakers": [
+    {
+      "id": "neha-yadav",
+      "name": "Ms. Neha Yadav",
+      "designation": "BASLP, MSc. SLP, PhD Scholar",
+      "photo": "neha-yadav.png",
+      "card": "cards/neha-yadav-card.png"
+    },
+    {
+      "id": "satyendra-kumar",
+      "name": "Dr. Satyendra Kumar",
+      "designation": "BOT, MOT (Neurology), PhD Scholar",
+      "photo": "satyendra-kumar.png",
+      "card": "cards/satyendra-kumar-card.png"
+    }
+  ]
+}
