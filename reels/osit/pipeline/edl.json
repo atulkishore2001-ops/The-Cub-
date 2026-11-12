@@ -1,0 +1,17 @@
+{
+ "_doc": "OSIT ad cut list (source seconds, one continuous take). Each section starts with a straight cut and the framing alternates close / medium. The closing frame (title, logos, QR) follows the last section.",
+ "speed": 1.04,
+ "end_hold": 0.35,
+ "closing": 6.6,
+ "sections": [
+  {"id": "hook",    "ranges": [[1.05, 7.80]]},
+  {"id": "intro",   "ranges": [[10.08, 14.15]]},
+  {"id": "learn",   "ranges": [[15.75, 22.10]]},
+  {"id": "value",   "ranges": [[22.70, 27.25]]},
+  {"id": "announce","ranges": [[29.30, 37.70]]},
+  {"id": "collab",  "ranges": [[39.15, 53.40]]},
+  {"id": "opportunity", "ranges": [[68.05, 77.95]]},
+  {"id": "register","ranges": [[90.30, 99.85]]},
+  {"id": "join",    "ranges": [[100.35, 103.40]], "speech_end": 103.21}
+ ]
+}
