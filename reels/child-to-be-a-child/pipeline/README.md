@@ -8,11 +8,11 @@ Python + ffmpeg pipeline that produced this reel. The raw clips are not committe
 |---|---|---|
 | 1 | `words.py` | Parakeet-TDT word timestamps per shot (`shotN_words.json`) |
 | 2 | `env.py`, `probe.py` | Audio envelope around cut candidates; Whisper transcripts of candidate splices |
-| 3 | `edl.json`, `check_cuts.py` | The cut list (sections → ranges, framing per section, speed) and a full re-transcription of every section as edited |
+| 3 | `edl.json`, `check_cuts.py` | The cut list (sections → ranges, holds, speed) and a full re-transcription of every section as edited |
 | 4 | `captions.json`, `align.py` | Hand-written caption phrases, timed by re-transcribing each edited section and matching words in order |
-| 5 | `timeline.py` | Output frame map, cut list (joins vs. soft morph cuts), caption times, title / name card / reveal timing |
+| 5 | `timeline.py` | Output frame map, cut list (straight cuts; framing alternates close / medium at each), caption times, title / name card / reveal timing |
 | 6 | `gfx.py` | Title, captions, name card and the closing logo reveal (brand colours and fonts) |
-| 7 | `render.py` | Decode, reframe per section, morph cuts, grade, graphics → `video_only.mp4`. `--stills t1,t2` for previews |
+| 7 | `render.py` | Decode, reframe each shot (close 1.60× / medium 1.36×), grade, graphics, end hold and logo reveal → `video_only.mp4`. `--stills t1,t2` for previews |
 | 8 | `audio.py`, `sounds.py`, `sounds2.py` | Voice levelling + clean-up, music bed, sound effects, two −14 LUFS masters |
 | cover | `cover.py` | The reel cover: frame at shot 3, 50.12s, reframed, with the headline card (`python cover.py cover.jpg`) |
 | brand | `logo_cut.py`, `brand/` | Turns the supplied logo JPEG into transparent PNGs |
