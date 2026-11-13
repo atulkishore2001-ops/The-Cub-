@@ -51,3 +51,20 @@ Everything else plays as she said it, at 1.04× with pitch preserved. Every sect
 1. **Masters students.** Cutting the "designed for…" line also drops the mention that Master's students can attend. If that matters for the ad, I can add a short "Also open to Master's students" callout, or put the line back (+11s).
 2. **QR link.** The QR opens a WhatsApp chat (`wa.me/message/NUBO5ZCGO5DCG1`). Please confirm this is the registration link you want in a paid ad.
 3. **Caption position.** Captions are slightly higher than in the Saisha reel, to stay clear of Meta's ad overlay. Font, size, colour and animation are unchanged.
+
+---
+
+# Short version (39s)
+
+**Output:** `TheCub_OSIT_Ad_40s.mp4` (and `_NoMusic`): **39.0s**, same format, style, grade and sound as the full ad. Cut list: `pipeline/edl_short.json`, captions: `pipeline/captions_short.json` (build with `EDL=edl_short.json CAPTIONS=captions_short.json`).
+
+| Time | Spoken | On screen |
+|---|---|---|
+| 0:00 | "If you're an SLP, OT, pediatrician, neurologist or physiotherapist watching this reel, you need to know what this workshop is about." | Profession pills |
+| 0:07 | "Hi, I'm Stuti Sharma, Clinical Director and Speech-Language Pathologist at The Cub." | Name card |
+| 0:11 | "I'm really excited about our upcoming Oral Sensory Motor Integration Therapy workshop happening at The Cub on 5th and 6th December." | OSIT title, then the date card |
+| 0:19 | "We are conducting this workshop in collaboration with SpeechGears India, with over 1,000+ professionals trained so far." | Logos card, then the workshop photo with the 1,000+ count-up |
+| 0:26 | "So don't wait for the last moment and reserve your spot before the 21st of November, which is the last date of registration." | "Seats are filling up fast", then "Last date to register: 21st November 2026" |
+| 0:32.7–0:39 | — | Closing frame: logos, title, dates, "Register now", QR (6.3s; scans in every frame checked) |
+
+Dropped from the full ad: "In my years of experience… working with children", "New knowledge and practical techniques… effective clinicians", "That's why" (the line now opens on "I'm really excited…"), "whose OSIT workshop is positioned as India's premier evidence-based certification program", "This is a valuable opportunity… clinical practice", "Registrations are now open but the seats are already filling up fast" (shown as the "Seats are filling up fast" callout instead), and "Join us… see you soon". "So don't wait…" was kept whole: cut any shorter, her "reserve" sounds like "resolve".

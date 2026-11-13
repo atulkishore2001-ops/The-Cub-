@@ -7,8 +7,8 @@ import numpy as np, sherpa_onnx
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.environ["WORK"]
 M = os.environ.get("MODELS", "models") + "/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8"
-EDL = json.load(open(f"{HERE}/edl.json"))
-CAPS = json.load(open(f"{HERE}/captions.json"))
+EDL = json.load(open(os.path.join(HERE, os.environ.get("EDL", "edl.json"))))
+CAPS = json.load(open(os.path.join(HERE, os.environ.get("CAPTIONS", "captions.json"))))
 rec = sherpa_onnx.OfflineRecognizer.from_transducer(encoder=f"{M}/encoder.int8.onnx", decoder=f"{M}/decoder.int8.onnx",
         joiner=f"{M}/joiner.int8.onnx", tokens=f"{M}/tokens.txt", model_type="nemo_transducer", num_threads=4)
 aud = {}

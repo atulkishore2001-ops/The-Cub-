@@ -1,0 +1,13 @@
+{
+ "_doc": "40-second cut of the OSIT ad: hook, who she is, the workshop + dates, collaboration + 1,000+ trained, deadline, then the QR closing frame. Same rules as edl.json (straight zoom cuts; every section runs past its last word).",
+ "speed": 1.04,
+ "end_hold": 0.35,
+ "closing": 6.3,
+ "sections": [
+  {"id": "hook",     "ranges": [[1.05, 8.05]]},
+  {"id": "intro",    "ranges": [[10.08, 14.32]]},
+  {"id": "announce", "ranges": [[29.76, 37.86]]},
+  {"id": "collab",   "ranges": [[39.15, 43.40], [49.95, 53.45]]},
+  {"id": "register", "ranges": [[93.62, 100.20]], "speech_end": 100.05}
+ ]
+}
