@@ -68,3 +68,15 @@ Everything else plays as she said it, at 1.04× with pitch preserved. Every sect
 | 0:32.7–0:39 | — | Closing frame: logos, title, dates, "Register now", QR (6.3s; scans in every frame checked) |
 
 Dropped from the full ad: "In my years of experience… working with children", "New knowledge and practical techniques… effective clinicians", "That's why" (the line now opens on "I'm really excited…"), "whose OSIT workshop is positioned as India's premier evidence-based certification program", "This is a valuable opportunity… clinical practice", "Registrations are now open but the seats are already filling up fast" (shown as the "Seats are filling up fast" callout instead), and "Join us… see you soon". "So don't wait…" was kept whole: cut any shorter, her "reserve" sounds like "resolve".
+
+---
+
+# 50-second version
+
+**Output:** `TheCub_OSIT_Ad_50s.mp4` (and `_NoMusic`): **50.7s**. It is the 39s cut plus about 11s of context, as requested. `pipeline/edl_short.json` and `pipeline/captions_short.json` now hold this cut; the 39s cut is in git history (commit d1331aa).
+
+Added back:
+- **Why it matters for clinicians** (0:11): "New knowledge and practical techniques can really help us become more thoughtful and effective clinicians." The workshop line now opens with its natural link, "That's why I'm really excited…". A workshop photo appears from "practical techniques".
+- **India's premier certification** (0:24–0:38): the full line "…in collaboration with SpeechGears India, whose OSIT workshop is positioned as India's premier evidence-based certification program, with over 1,000+ professionals trained so far." A new green callout, "India's premier · Evidence-Based Certification", appears as she says it, between the logos card and the 1,000+ photo.
+
+Everything else is unchanged: hook, name card, title + dates, deadline, and the 6.3s QR closing. The QR decodes from every closing frame at full resolution.

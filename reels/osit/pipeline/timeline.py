@@ -72,6 +72,7 @@ def main():
         add("collab", lambda: dict(kind="logos", t_in=w("collab", "collaboration") - 0.15, t_out=w("collab", "with", 2) - 0.05))
     else:
         add("collab", lambda: dict(kind="logos", t_in=w("collab", "collaboration") - 0.15, t_out=w("collab", "is") - 0.05))
+    add("collab", lambda: dict(kind="premier", t_in=w("collab", "premier") - 0.10, t_out=w("collab", "with", 2) - 0.10))
     add("collab", lambda: dict(kind="photo", img="osit_photo_4_therapist_cheek_massage.jpg", stat=True, t_in=w("collab", "1,000+") - 0.10, t_out=end("collab") - 0.02))
     add("opportunity", lambda: dict(kind="photo", img="osit_photo_3_therapist_lip_tool.jpg", t_in=w("opportunity", "learn") - 0.05, t_out=w("opportunity", "learn", 2) - 0.05))
     add("opportunity", lambda: dict(kind="photo", img="osit_photo_1_man_tongue_tool.jpg", t_in=w("opportunity", "learn", 2) - 0.05, t_out=end("opportunity") - 0.02))

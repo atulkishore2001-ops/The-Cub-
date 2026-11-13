@@ -1,8 +1,9 @@
 {
- "_doc": "Caption phrases for the 40-second cut (same style and wording rules as captions.json).",
+ "_doc": "Caption phrases for the 50-second cut (same style and wording rules as captions.json).",
  "hook": "If you're an SLP, | OT, pediatrician, | neurologist | or physiotherapist | watching this reel, | you need to know | what this workshop is about.",
  "intro": "Hi, I'm Stuti Sharma, | Clinical Director | and Speech-Language | Pathologist at The Cub.",
- "announce": "I'm really excited | about our upcoming | Oral Sensory Motor | Integration Therapy workshop | happening at The Cub | on 5th and 6th December.",
- "collab": "We are conducting | this workshop | in collaboration with | SpeechGears India, | with over 1,000+ | professionals | trained so far.",
+ "value": "New knowledge | and practical techniques | can really help us become | more thoughtful | and effective clinicians.",
+ "announce": "That's why I'm really excited | about our upcoming | Oral Sensory Motor | Integration Therapy workshop | happening at The Cub | on 5th and 6th December.",
+ "collab": "We are conducting | this workshop | in collaboration with | SpeechGears India, | whose OSIT workshop | is positioned as India's | premier evidence-based | certification program | with over 1,000+ | professionals | trained so far.",
  "register": "So don't wait | for the last moment | and reserve your spot | before the 21st of November, | which is the last date | of registration."
 }

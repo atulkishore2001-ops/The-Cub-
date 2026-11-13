@@ -254,6 +254,16 @@ def deadline_img():
     return soft_shadow(box, blur=18, off=(0, 8), alpha=90)
 
 
+@lru_cache(None)
+def premier_img():
+    l1 = ink("INDIA'S PREMIER", dm(34, 700), WHITE, tracking=3)
+    l2 = ink("Evidence-Based Certification", dm(54, 800), WHITE)
+    w = max(l1.width, l2.width) + 100
+    box = rrect(w, l1.height + l2.height + 66, 36, GREEN + (255,))
+    box.alpha_composite(l1, ((w - l1.width) // 2, 24)); box.alpha_composite(l2, ((w - l2.width) // 2, 24 + l1.height + 16))
+    return soft_shadow(box, blur=18, off=(0, 8), alpha=90)
+
+
 def draw_callout(frame, t, img, t_in, t_out, cy=1050):
     p, k = env(t, t_in, t_out, 0.30, 0.25)
     if p > 0 and k > 0:

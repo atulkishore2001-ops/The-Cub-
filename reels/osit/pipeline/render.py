@@ -157,6 +157,8 @@ def talk_frame(n, dec):
             O.draw_logos(base, t, g["t_in"], g["t_out"])
         elif k == "fast":
             O.draw_callout(base, t, O.fast_img(), g["t_in"], g["t_out"])
+        elif k == "premier":
+            O.draw_callout(base, t, O.premier_img(), g["t_in"], g["t_out"])
         elif k == "deadline":
             O.draw_callout(base, t, O.deadline_img(), g["t_in"], g["t_out"])
         elif k == "namecard":
