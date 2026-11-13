@@ -80,3 +80,8 @@ Added back:
 - **India's premier certification** (0:24–0:38): the full line "…in collaboration with SpeechGears India, whose OSIT workshop is positioned as India's premier evidence-based certification program, with over 1,000+ professionals trained so far." A new green callout, "India's premier · Evidence-Based Certification", appears as she says it, between the logos card and the 1,000+ photo.
 
 Everything else is unchanged: hook, name card, title + dates, deadline, and the 6.3s QR closing. The QR decodes from every closing frame at full resolution.
+
+### 50-second version, revision 2
+
+- **Fade-out right after the last word:** "…the last date of registration." ends at 99.85s in the source. The section now stops 0.1s after it (the near-silent half-second after the word is cut), and the picture dissolves into the closing frame over 0.6s, starting the moment the word finishes. The last word plays in full (checked by re-transcribing the end of the mix). Total 50.5s.
+- **New QR:** the supplied WhatsApp QR (same link, `wa.me/message/NUBO5ZCGO5DCG1`), redrawn crisply from its 29×29 module grid with the WhatsApp icon in the centre. It has only the code (no "The Cub / WhatsApp Business Account" panel or dark background), in the earlier card style: white, red frame, "SCAN TO REGISTER". Built by `pipeline/qr_card.py`; saved as `assets/osit_register_qr_whatsapp.png`. It decodes from every closing frame.

@@ -1,7 +1,7 @@
 {
- "_doc": "50-second cut of the OSIT ad: hook, who she is, why it matters for clinicians, the workshop + dates, SpeechGears collaboration (India's premier evidence-based certification, 1,000+ trained), deadline, then the QR closing frame. Same rules as edl.json (straight zoom cuts; every section runs past its last word).",
+ "_doc": "50-second cut of the OSIT ad: hook, who she is, why it matters for clinicians, the workshop + dates, SpeechGears collaboration (India's premier evidence-based certification, 1,000+ trained), deadline, then the QR closing frame. Same rules as edl.json (straight zoom cuts; every section runs past its last word). The last word ('registration') ends at 99.85s; the picture starts fading into the closing frame right after it.",
  "speed": 1.04,
- "end_hold": 0.35,
+ "end_hold": 0.3,
  "closing": 6.3,
  "sections": [
   {
@@ -54,10 +54,10 @@
    "ranges": [
     [
      93.62,
-     100.2
+     99.95
     ]
    ],
-   "speech_end": 100.05
+   "speech_end": 99.85
   }
  ]
 }

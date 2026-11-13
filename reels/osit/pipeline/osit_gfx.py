@@ -305,17 +305,7 @@ QR_W = 500
 
 @lru_cache(None)
 def qr_img():
-    q = Image.open(f"{BR}/osit_register_qr.png").convert("RGBA")
-    # drop the poster background around the red frame: flood-fill the light area from the edges
-    import cv2
-    a = np.asarray(q.convert("RGB")).copy()
-    mask = np.zeros((a.shape[0] + 2, a.shape[1] + 2), np.uint8)
-    for x, y in [(0, 0), (a.shape[1] - 1, 0), (0, a.shape[0] - 1), (a.shape[1] - 1, a.shape[0] - 1), (a.shape[1] // 2, a.shape[0] - 1)]:
-        cv2.floodFill(a, mask, (x, y), (0, 0, 0), (14, 14, 14), (14, 14, 14), cv2.FLOODFILL_MASK_ONLY | (255 << 8) | 8)
-    alpha = 255 - mask[1:-1, 1:-1]
-    alpha[14:462, 14:469] = 255                     # the frame's white inside stays solid (the fill can leak past the label)
-    alpha = cv2.GaussianBlur(alpha, (0, 0), 0.8)
-    q.putalpha(Image.fromarray(alpha))
+    q = Image.open(f"{BR}/osit_register_qr.png").convert("RGBA")      # built by qr_card.py, transparent around the card
     q = q.resize((QR_W, int(q.height * QR_W / q.width)), Image.LANCZOS)
     return soft_shadow(q, blur=20, off=(0, 10), alpha=70)
 

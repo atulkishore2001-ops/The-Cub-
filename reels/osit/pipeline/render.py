@@ -21,7 +21,7 @@ PIECES = TL["pieces"]
 NTOT = TL["total_frames"]
 GR = TL["graphics"]
 T_CLOSE = TL["t_close"]
-XFADE = 0.40                                   # picture -> closing frame dissolve
+XFADE = float(os.environ.get("XFADE", "0.40"))   # picture -> closing frame dissolve
 SRC_LAST = int(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
                                      f"{WORK}/shot1.mp4"], capture_output=True, text=True).stdout) * 30) - 3
 
