@@ -1,6 +1,6 @@
 import numpy as np, wave, json, subprocess, re, sys
 SR=48000
-TEMPO=float(sys.argv[1]) if len(sys.argv)>1 else 1.10
+TEMPO=float(sys.argv[1]); PAUSE=float(sys.argv[2])
 w=wave.open('vo_clean.wav'); v=np.frombuffer(w.readframes(w.getnframes()),dtype=np.int16).astype(np.float32)/32768
 out=subprocess.run(['ffmpeg','-hide_banner','-i','vo_clean.wav','-af','silencedetect=n=-36dB:d=0.18','-f','null','-'],capture_output=True,text=True).stderr
 sil=[(float(e)-float(d),float(e)) for e,d in re.findall(r'silence_end: ([\d.]+) \| silence_duration: ([\d.]+)',out)]
@@ -14,7 +14,7 @@ for a,b in sil[1:]:
     d=b-a
     if b>=64: # tail
         keep.append((cur,a+0.25)); break
-    new = 0.36 if d>=0.5 else min(d,0.24)
+    new = PAUSE if d>=0.5 else min(d,0.26)
     if a>53 and a<54: new=0.30
     keep.append((cur,a+new/2)); cur=b-new/2
 F=int(0.012*SR)
