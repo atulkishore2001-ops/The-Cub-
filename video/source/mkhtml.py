@@ -37,8 +37,8 @@ const STAR='M0,-14 L3.5,-3.5 L14,0 L3.5,3.5 L0,14 L-3.5,3.5 L-14,0 L-3.5,-3.5Z';
 S.forEach((s,i)=>{
   const c=document.createElement('div');c.className='card';
   let fx='';
-  for(let k=0;k<3;k++)fx+=`<svg class="h"><path d="${HEART}" fill="#EE833D" stroke="#fff" stroke-width="3"/></svg>`;
-  for(let k=0;k<4;k++)fx+=`<svg class="s"><path d="${STAR}" fill="#fff" stroke="#EE833D" stroke-width="2.5"/></svg>`;
+  if(i==1||i==11)for(let k=0;k<3;k++)fx+=`<svg class="h"><path d="${HEART}" fill="#EE833D" stroke="#fff" stroke-width="3"/></svg>`;
+  if(i==1||i==11)for(let k=0;k<4;k++)fx+=`<svg class="s"><path d="${STAR}" fill="#fff" stroke="#EE833D" stroke-width="2.5"/></svg>`;
   c.innerHTML=`<div class="in"><img src="BASE${s.img}"><div class="fx">${fx}</div></div>`;
   $('#cards').appendChild(c);s.el=c;s.imgEl=c.querySelector('img');s.h=[...c.querySelectorAll('.h')];s.st=[...c.querySelectorAll('.s')];
   s.titles.forEach(tl=>{const d=document.createElement('div');d.className='title';d.innerHTML=tl.a.replace(/ /g,'&nbsp;')+'<i>'+tl.b+'</i>';$('#titles').appendChild(d);tl.el=d;});
@@ -53,9 +53,10 @@ window.setT=function(t){
   $('#glow').style.transform=`scale(${1+0.04*Math.sin(t*0.7)})`;
   $('#label').style.opacity=eo((t-0.1)/0.6)*(1-out);
   $('#label').style.transform=`translateY(${-20*(1-eo((t-0.1)/0.6))}px)`;
+  const G=Math.max(eo((t-S[1].s-0.25)/0.5)*(1-cl((t-S[1].e+0.15)/0.35)),eo((t-S[11].s-0.25)/0.5));
   DEC.forEach((d,k)=>{const p=t*0.9+d[3]*2;const tw=0.55+0.45*Math.sin(p*1.7);
     d.el.style.left=(d[0]-30+6*Math.sin(p*0.6))+'px';d.el.style.top=(d[1]-30+9*Math.cos(p*0.5))+'px';
-    d.el.style.opacity=tw*eo((t-0.4-k*0.12)/0.5)*(1-out);d.el.style.transform=`scale(${0.75+0.3*tw}) rotate(${12*Math.sin(p*0.4)}deg)`;});
+    d.el.style.opacity=tw*G*(1-out);d.el.style.transform=`scale(${0.75+0.3*tw}) rotate(${12*Math.sin(p*0.4)}deg)`;});
   S.forEach((s,i)=>{
     const a=t-s.s, dur=s.e-s.s, last=i==S.length-1;
     const vin=eo(a/0.45), vout=last?out:cl((t-s.e)/0.4);
