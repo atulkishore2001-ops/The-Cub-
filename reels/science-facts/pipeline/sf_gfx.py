@@ -142,7 +142,7 @@ def chip_img(n, text):
 
 
 def draw_number(frame, t, n, t_in, t_out):
-    p, k = life(t, t_in, t_out, 0.32, 0.22)
+    p, k = life(t, t_in, t_out, 0.26, 0.15)
     if p > 0 and k > 0:
         place(frame, number_img(n), W / 2, 1120, k=min(1, p * 3) * k, scale=max(0.3, back_out(p)) * (1 + 0.15 * (1 - k)),
               rot=-12 * (1 - ease_out(p)))
@@ -368,3 +368,19 @@ def draw_numbers(frame, t, t_in, t_out):
         p = clamp((t - t_in - 0.15 - 0.09 * i) / 0.25)
         if p > 0:
             place(frame, num_pill(i + 1), W / 2 + (i - 2) * 172, 1170, k=min(1, p * 3) * k, scale=max(0.3, back_out(p)))
+
+
+# ------------------------------------------------------------------ "follow for more science"
+@lru_cache(None)
+def follow_img():
+    a = ink("FOLLOW", dm(64, 900), WHITE, tracking=4)
+    b = ink("for more science", dm(56, 800), CHAR)
+    box_a = rrect(a.width + 90, a.height + 50, (a.height + 50) // 2, ORANGE + (255,)); box_a.alpha_composite(a, (45, 25))
+    box_b = rrect(b.width + 80, b.height + 44, 26, (255, 255, 255, 245)); box_b.alpha_composite(b, (40, 22))
+    return shadow(stack([box_a, box_b], 14), 18, (0, 8), 110)
+
+
+def draw_follow(frame, t, t_in, t_out):
+    p, k = life(t, t_in, t_out, 0.32, 0.25)
+    if p > 0 and k > 0:
+        place(frame, follow_img(), W / 2, 1120, k=min(1, p * 3) * k, scale=max(0.3, back_out(p)))

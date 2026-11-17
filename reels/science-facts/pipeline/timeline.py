@@ -93,11 +93,11 @@ def main():
     facts = [("honey", 1, "HONEY NEVER SPOILS"), ("octo", 2, "OCTOPUS: 3 HEARTS"), ("sun", 3, "SUNLIGHT IS 8 MIN OLD"),
              ("venus", 4, "VENUS: DAY > YEAR"), ("banana", 5, "BANANAS ARE RADIOACTIVE")]
     for sid, num, label in facts:
-        G.append(dict(kind="number", num=num, t_in=t0[sid] + 0.02, t_out=w(sid, ("one", "two", "three", "four", "five")[num - 1].strip(), at="e") + 0.35))
+        G.append(dict(kind="number", num=num, t_in=t0[sid] + 0.02, t_out=w(sid, ("one", "two", "three", "four", "five")[num - 1].strip(), at="e") + 0.02))
         G.append(dict(kind="chip", num=num, text=label, t_in=w(sid, ("one", "two", "three", "four", "five")[num - 1], at="e") + 0.1, t_out=end[sid] - 0.08))
     # honey
-    G.append(dict(kind="card", icon="pyramid", text="Found in ancient\nEgyptian tombs", t_in=w("honey", "ancient") - 0.1, t_out=w("honey", "was") - 0.05))
-    G.append(dict(kind="card", icon="hourglass", text="Thousands of\nyears old", t_in=w("honey", "was") - 0.05, t_out=w("honey", "still") - 0.05))
+    G.append(dict(kind="card", icon="pyramid", text="Found in ancient\nEgyptian tombs", t_in=w("honey", "ancient") - 0.1, t_out=w("honey", "thousands") - 0.30))
+    G.append(dict(kind="card", icon="hourglass", text="Thousands of\nyears old", t_in=w("honey", "thousands") - 0.05, t_out=w("honey", "still") - 0.30))
     G.append(dict(kind="card", icon="check", text="Still good\nto eat", t_in=w("honey", "still") - 0.05, t_out=end["honey"] - 0.08))
     # octopus
     G.append(dict(kind="hearts", t_in=w("octo", "three") - 0.05, t_out=end["octo"] - 0.08))
@@ -111,11 +111,12 @@ def main():
     G.append(dict(kind="bars", t_day=w("venus", "243") - 0.15, t_year=w("venus", "225") - 0.15, t_out=v3 - 0.05))
     G.append(dict(kind="stamp", text="DAY > YEAR", color="orange", t_in=w("venus", "longer") - 0.1, t_out=end["venus"] - 0.05))
     # bananas
-    G.append(dict(kind="radiation", t_in=w("banana", "radioactive") - 0.15, t_out=w("banana", "natural") - 0.05))
-    G.append(dict(kind="element", t_in=w("banana", "natural") - 0.1, t_out=w("banana", "completely") - 0.05))
+    G.append(dict(kind="radiation", t_in=w("banana", "radioactive") - 0.15, t_out=w("banana", "natural") - 0.40))
+    G.append(dict(kind="element", t_in=w("banana", "natural") - 0.1, t_out=w("banana", "completely") - 0.30))
     G.append(dict(kind="card", icon="check", text="Completely\nharmless", t_in=w("banana", "completely") - 0.1, t_out=end["banana"] - 0.08))
     # call to action
-    G.append(dict(kind="numbers", t_in=w("cta", "comment") - 0.1, t_out=t_reveal + 0.3))
+    G.append(dict(kind="numbers", t_in=w("cta", "comment") - 0.1, t_out=w("cta", "follow") - 0.15))
+    G.append(dict(kind="follow", t_in=w("cta", "follow") - 0.1, t_out=t_reveal + 0.3))
 
     tl = dict(fps=FPS, speed=SPEED, total=total, total_frames=int(round(total * FPS)), t_speech_end=t_end, t_reveal=t_reveal,
               pieces=pieces, vis=vis, zones=zone, broll=BROLL, captions=caps, words=words, graphics=G)

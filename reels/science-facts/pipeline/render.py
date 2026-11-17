@@ -92,19 +92,23 @@ def piece_at(t):
 
 
 # ---- grade
-def _lut(lift=0.02, curve=0.22):
+def _lut(lift=0.02, curve=0.22, split=1.0):
+    """Filmic S-curve with lifted blacks and a gentle split tone: teal in the shadows, warm highlights."""
     x = np.arange(256, dtype=np.float32) / 255
     x = np.clip(x * 1.02, 0, 1)
     s = x * x * (3 - 2 * x)
     y = (1 - curve) * x + curve * s
     y = lift + y * (1 - lift - 0.01)
     sh, hi = (1 - y) ** 2, y ** 2
-    return [np.clip(c * 255, 0, 255).astype(np.uint8) for c in (y - 0.004 * sh + 0.010 * hi, y + 0.002 * sh, y + 0.014 * sh - 0.010 * hi)]
+    r_ = y - 0.012 * split * sh + 0.016 * split * hi
+    g_ = y + 0.004 * split * sh + 0.004 * split * hi
+    b_ = y + 0.020 * split * sh - 0.014 * split * hi
+    return [np.clip(c * 255, 0, 255).astype(np.uint8) for c in (r_, g_, b_)]
 
 
-LUT_SP, LUT_BR = _lut(), _lut(lift=0.01, curve=0.15)
+LUT_SP, LUT_BR = _lut(lift=0.022, curve=0.30, split=1.0), _lut(lift=0.012, curve=0.24, split=0.8)   # revision 3: richer, cinematic
 _yy, _xx = np.mgrid[0:OH, 0:OW].astype(np.float32)
-VIG = (1 - 0.12 * (((_xx - OW / 2) / (OW / 2)) ** 2 * 0.6 + ((_yy - OH / 2) / (OH / 2)) ** 2 * 0.4) ** 1.2)[:, :, None]
+VIG = (1 - 0.16 * (((_xx - OW / 2) / (OW / 2)) ** 2 * 0.6 + ((_yy - OH / 2) / (OH / 2)) ** 2 * 0.4) ** 1.2)[:, :, None]
 yv = np.arange(OH, dtype=np.float32)
 SHADE = (1 - 0.40 * np.clip((520 - yv) / 520, 0, 1) - 0.38 * np.clip((yv - 1150) / 770, 0, 1))[:, None, None]   # B-roll: text bands
 
@@ -130,7 +134,7 @@ def speaker_frame(n):
     cw, ch, x0, y0 = crop_for(zm)
     cmd = lambda f0: ["ffmpeg", "-v", "error", "-ss", f"{f0 / 30:.4f}", "-i", SRC, "-vf",
                       f"fps=30,crop={cw}:{ch}:{x0}:{y0},scale={OW}:{OH}:flags=lanczos", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
-    return grade(SP.get(("sp", zm), f, cmd), LUT_SP)
+    return grade(SP.get(("sp", zm), f, cmd), LUT_SP, sat=1.02)
 
 
 def broll_frame(n, seg):
@@ -152,7 +156,7 @@ def broll_frame(n, seg):
     z = 1.0 + b["push"] * G.ease_io(local / max(0.5, dur))                     # slow push-in
     M = np.array([[z, 0, OW / 2 * (1 - z)], [0, z, OH / 2 * (1 - z)]], np.float32)
     img = cv2.warpAffine(img, M, (OW, OH), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
-    return grade(img, LUT_BR, sat=1.0, shade=True)
+    return grade(img, LUT_BR, sat=1.08, shade=True)
 
 
 BROLL_INFO = {}
@@ -200,6 +204,8 @@ def render(n):
             F.rise(base, F.element_img(), t, g["t_in"], g["t_out"], F.W / 2, 950)
         elif k == "numbers":
             F.draw_numbers(base, t, g["t_in"], g["t_out"])
+        elif k == "follow":
+            F.draw_follow(base, t, g["t_in"], g["t_out"])
         elif k == "namecard":
             G.draw_namecard(base, t, g["t_in"], g["t_out"])
     cur = None

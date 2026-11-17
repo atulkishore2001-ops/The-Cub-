@@ -1,15 +1,100 @@
 {
- "_doc": "5 Science Facts (Mohd Ashaar), revised take (4K, 75.3s, no World Science Day angle). Audio pieces in order; cuts inside a fact sit under B-roll. Every piece ends after its last word has died away.",
- "speed": 1.05,
- "end_hold": 0.60,
+ "_doc": "5 Science Facts (Mohd Ashaar), revised take (4K, 75.3s, no World Science Day angle). Audio pieces in order; cuts inside a fact sit under B-roll. Every piece ends after its last word has died away. Revision 3: closing line restored ('\u2026and follow for more science'), voice 1.08x to stay under 60s.",
+ "speed": 1.08,
+ "end_hold": 0.5,
  "sections": [
-  {"id": "hook",   "ranges": [[0.00, 4.85]]},
-  {"id": "intro",  "ranges": [[5.00, 8.27], [11.55, 14.45]]},
-  {"id": "honey",  "ranges": [[15.85, 25.15]]},
-  {"id": "octo",   "ranges": [[25.75, 29.77]]},
-  {"id": "sun",    "ranges": [[34.45, 38.30], [38.55, 42.35]]},
-  {"id": "venus",  "ranges": [[42.45, 47.90], [48.00, 52.35], [52.45, 55.95]]},
-  {"id": "banana", "ranges": [[58.44, 66.95]]},
-  {"id": "cta",    "ranges": [[68.75, 73.12]], "speech_end": 73.05}
+  {
+   "id": "hook",
+   "ranges": [
+    [
+     0.0,
+     4.85
+    ]
+   ]
+  },
+  {
+   "id": "intro",
+   "ranges": [
+    [
+     5.0,
+     8.27
+    ],
+    [
+     11.55,
+     14.45
+    ]
+   ]
+  },
+  {
+   "id": "honey",
+   "ranges": [
+    [
+     15.85,
+     25.15
+    ]
+   ]
+  },
+  {
+   "id": "octo",
+   "ranges": [
+    [
+     25.75,
+     29.77
+    ]
+   ]
+  },
+  {
+   "id": "sun",
+   "ranges": [
+    [
+     34.45,
+     38.3
+    ],
+    [
+     38.55,
+     42.35
+    ]
+   ]
+  },
+  {
+   "id": "venus",
+   "ranges": [
+    [
+     42.45,
+     47.9
+    ],
+    [
+     48.0,
+     52.35
+    ],
+    [
+     52.45,
+     55.95
+    ]
+   ]
+  },
+  {
+   "id": "banana",
+   "ranges": [
+    [
+     58.44,
+     66.95
+    ]
+   ]
+  },
+  {
+   "id": "cta",
+   "ranges": [
+    [
+     68.75,
+     71.12
+    ],
+    [
+     71.48,
+     75.32
+    ]
+   ],
+   "speech_end": 75.25
+  }
  ]
 }

@@ -1,10 +1,17 @@
-# Reel: "5 Facts That Sound Fake" (revision 2: new footage)
+# Reel: "5 Facts That Sound Fake" (revision 3)
 
 **Speaker:** Mohd Ashaar, Science Educator, The Cub
 **Source:** the revised take (`1Nz8orKV…` on Google Drive; 2160×3840 @ 60 fps, 75.3s, one take, no World Science Day angle), plus the B-roll from the shared folder: `Honey.mp4`, `Octopus.mp4`, `Sunlight.mp4`, `Venus.mp4`, `Banana.mp4` (4K)
 **Inspiration:** the Dhruv Rathee "Great Wall of China" Short: a visual change every few seconds, full-screen B-roll under the voice, big stat callouts, punchlines back on camera
-**Output:** `TheCub_ScienceFacts_Reel.mp4`: **59.6s** (brief: 55–60s), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
+**Output:** `TheCub_ScienceFacts_Reel.mp4`: **59.7s** (brief: 55–60s), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
 **Alt version:** `TheCub_ScienceFacts_Reel_NoMusic.mp4` has the same edit with voice and sound effects only.
+
+## Revision 3
+
+- **Closing line restored:** "…Comment the number below, and follow for more science." The 1–5 pills give way to a "FOLLOW / for more science" callout on "follow".
+- **Still under 60s (59.7s):** voice paced up to 1.08× (from 1.05×, pitch preserved), the pause inside the closing line trimmed, and a 0.5s hold before the logo. Every graphic is timed to its word, so the visuals follow the faster pace; a few exits were tightened (fact badges, honey cards, radiation → potassium) so no two graphics overlap.
+- **Richer cinematic grade:** more filmic contrast, a gentle teal-shadow / warm-highlight split tone, slightly lifted blacks and a deeper vignette on Ashaar (skin stays natural); a touch more contrast and vibrance on the B-roll, so honey, sky, space and bananas pop.
+- Re-transcribed the final mix: every line is complete.
 
 ## Revision 2
 
@@ -25,7 +32,7 @@
 | 0:31 | "Number four: on Venus, one full spin takes about 243 days, but one trip around the Sun takes only 225." | "#4" → solar system | Day vs. year bars that grow as he says each number |
 | 0:40 | "So a day on Venus is longer than its year." | Ashaar | **DAY > YEAR** stamp |
 | 0:44 | "Number five: bananas are slightly radioactive because they contain tiny amounts of natural potassium, and it is completely harmless." | "#5" → bananas | Radiation symbol → "K · Potassium" tile → ✓ "Completely harmless" |
-| 0:51 | "And which fact surprised you the most? Comment the number below." | Ashaar | "Comment your number" with 1–5 pills |
+| 0:51 | "And which fact surprised you the most? Comment the number below, and follow for more science." | Ashaar | "Comment your number" with 1–5 pills → "FOLLOW / for more science" |
 | 0:56 | — | Hold, then the logo reveal | — |
 
 ## What was cut (75.3s → 55.4s of speech)
@@ -33,10 +40,9 @@
 - "Today I am sharing the five facts that will surprise you" (now "…at The Cub, and number four will blow your mind").
 - "…and its blood uses copper instead of iron to carry oxygen" (octopus). The cut sits just before a quick "and" after "blood", so "blood" finishes cleanly.
 - "And last fact" (now "Number five").
-- "…and follow for more science". The logo reveal closes the reel.
 - Long pauses (up to 2.5s).
 
-Playback is 1.05× with pitch preserved. Every piece and every join was checked by re-transcription; the final mix reads word for word.
+Playback is 1.08× with pitch preserved (revision 3). Every piece and every join was checked by re-transcription; the final mix reads word for word.
 
 ## Editing (unchanged from revision 1)
 

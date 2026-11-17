@@ -142,7 +142,7 @@ def main():
         k = g["kind"]; t_in = g.get("t_in", g.get("t_day", 0))
         if k in ("number", "stamp"):
             place(sbuf, S.make("pop", pitch=1.0), t_in, -22)
-        elif k in ("pill_top", "pill_mid", "card", "blue_blood", "element", "chip"):
+        elif k in ("pill_top", "pill_mid", "card", "blue_blood", "element", "chip", "follow"):
             place(sbuf, S.make("pop", pitch=1.15), t_in, -28)
         elif k == "hearts":
             for i in range(3):
