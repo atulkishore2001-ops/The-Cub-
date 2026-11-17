@@ -1,0 +1,15 @@
+{
+ "_doc": "Break The Silence (Anjali Rawat). One 4K source with a hard camera cut at 13.4s (the taunts are a separate take). Each range is one shot; every cut is a straight cut with the framing alternating close / medium. Pauses are removed at the cuts; short natural pauses inside a range are kept. Every range ends ~0.25s after its last word has died away.",
+ "speed": 1.04,
+ "end_hold": 0.80,
+ "sections": [
+  {"id": "taunts",   "ranges": [[1.78, 3.13], [5.06, 10.44]]},
+  {"id": "familiar", "ranges": [[14.72, 18.75], [22.62, 25.00]]},
+  {"id": "imagine",  "ranges": [[30.66, 36.09]]},
+  {"id": "point",    "ranges": [[39.61, 45.41]]},
+  {"id": "signs",    "ranges": [[46.50, 49.53], [50.16, 57.85], [61.78, 65.23]]},
+  {"id": "balance",  "ranges": [[72.46, 79.14]]},
+  {"id": "ask",      "ranges": [[79.94, 87.22]]},
+  {"id": "listen",   "ranges": [[88.02, 94.80]], "speech_end": 94.55}
+ ]
+}
