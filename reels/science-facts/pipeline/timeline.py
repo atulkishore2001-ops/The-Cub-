@@ -21,22 +21,110 @@ BROLL = {
 }
 
 
-def build():
+import wave
+import numpy as np
+
+TARGET = EDL.get("target_total")              # revision 4: solve the speeds so the reel lands on this length
+PAUSE_SPEED = EDL.get("pause_speed", 1.0)     # pauses inside a line play this much faster (short breaths)
+SPEED_RANGE = EDL.get("speed_range", [SPEED, SPEED])
+
+
+def _envelope():
+    w = wave.open(f"{WORK}/shot1.wav"); sr = w.getframerate()
+    x = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+    hop = sr // 100
+    return 20 * np.log10(np.sqrt((x[:len(x) // hop * hop].reshape(-1, hop) ** 2).mean(1)) + 1e-9)
+
+
+DB = _envelope()
+
+
+def _segments(a, b):
+    """Split [a, b] into speech / pause runs (pauses: >= 0.15 s below -50 dB, keeping 0.06 s of air at each edge)."""
+    q = DB[int(a * 100):int(b * 100)] < -50
+    out, k, cur = [], 0, a
+    while k < len(q):
+        if q[k]:
+            j = k
+            while j < len(q) and q[j]:
+                j += 1
+            if j - k >= 15:
+                pa, pb = a + k / 100 + 0.06, a + j / 100 - 0.06
+                if pa > cur:
+                    out.append([cur, pa, "speech"])
+                out.append([pa, pb, "pause"]); cur = pb
+            k = j
+        else:
+            k += 1
+    if b > cur:
+        out.append([cur, b, "speech"])
+    return out
+
+
+def _words_in(a, b):
+    return sum(1 for w in json.load(open(f"{WORK}/shot1_words.json")) if a <= w["s"] < b)
+
+
+def _plan(R):
+    """Per-section speech speed = R / that section's speaking rate, clamped to SPEED_RANGE."""
+    sp = {}
+    for sec in EDL["sections"]:
+        dur = sum(b - a for a, b in sec["ranges"]); n = sum(_words_in(a, b) for a, b in sec["ranges"])
+        sp[sec["id"]] = min(max(R / (n / dur), SPEED_RANGE[0]), SPEED_RANGE[1]) if TARGET else SPEED
+    return sp
+
+
+def build(sp=None):
+    if sp is None:
+        sp = _solve()
     pieces, t = [], 0.0
     for si, sec in enumerate(EDL["sections"]):
         for ri, (a, b) in enumerate(sec["ranges"]):
             last = ri == len(sec["ranges"]) - 1
             b_audio = (sec["speech_end"] + 0.10) if (last and "speech_end" in sec) else b
-            dur = (b_audio - a) / SPEED
-            pieces.append(dict(sec=si, sid=sec["id"], ri=ri, a=a, b=b, b_audio=b_audio,
+            segs, o = [], 0.0
+            for sa, sb, kind in _segments(a, b_audio):
+                v = sp[sec["id"]] * (PAUSE_SPEED if kind == "pause" else 1.0)
+                segs.append([sa, sb, o, o + (sb - sa) / v, v]); o += (sb - sa) / v
+            dur = o
+            pieces.append(dict(sec=si, sid=sec["id"], ri=ri, a=a, b=b, b_audio=b_audio, speed=sp[sec["id"]], segs=segs,
                                n0=int(round(t * FPS)), n1=int(round((t + dur) * FPS)), t0=t, dur=dur))
             t += dur
     return pieces, t
 
 
+def _solve():
+    if not TARGET:
+        return _plan(None)
+    lo, hi = 1.5, 5.0
+    for _ in range(40):                                   # bisection on the target speaking rate
+        R = (lo + hi) / 2
+        _, t = build(_plan(R))
+        if t + EDL["end_hold"] + OUTRO > TARGET:
+            lo = R
+        else:
+            hi = R
+    return _plan(hi)
+
+
+def src_to_out(pieces, sid, local):
+    """Section-local source time (pieces of the section laid end to end) -> output time."""
+    ps = [p for p in pieces if p["sid"] == sid]
+    for p in ps:
+        L = p["b_audio"] - p["a"]
+        if local <= L + 1e-6 or p is ps[-1]:
+            s = p["a"] + min(local, L)
+            for sa, sb, oa, ob, v in p["segs"]:
+                if s <= sb + 1e-6:
+                    return p["t0"] + oa + max(0.0, s - sa) / v
+            return p["t0"] + p["dur"]
+        local -= L
+    return ps[-1]["t0"] + ps[-1]["dur"]
+
+
 def main():
     pieces, t_end = build()
-    t_reveal = t_end - 0.10 / SPEED + EDL["end_hold"]
+    t_reveal = t_end - 0.10 / pieces[-1]["speed"] + EDL["end_hold"]
     total = t_reveal + OUTRO
     t0 = {}
     for p in pieces:
@@ -47,7 +135,7 @@ def main():
     for sid, phrases in ct.items():
         # times in caption_times are section-local and continuous across that section's pieces
         for c in phrases:
-            ws = [dict(w=w["w"], s=t0[sid] + (w["s"] + CAP_OFF) / SPEED, e=t0[sid] + (w["e"] + CAP_OFF) / SPEED, sec=sid) for w in c["words"]]
+            ws = [dict(w=w["w"], s=src_to_out(pieces, sid, w["s"] + CAP_OFF), e=src_to_out(pieces, sid, w["e"] + CAP_OFF), sec=sid) for w in c["words"]]
             words += ws
             caps.append(dict(text=c["text"], sec=sid, s=max(ws[0]["s"] - 0.04, t0[sid]), e=ws[-1]["e"]))
     caps.sort(key=lambda c: c["s"]); words.sort(key=lambda w: w["s"])
@@ -122,6 +210,7 @@ def main():
               pieces=pieces, vis=vis, zones=zone, broll=BROLL, captions=caps, words=words, graphics=G)
     json.dump(tl, open(f"{WORK}/timeline.json", "w"), indent=1)
     print(f"speech {t_end:.2f}s, reveal at {t_reveal:.2f}s, total {total:.2f}s")
+    print("  speech speed per section:", {p['sid']: round(p['speed'], 3) for p in pieces})
     for v in vis:
         print(f"  {v['t0']:6.2f}-{v['t1']:6.2f} {v['layer']}")
     print("  speaker zooms:", [(round(z['t'], 2), z['zoom']) for z in zone])

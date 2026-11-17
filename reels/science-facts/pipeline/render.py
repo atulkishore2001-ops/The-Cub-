@@ -129,7 +129,12 @@ SP, BR = Pipe(), Pipe()
 def speaker_frame(n):
     t = n / FPS
     p = piece_at(t)
-    f = min(int(round((p["a"] + (t - p["t0"] + 0.5 / FPS) * SPEED) * 30)), SRC_LAST)
+    lt = t - p["t0"] + 0.5 / FPS
+    src = p["b_audio"]
+    for sa, sb, oa, ob, v in p["segs"]:                    # variable-speed time map (pauses faster than speech)
+        if lt < ob:
+            src = sa + max(0.0, lt - oa) * v; break
+    f = min(int(round(src * 30)), SRC_LAST)
     zm = zone_at(t)["zoom"]
     cw, ch, x0, y0 = crop_for(zm)
     cmd = lambda f0: ["ffmpeg", "-v", "error", "-ss", f"{f0 / 30:.4f}", "-i", SRC, "-vf",

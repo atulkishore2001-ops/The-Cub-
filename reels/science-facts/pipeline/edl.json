@@ -1,7 +1,7 @@
 {
- "_doc": "5 Science Facts (Mohd Ashaar), revised take (4K, 75.3s, no World Science Day angle). Audio pieces in order; cuts inside a fact sit under B-roll. Every piece ends after its last word has died away. Revision 3: closing line restored ('\u2026and follow for more science'), voice 1.08x to stay under 60s.",
+ "_doc": "5 Science Facts (Mohd Ashaar), revised take (4K, 75.3s, no World Science Day angle). Audio pieces in order; cuts inside a fact sit under B-roll. Every piece ends after its last word has died away. Revision 3: closing line restored ('\u2026and follow for more science'), voice 1.08x to stay under 60s. Revision 4: 50s total. Pauses inside a line play 3x faster; each section's speech speed is set from its speaking rate (slower lines sped up more, 1.12-1.30x), solved so the reel lands on 50s.",
  "speed": 1.08,
- "end_hold": 0.5,
+ "end_hold": 0.4,
  "sections": [
   {
    "id": "hook",
@@ -77,7 +77,7 @@
    "id": "banana",
    "ranges": [
     [
-     58.44,
+     58.5,
      66.95
     ]
    ]
@@ -96,5 +96,11 @@
    ],
    "speech_end": 75.25
   }
+ ],
+ "target_total": 50.0,
+ "pause_speed": 3.0,
+ "speed_range": [
+  1.12,
+  1.3
  ]
 }

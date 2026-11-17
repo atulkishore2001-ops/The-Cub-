@@ -1,10 +1,20 @@
-# Reel: "5 Facts That Sound Fake" (revision 3)
+# Reel: "5 Facts That Sound Fake" (revision 4: 50 seconds)
 
 **Speaker:** Mohd Ashaar, Science Educator, The Cub
 **Source:** the revised take (`1Nz8orKV…` on Google Drive; 2160×3840 @ 60 fps, 75.3s, one take, no World Science Day angle), plus the B-roll from the shared folder: `Honey.mp4`, `Octopus.mp4`, `Sunlight.mp4`, `Venus.mp4`, `Banana.mp4` (4K)
 **Inspiration:** the Dhruv Rathee "Great Wall of China" Short: a visual change every few seconds, full-screen B-roll under the voice, big stat callouts, punchlines back on camera
-**Output:** `TheCub_ScienceFacts_Reel.mp4`: **59.7s** (brief: 55–60s), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
+**Output:** `TheCub_ScienceFacts_Reel.mp4`: **49.9s** (revision 4; the 59.7s cut is in git history), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
 **Alt version:** `TheCub_ScienceFacts_Reel_NoMusic.mp4` has the same edit with voice and sound effects only.
+
+## Revision 4: 50 seconds, same edit
+
+Nothing removed and nothing reordered: same lines, graphics, B-roll, grade and logo reveal. Only the pace changed.
+
+- **The slow parts got the most speed:** each section's speed is set from how fast he speaks in it, so the slower lines get more help. Honey, Venus, bananas and the closing line play at 1.30×; the hook 1.27×, intro 1.24×, sunlight 1.19×, octopus (already quick) 1.14×. Pitch is preserved.
+- **Pauses inside a line play 3× faster**, so they become short breaths; no new cuts.
+- The picture follows the same time map, so lip sync stays exact, and every graphic and caption is still timed to its word.
+- "Number five" now starts 0.06s later so no trace of the cut word "fact" comes through at the faster speed. Both speech models read the final mix word for word.
+- 0.4s hold before the logo reveal (was 0.5s).
 
 ## Revision 3
 

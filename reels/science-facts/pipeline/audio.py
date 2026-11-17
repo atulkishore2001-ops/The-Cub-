@@ -45,20 +45,29 @@ def fade(x, ms=10):
 
 
 def voice():
+    """Each piece is rebuilt segment by segment on the timeline's time map (speech and pauses at their own speeds,
+    pitch preserved), every segment trimmed or padded to its exact planned length so picture and sound stay in sync."""
     src = {1: decode(f"{W}/shot1.mp4")}
     secs = []
     for p in TL["pieces"]:
-        x = fade(src[1][int(p["a"] * SR):int(p["b_audio"] * SR)])
+        chunks = []
+        for sa, sb, oa, ob, v in p["segs"]:
+            x = src[1][int(sa * SR):int(sb * SR)]
+            if len(x) < 64:
+                continue
+            y = ffilter(x, f"atempo={v:.4f}") if abs(v - 1) > 1e-3 else x.copy()
+            n = int(round((ob - oa) * SR))
+            y = y[:n] if len(y) >= n else np.pad(y, ((0, n - len(y)), (0, 0)))
+            chunks.append(fade(y, 3))
+        x = fade(np.concatenate(chunks))
         if not secs or secs[-1][0] != p["sec"]:
-            secs.append([p["sec"], [], []])
+            secs.append([p["sec"], []])
         secs[-1][1].append(x)
-        secs[-1][2].append(np.zeros((int(round(p.get("hold", 0.0) * SPEED * SR)), 2), np.float32))
     out = []
-    for _, parts, holds in secs:
+    for _, parts in secs:
         g = 10 ** (np.clip(VOICE_TARGET_DB - active_db(np.concatenate(parts)), -9, 20) / 20)
-        for x, h in zip(parts, holds):
-            out += [x * g, h]
-    return ffilter(np.concatenate(out), f"atempo={SPEED},{VOICE_CHAIN}")
+        out += [x * g for x in parts]
+    return ffilter(np.concatenate(out), VOICE_CHAIN)
 
 
 def music(total, resolve_at, end_at):
