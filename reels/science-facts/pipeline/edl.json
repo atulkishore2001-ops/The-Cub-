@@ -1,0 +1,15 @@
+{
+ "_doc": "5 Science Facts (Mohd Ashaar). One 1080x1920 take. Audio pieces in order; cuts inside a fact sit under B-roll, so they are invisible. Every piece ends after its last word has died away.",
+ "speed": 1.05,
+ "end_hold": 0.70,
+ "sections": [
+  {"id": "hook",   "ranges": [[1.30, 8.55]]},
+  {"id": "intro",  "ranges": [[17.45, 20.72], [24.00, 26.90]]},
+  {"id": "honey",  "ranges": [[28.25, 37.70]]},
+  {"id": "octo",   "ranges": [[38.10, 42.22]]},
+  {"id": "sun",    "ranges": [[46.90, 50.70], [50.95, 54.85]]},
+  {"id": "venus",  "ranges": [[54.97, 60.40], [60.50, 64.90], [64.95, 68.55]]},
+  {"id": "banana", "ranges": [[70.95, 79.75]]},
+  {"id": "cta",    "ranges": [[81.10, 85.62]], "speech_end": 85.55}
+ ]
+}
