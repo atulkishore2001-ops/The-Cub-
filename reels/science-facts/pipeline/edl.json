@@ -98,6 +98,9 @@
   }
  ],
  "target_total": 50.0,
+ "_doc_rev5": "Revision 5: speeds fixed at the revision-4 values (section_speed), except two lines that played too fast: the intro 'Hi, I am Mohd Ashaar, science educator at The Cub' (1.10x) and the honey fact's 'Honey found in ancient Egyptian tombs, thousands of years old, was reportedly still good to eat' (1.14x).",
+ "section_speed": {"hook": 1.269, "intro": 1.234, "honey": 1.3, "octo": 1.139, "sun": 1.183, "venus": 1.3, "banana": 1.3, "cta": 1.3},
+ "speed_overrides": [[5.00, 8.27, 1.10], [18.80, 25.15, 1.14]],
  "pause_speed": 3.0,
  "speed_range": [
   1.12,

@@ -1,10 +1,16 @@
-# Reel: "5 Facts That Sound Fake" (revision 4: 50 seconds)
+# Reel: "5 Facts That Sound Fake" (revision 5)
 
 **Speaker:** Mohd Ashaar, Science Educator, The Cub
 **Source:** the revised take (`1Nz8orKV…` on Google Drive; 2160×3840 @ 60 fps, 75.3s, one take, no World Science Day angle), plus the B-roll from the shared folder: `Honey.mp4`, `Octopus.mp4`, `Sunlight.mp4`, `Venus.mp4`, `Banana.mp4` (4K)
 **Inspiration:** the Dhruv Rathee "Great Wall of China" Short: a visual change every few seconds, full-screen B-roll under the voice, big stat callouts, punchlines back on camera
-**Output:** `TheCub_ScienceFacts_Reel.mp4`: **49.9s** (revision 4; the 59.7s cut is in git history), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
+**Output:** `TheCub_ScienceFacts_Reel.mp4`: **50.9s** (revision 5; earlier cuts are in git history), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
 **Alt version:** `TheCub_ScienceFacts_Reel_NoMusic.mp4` has the same edit with voice and sound effects only.
+
+## Revision 5: two lines slowed down
+
+- **Intro:** "Hi, I am Mohd Ashaar, science educator at The Cub" now plays at 1.10× (was 1.23×).
+- **Honey fact:** "Honey found in ancient Egyptian tombs, thousands of years old, was reportedly still good to eat" now plays at 1.14× (was 1.30×). "Number one: honey almost never spoils" stays at 1.30×.
+- Everything else keeps its revision-4 speed. The reel grows by one second, to 50.9s. Picture, captions and graphics follow the new timing. The final mix transcribes word for word.
 
 ## Revision 4: 50 seconds, same edit
 

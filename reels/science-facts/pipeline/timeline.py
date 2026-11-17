@@ -65,8 +65,13 @@ def _words_in(a, b):
     return sum(1 for w in json.load(open(f"{WORK}/shot1_words.json")) if a <= w["s"] < b)
 
 
+OVERRIDES = EDL.get("speed_overrides", [])   # [[src_a, src_b, speed], ...]: lines that should play slower / faster
+
+
 def _plan(R):
-    """Per-section speech speed = R / that section's speaking rate, clamped to SPEED_RANGE."""
+    """Per-section speech speed = R / that section's speaking rate, clamped to SPEED_RANGE (or fixed in section_speed)."""
+    if "section_speed" in EDL:
+        return dict(EDL["section_speed"])
     sp = {}
     for sec in EDL["sections"]:
         dur = sum(b - a for a, b in sec["ranges"]); n = sum(_words_in(a, b) for a, b in sec["ranges"])
@@ -83,9 +88,15 @@ def build(sp=None):
             last = ri == len(sec["ranges"]) - 1
             b_audio = (sec["speech_end"] + 0.10) if (last and "speech_end" in sec) else b
             segs, o = [], 0.0
-            for sa, sb, kind in _segments(a, b_audio):
-                v = sp[sec["id"]] * (PAUSE_SPEED if kind == "pause" else 1.0)
-                segs.append([sa, sb, o, o + (sb - sa) / v, v]); o += (sb - sa) / v
+            for sa0, sb0, kind in _segments(a, b_audio):
+                cuts = sorted({sa0, sb0} | {x for oa_, ob_, _ in OVERRIDES for x in (oa_, ob_) if sa0 < x < sb0})
+                for sa, sb in zip(cuts[:-1], cuts[1:]):            # split at override edges
+                    base = sp[sec["id"]]
+                    for oa_, ob_, ov in OVERRIDES:
+                        if oa_ <= (sa + sb) / 2 < ob_:
+                            base = ov
+                    v = base * (PAUSE_SPEED if kind == "pause" else 1.0)
+                    segs.append([sa, sb, o, o + (sb - sa) / v, v]); o += (sb - sa) / v
             dur = o
             pieces.append(dict(sec=si, sid=sec["id"], ri=ri, a=a, b=b, b_audio=b_audio, speed=sp[sec["id"]], segs=segs,
                                n0=int(round(t * FPS)), n1=int(round((t + dur) * FPS)), t0=t, dur=dur))
@@ -94,7 +105,7 @@ def build(sp=None):
 
 
 def _solve():
-    if not TARGET:
+    if not TARGET or "section_speed" in EDL:
         return _plan(None)
     lo, hi = 1.5, 5.0
     for _ in range(40):                                   # bisection on the target speaking rate
