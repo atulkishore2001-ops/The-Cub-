@@ -86,8 +86,7 @@ def main():
 
     # ---- motion graphics, each timed to its word
     G = []
-    G.append(dict(kind="pill_top", text="WORLD SCIENCE DAY · 10 NOV", t_in=0.15, t_out=w("hook", "fake") + 0.2))
-    G.append(dict(kind="title", t_in=w("hook", "these") - 0.1, t_out=w("hook", "true", at="e") + 0.4))
+    G.append(dict(kind="title", t_in=0.0, t_out=w("hook", "true", at="e") + 0.4))
     G.append(dict(kind="stamp", text="100% TRUE", color="green", t_in=w("hook", "100%") - 0.05, t_out=end["hook"] - 0.05))
     G.append(dict(kind="namecard", t_in=t0["intro"] + 0.15, t_out=t0["intro"] + 4.0))
     G.append(dict(kind="pill_mid", text="WAIT FOR #4", t_in=w("intro", "number") - 0.05, t_out=end["intro"] - 0.05))

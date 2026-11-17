@@ -14,13 +14,17 @@ BROLL_DIR = os.environ.get("BROLL_DIR", WORK)
 TL = json.load(open(f"{WORK}/timeline.json"))
 FPS, SPEED = TL["fps"], TL["speed"]
 OW, OH = 1080, 1920
-ZOOM = {"close": 1.42, "medium": 1.18}
+ZOOM = {"close": 1.60, "medium": 1.30}
 FACE_Y = {"close": 640, "medium": 700}
 PIECES, VIS, ZONES, BROLL = TL["pieces"], TL["vis"], TL["zones"], TL["broll"]
 NTOT, T_REVEAL = TL["total_frames"], TL["t_reveal"]
 SRC = f"{WORK}/shot1.mp4"
 SRC_LAST = int(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", SRC],
                                     capture_output=True, text=True).stdout) * 30) - 3
+_wh = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0", SRC],
+                     capture_output=True, text=True).stdout.strip().split(",")
+SW, SH = int(_wh[0]), int(_wh[1])          # speaker source size (4K in the revised take)
+SC = SW / OW
 _det = cv2.FaceDetectorYN.create(os.environ.get("MODELS", "models") + "/yunet.onnx", "", (OW, OH), 0.6, 0.3, 5000)
 
 
@@ -29,9 +33,9 @@ def face_anchor():
     if os.path.exists(path):
         return json.load(open(path))
     pts = []
-    for t in np.linspace(3, 85, 12):
-        raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.2f}", "-i", SRC, "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "bgr24", "-"],
-                             capture_output=True).stdout
+    for t in np.linspace(3, float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", SRC], capture_output=True, text=True).stdout) - 3, 12):
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.2f}", "-i", SRC, "-frames:v", "1", "-vf", f"scale={OW}:{OH}",
+                              "-f", "rawvideo", "-pix_fmt", "bgr24", "-"], capture_output=True).stdout
         _, f = _det.detect(np.frombuffer(raw, np.uint8).reshape(OH, OW, 3))
         if f is not None:
             r = max(f, key=lambda r: r[-1] * r[2]); pts.append([r[0] + r[2] / 2, r[1] + r[3] / 2])
@@ -53,10 +57,10 @@ def zone_at(t):
 
 
 def crop_for(zoom):
-    z = ZOOM[zoom]
-    cw, ch = OW / z, OH / z
-    x0 = min(max(ANCH["cx"] - cw / 2, 0), OW - cw)
-    y0 = min(max(ANCH["cy"] - FACE_Y[zoom] / z, 0), OH - ch)
+    z = ZOOM[zoom]                                   # crop window in source pixels (anchor is in 1080-wide units)
+    cw, ch = SW / z, SH / z
+    x0 = min(max(ANCH["cx"] * SC - cw / 2, 0), SW - cw)
+    y0 = min(max(ANCH["cy"] * SC - FACE_Y[zoom] / OH * ch, 0), SH - ch)
     ev = lambda v: int(round(v / 2) * 2)
     return ev(cw), ev(ch), ev(x0), ev(y0)
 
@@ -173,7 +177,7 @@ def render(n):
         elif k == "title":
             F.draw_title(base, t, g["t_in"], g["t_out"])
         elif k == "stamp":
-            F.pop(base, F.stamp_img(g["text"], g["color"]), t, g["t_in"], g["t_out"], F.W / 2, 1190, rot=-7)
+            F.pop(base, F.stamp_img(g["text"], g["color"]), t, g["t_in"], g["t_out"], F.W / 2, 1225, rot=-7)
         elif k == "pill_mid":
             F.pop(base, F.pill(g["text"], F.CHAR, size=40), t, g["t_in"], g["t_out"], F.W / 2, 1190)
         elif k == "number":

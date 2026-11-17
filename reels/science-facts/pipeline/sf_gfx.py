@@ -105,7 +105,7 @@ def title_img():
 
 
 def draw_title(frame, t, t_in, t_out):
-    rise(frame, title_img(), t, t_in, t_out, W / 2, 985)
+    rise(frame, title_img(), t, t_in, t_out, W / 2, 1085)
 
 
 @lru_cache(None)
@@ -144,7 +144,7 @@ def chip_img(n, text):
 def draw_number(frame, t, n, t_in, t_out):
     p, k = life(t, t_in, t_out, 0.32, 0.22)
     if p > 0 and k > 0:
-        place(frame, number_img(n), W / 2, 1010, k=min(1, p * 3) * k, scale=max(0.3, back_out(p)) * (1 + 0.15 * (1 - k)),
+        place(frame, number_img(n), W / 2, 1120, k=min(1, p * 3) * k, scale=max(0.3, back_out(p)) * (1 + 0.15 * (1 - k)),
               rot=-12 * (1 - ease_out(p)))
 
 
@@ -363,8 +363,8 @@ def draw_numbers(frame, t, t_in, t_out):
     if t < t_in or k <= 0:
         return
     q = clamp((t - t_in) / 0.3)
-    place(frame, cta_label(), W / 2, 930, k=ease_out(q) * k, dy=int(16 * (1 - ease_out(q))))
+    place(frame, cta_label(), W / 2, 1010, k=ease_out(q) * k, dy=int(16 * (1 - ease_out(q))))
     for i in range(5):
         p = clamp((t - t_in - 0.15 - 0.09 * i) / 0.25)
         if p > 0:
-            place(frame, num_pill(i + 1), W / 2 + (i - 2) * 172, 1100, k=min(1, p * 3) * k, scale=max(0.3, back_out(p)))
+            place(frame, num_pill(i + 1), W / 2 + (i - 2) * 172, 1170, k=min(1, p * 3) * k, scale=max(0.3, back_out(p)))

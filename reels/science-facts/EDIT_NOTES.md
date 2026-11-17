@@ -1,48 +1,48 @@
-# Reel: "5 Facts That Sound Fake" (World Science Day)
+# Reel: "5 Facts That Sound Fake" (revision 2: new footage)
 
 **Speaker:** Mohd Ashaar, Science Educator, The Cub
-**Source (Google Drive folder):** `Main Raw Footage.mp4` (1080×1920 @ 60 fps, 87.8s, one take) and B-roll `Honey.mp4`, `Octopus.mp4`, `Sunlight.mp4`, `Venus.mp4`, `Banana.mp4` (4K)
-**Inspiration:** the Dhruv Rathee "Great Wall of China" Short: a visual change every few seconds, full-screen B-roll under the voice, big stat callouts, a punchline back on camera
-**Output:** `TheCub_ScienceFacts_Reel.mp4`: **62.9s**, 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
+**Source:** the revised take (`1Nz8orKV…` on Google Drive; 2160×3840 @ 60 fps, 75.3s, one take, no World Science Day angle), plus the B-roll from the shared folder: `Honey.mp4`, `Octopus.mp4`, `Sunlight.mp4`, `Venus.mp4`, `Banana.mp4` (4K)
+**Inspiration:** the Dhruv Rathee "Great Wall of China" Short: a visual change every few seconds, full-screen B-roll under the voice, big stat callouts, punchlines back on camera
+**Output:** `TheCub_ScienceFacts_Reel.mp4`: **59.6s** (brief: 55–60s), 1080×1920, 30 fps, H.264 + AAC, −14 LUFS
 **Alt version:** `TheCub_ScienceFacts_Reel_NoMusic.mp4` has the same edit with voice and sound effects only.
+
+## Revision 2
+
+- Rebuilt on the new raw footage. It opens straight on "These are the five facts that sound fake, but they are 100% true." The World Science Day line and its "10 Nov" pill are gone.
+- 59.6s, within 55–60s. Steady pace: the picture changes every 1–8 seconds, and pauses are trimmed to a short breath.
+- The footage is now 4K, so Ashaar is framed closer (close 1.60×, medium 1.30×) and stays sharp. The title, "#1"–"#5" badges and the comment prompt were moved down so nothing covers his face.
 
 ## Structure
 
 | Time | Spoken | Picture | Motion graphics |
 |---|---|---|---|
-| 0:00 | "World Science Day is on 10 November, and these are the five facts that sound fake, but they are 100% true." | Ashaar (close) | "World Science Day · 10 Nov" pill → big **5 FACTS THAT SOUND *FAKE*** title → green **100% TRUE** stamp |
-| 0:07 | "Hi, I am Mohd Ashaar, science educator at The Cub, and number four will blow your mind." | Ashaar (medium → close) | Name card (same as the Anjali reel) → "WAIT FOR #4" |
-| 0:13 | "Number one: honey almost never spoils. Honey found in ancient Egyptian tombs, thousands of years old, was reportedly still good to eat." | "#1" on Ashaar → honey dripping from a dipper | Fact chip "FACT 1/5 · HONEY NEVER SPOILS"; cards: pyramid "Found in ancient Egyptian tombs" → hourglass "Thousands of years old" → ✓ "Still good to eat" |
-| 0:22 | "Number two: an octopus has three hearts and blue-coloured blood." | "#2" → octopus | Three beating hearts pop in one by one, "3 HEARTS", then a blue drop "BLUE BLOOD" |
-| 0:26 | "Number three: sunlight takes about eight minutes to reach Earth." | "#3" → sun time-lapse (crop centred on the sun) | Sun → Earth diagram: a light pulse travels the dashed path while a timer counts to 8:00, "≈ 8 MINUTES" |
-| 0:29 | "So we always see the sun as it was eight minutes ago." | back on Ashaar | **8 MINUTES AGO** stamp |
-| 0:33 | "Number four: on Venus, one full spin takes about 243 days, but one trip around the Sun takes only 225." | "#4" → solar system | "On Venus" bars grow as he says each number: 1 DAY = 243 Earth days, 1 YEAR = 225 Earth days |
-| 0:42 | "So a day on Venus is longer than its year." | Ashaar | **DAY > YEAR** stamp |
-| 0:46 | "Number five: bananas are slightly radioactive because they contain tiny amounts of natural potassium, and it is completely harmless." | "#5" → bananas | Spinning radiation symbol "SLIGHTLY RADIOACTIVE" → periodic-table tile "19 K Potassium" → ✓ "Completely harmless" |
-| 0:54 | "And which fact surprised you the most? Comment the number below." | Ashaar | "Comment your number" with 1–5 pills |
-| 0:59 | — | Hold, then the logo reveal ("Everyone Deserves To Be Seen") | — |
+| 0:00 | "These are the five facts that sound fake, but they are 100% true." | Ashaar (close) | Big **5 FACTS THAT SOUND *FAKE*** title from the first frame → green **100% TRUE** stamp |
+| 0:05 | "Hi, I am Mohd Ashaar, science educator at The Cub, and number four will blow your mind." | Ashaar (medium → close) | Name card (same as the Anjali reel) → "WAIT FOR #4" |
+| 0:10 | "Number one: honey almost never spoils. Honey found in ancient Egyptian tombs, thousands of years old, was reportedly still good to eat." | "#1" on Ashaar → honey dripping from a dipper | Fact chip; cards "Found in ancient Egyptian tombs" → "Thousands of years old" → ✓ "Still good to eat" |
+| 0:19 | "Number two: an octopus has three hearts and blue-coloured blood." | "#2" → octopus | Three beating hearts, "3 HEARTS", "BLUE BLOOD" |
+| 0:23 | "Number three: sunlight takes about eight minutes to reach Earth." | "#3" → sun time-lapse | Sun → Earth light-travel diagram with a timer to 8:00 |
+| 0:26 | "So we always see the sun as it was eight minutes ago." | Ashaar | **8 MINUTES AGO** stamp |
+| 0:31 | "Number four: on Venus, one full spin takes about 243 days, but one trip around the Sun takes only 225." | "#4" → solar system | Day vs. year bars that grow as he says each number |
+| 0:40 | "So a day on Venus is longer than its year." | Ashaar | **DAY > YEAR** stamp |
+| 0:44 | "Number five: bananas are slightly radioactive because they contain tiny amounts of natural potassium, and it is completely harmless." | "#5" → bananas | Radiation symbol → "K · Potassium" tile → ✓ "Completely harmless" |
+| 0:51 | "And which fact surprised you the most? Comment the number below." | Ashaar | "Comment your number" with 1–5 pills |
+| 0:56 | — | Hold, then the logo reveal | — |
 
-## Editing
+## What was cut (75.3s → 55.4s of speech)
 
-- **Cuts:** straight cuts only. On camera, the framing alternates close (1.42×) and medium (1.18×) at each cut, as in the Saisha and Anjali reels. Pauses inside a fact are trimmed under the B-roll, where the cut can't be seen.
-- **B-roll (only the sharp, relevant moments):** honey from the dipper drip; octopus 2–5s; sky time-lapse 45–48s (its sharpest stretch, sun in frame); solar system 8–17s (its crispest part); bananas 1–8s. Each is cropped to 9:16 from the 4K file (no upscaling), with a slow push-in and soft shading top and bottom so the chips and captions read.
-- **Captions:** same style as the earlier reels (Glacial Indifference Bold, white with a soft shadow, short phrases), word for word.
-- **Grade:** cinematic and natural on Ashaar (soft contrast, lifted blacks, warm highlights, cool shadows, light vignette); a lighter matching grade on the B-roll.
-- **Sound:** his voice cleaned and levelled; a light, upbeat music bed (the OSIT ad bed) well under the voice; soft pops on the badges, cards and stamps, whooshes into each B-roll, a chime on the logo.
+- "Today I am sharing the five facts that will surprise you" (now "…at The Cub, and number four will blow your mind").
+- "…and its blood uses copper instead of iron to carry oxygen" (octopus). The cut sits just before a quick "and" after "blood", so "blood" finishes cleanly.
+- "And last fact" (now "Number five").
+- "…and follow for more science". The logo reveal closes the reel.
+- Long pauses (up to 2.5s).
 
-## What was cut (87.8s → 58.5s of speech)
+Playback is 1.05× with pitch preserved. Every piece and every join was checked by re-transcription; the final mix reads word for word.
 
-- "UNESCO started this day in 2001 to show how science helps people connect countries and build a better future."
-- "Today I am sharing the five facts that will surprise you" (the line now reads "…at The Cub, and number four will blow your mind").
-- "…and its blood uses copper instead of iron to carry oxygen" (octopus).
-- "And last fact" (now just "Number five").
-- "…and follow for more science." The logo reveal closes the reel.
-- Long pauses.
+## Editing (unchanged from revision 1)
 
-Playback is 1.05× with pitch preserved. Every piece was checked by re-transcription; the final mix reads word for word.
+Straight cuts only, with the framing alternating close / medium on camera. B-roll uses only the sharp, relevant moments (honey drip, octopus, the sky time-lapse with the sun in frame, the solar system's crispest stretch, bananas), cropped to 9:16 from 4K with a slow push-in. Captions, name card, grade, light upbeat music bed, soft pops and whooshes, and the logo reveal are as in the previous reels.
 
 ## Please check
 
-1. **Speaker name:** captions and name card read "Mohd Ashaar" (as briefed); in the audio he says his full name.
-2. **"World Science Day is on 10 November":** the reel opens with this. If it goes out after 10 November, the opening can start at "These are five facts that sound fake…" instead (−2.3s).
-3. **Copper blood:** "blood uses copper instead of iron" was cut for length. It can come back (+4s) with a "Copper, not iron" callout.
+1. **Speaker name:** captions and name card read "Mohd Ashaar"; in the audio he says his full name.
+2. **Copper blood:** the "copper instead of iron" line was cut for length. It can come back (+4s, ≈63s total) with its own callout.
