@@ -1,20 +1,26 @@
-# Reel cover (1080x1920) in the house style of the earlier Cub covers: a still of Anjali (same skin retouch and
-# cinematic grade as the reel) with a white rounded card: "Break The" in charcoal DM Sans Bold and "Silence" in orange
-# Playfair Display Italic. Card and face sit inside the 3:4 profile-grid crop (y 240-1680).
+# Reel cover (1080x1920): a still of Anjali smiling softly (same skin retouch and cinematic grade as the reel) with the
+# reel's own "Break The Silence" title (Playfair Display Bold, white + orange, soft shadow, from bts_gfx). Title and face
+# sit inside the 3:4 profile-grid crop (y 240-1680).
 #   python cover.py <time in source seconds> out.jpg
 import os, sys, subprocess
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import render as R                 # retouch(), face_box(), grade() from the reel renderer
+import bts_gfx as B                # the reel's title
 
 FD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
 W, H = 1080, 1920
 ORANGE, CHAR, WHITE = (240, 133, 62), (43, 43, 43), (255, 255, 255)
-ZOOM, FACE_Y, CARD_CY = 1.45, 1060, 470
+ZOOM, FACE_Y, CARD_CY = 1.45, 1120, 520
 
 
 def frame(t):
-    a = R.ANCH[min(R.ANCH)]
+    # face position at this exact moment (she sits slightly differently in each take)
+    sm = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.3f}", "-i", R.SRC, "-frames:v", "1", "-vf", f"scale={W}:{H}",
+                         "-f", "rawvideo", "-pix_fmt", "bgr24", "-"], capture_output=True).stdout
+    _, f = R._det.detect(np.frombuffer(sm, np.uint8).reshape(H, W, 3))
+    r = max(f, key=lambda r: r[-1] * r[2])
+    a = dict(cx=float(r[0] + r[2] / 2) * R.SW / W, cy=float(r[1] + r[3] / 2) * R.SH / H)
     cw, ch = R.SW / ZOOM, R.SH / ZOOM
     x0 = min(max(a["cx"] - cw / 2, 0), R.SW - cw)
     y0 = min(max(a["cy"] - FACE_Y / H * ch, 0), R.SH - ch)
@@ -63,7 +69,7 @@ def card():
 def main():
     t, out = float(sys.argv[1]), sys.argv[2]
     img = frame(t)
-    c = card()
+    c = B.title_img()
     img.alpha_composite(c, ((W - c.width) // 2, CARD_CY - c.height // 2))
     img.convert("RGB").save(out, quality=93, subsampling=0)
     img.convert("RGB").crop((0, 240, 1080, 1680)).resize((540, 720), Image.LANCZOS).save(out.replace(".jpg", "_grid_preview.jpg"), quality=90)
