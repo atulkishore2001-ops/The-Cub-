@@ -69,7 +69,18 @@ def card():
 def main():
     t, out = float(sys.argv[1]), sys.argv[2]
     img = frame(t)
-    c = B.title_img()
+    # soft dark gradient behind the title so the orange "Silence" reads on the light wall
+    yy = np.arange(H, dtype=np.float32)
+    shade = np.clip(1 - np.abs(yy - CARD_CY) / 360, 0, 1) ** 1.2 * 0.58
+    a = np.asarray(img).astype(np.float32)
+    a[..., :3] *= (1 - shade)[:, None, None]
+    img = Image.fromarray(a.astype(np.uint8), "RGBA")
+    # the reel's title, with a tighter, darker shadow for the cover
+    f = ImageFont.truetype(f"{FD}/PlayfairDisplay-700.ttf", 168)
+    l1 = B.ink("Break The", f, WHITE); l2 = B.ink("Silence", f, ORANGE)
+    t = Image.new("RGBA", (max(l1.width, l2.width), l1.height + 26 + l2.height), (0, 0, 0, 0))
+    t.alpha_composite(l1, ((t.width - l1.width) // 2, 0)); t.alpha_composite(l2, ((t.width - l2.width) // 2, l1.height + 26))
+    c = B.G.shadowed(B.G.shadowed(t, blur=5, off=(0, 3), alpha=255, spread=4), blur=22, off=(0, 8), alpha=170, spread=2)
     img.alpha_composite(c, ((W - c.width) // 2, CARD_CY - c.height // 2))
     img.convert("RGB").save(out, quality=93, subsampling=0)
     img.convert("RGB").crop((0, 240, 1080, 1680)).resize((540, 720), Image.LANCZOS).save(out.replace(".jpg", "_grid_preview.jpg"), quality=90)

@@ -53,4 +53,4 @@ Playback is 1.04× with pitch preserved.
 
 ## Cover
 
-`cover_break_the_silence.jpg` (1080×1920): Anjali smiling softly at 1:36.55 of the source (just after "…that somebody can be you"), with the same skin retouch and cinematic grade as the reel, and the reel's own title, "Break The" in white and "Silence" in orange (Playfair Display Bold, soft shadow), above her head. Title and face sit inside the 3:4 profile-grid crop. Built by `pipeline/cover.py` (`python cover.py 96.55 out.jpg`).
+`cover_break_the_silence.jpg` (1080×1920): Anjali smiling softly at 1:36.55 of the source (just after "…that somebody can be you"), with the same skin retouch and cinematic grade as the reel, and the reel's own title, "Break The" in white and "Silence" in orange (Playfair Display Bold), above her head, on a soft dark band with a tight dark shadow so the orange "Silence" reads clearly on the light wall. Title and face sit inside the 3:4 profile-grid crop. Built by `pipeline/cover.py` (`python cover.py 96.55 out.jpg`).
