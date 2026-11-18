@@ -50,3 +50,7 @@ Playback is 1.04× with pitch preserved.
 
 1. **Taunt wording:** the highlights follow what she actually says ("Hey, you loser! You fatty dumbo! Why do you always cry? You crybaby?") rather than the brief's "stop crying".
 2. **Title placement:** the title comes right after the taunts (on "Sounds familiar?"), so the opening seconds are the taunts on their own. It can move to the very first frame if you prefer.
+
+## Cover
+
+`cover_break_the_silence.jpg` (1080×1920), in the house cover style: Anjali at 0:23 of the source (calm, direct gaze, mouth closed), with the same skin retouch and cinematic grade as the reel, and a white card reading "Break The *Silence*" (charcoal DM Sans Bold, orange Playfair Display Italic). The card and her face sit inside the 3:4 profile-grid crop. Built by `pipeline/cover.py`.
