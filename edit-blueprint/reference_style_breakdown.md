@@ -1,7 +1,7 @@
 # Reference Edit Breakdown — Engagement Highlight (RVGRAPHER style)
 
 Source: reference video (3:07, 1280×720, 25 fps, AAC stereo).
-Target: recreate this style on our footage, using **the first 1:46 of the same song**.
+Target: recreate this style on our footage, using **the first 1:47 of `music/song_full.mp3`** (file time 0:00–1:47, saved as `music/song_first_1m47s.mp3`). This file is the reference video's own audio track (verified identical, zero offset), so file time = reference video time.
 
 > **How to use this document:** it is a *style guide*, not a shot list. Our footage differs from the reference.
 > Apply the principles: pacing per song section, transitions, where slow motion goes, and how to pick the strongest moments.
@@ -21,7 +21,7 @@ Target: recreate this style on our footage, using **the first 1:46 of the same s
 |---|---|
 | Song starts in reference video at | **3.36 s** (3.4 s of black + small "A film by" credit before it) |
 | Tempo | **~99.4 BPM** → 1 beat = **0.60 s**, 1 bar (4 beats) = **2.41 s**, 2 bars = **4.8 s** |
-| Our usable window | song 0:00 → 1:46 = reference video 0:03.4 → 1:49.4 |
+| Our usable window | file 0:00 → 1:47 (music itself runs S 0 → 103.6; the first 3.36 s of the file is silence, used for the opening credit) |
 
 All times below are given as **song time** (S) with reference video time (V) in brackets. S = V − 3.36.
 
@@ -35,7 +35,7 @@ S 50–52.6  riser / build
 S 52.6     DROP → chorus, full energy (S 52.6 – 90)
 S 90–92    short pause / breath
 S 92–103   PEAK — loudest part of the song
-S 103–106  starts settling into the next verse  ← our cut-off at 1:46
+S 102–103.6 peak winds down; energy settles right at our cut-off (file 1:47 = S 103.6)
 ```
 
 ## 2. Shot-length rules (what the editor did)
@@ -97,7 +97,7 @@ These come from visual inspection; the edit doesn't use speed ramps.
 | 79–88.5 | 82.3–91.8 | 2 × 2 bars | Gift-tray detail shots, slow slides | Decor/gift/detail B-roll |
 | 88.5–92 | 91.8–95.3 | ~1.5 bars | Families hugging | Emotional family moments |
 | **92–103 PEAK** | 95.3–106.4 | 9 × 2 beats | **Hard cuts every 1.2 s**: ritual hands, tilak, garland, close-ups alternating with mediums | Fast ritual montage |
-| 103–106 | 106.4–109.4 | — | Settles into the next ritual shot | End: hold a strong couple shot + fade to black |
+| 100–103.6 | 103.4–107.0 | — | Peak winds down | End: hold a strong couple shot; audio fade from file 1:45.5 → 1:47, picture fade to black |
 
 ## 6. Look / grade
 
@@ -109,7 +109,7 @@ These come from visual inspection; the edit doesn't use speed ramps.
 
 ## 7. Ending (reference, beyond our window)
 
-The reference ends with the group photo and then returns to the romantic red-light couple portrait for about 4 s, with a slow fade to black. Because our song cut-off at 1:46 lands mid-phrase, we should **fade the music out over the last ~2–3 s** (S 103.5–106) and end on a hero couple shot with a fade to black.
+The reference ends with the group photo and then returns to the romantic red-light couple portrait for about 4 s, with a slow fade to black. Our cut-off at file 1:47 lands just as the peak section ends, so a **short ~1.5 s music fade (file 1:45.5 → 1:47)** and end on a hero couple shot with a fade to black.
 
 ## 8. What I need from you to build the edit
 
