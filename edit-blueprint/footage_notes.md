@@ -1,0 +1,25 @@
+# Clip notes (in = source seconds)
+Footage: normal profile (Rec709, not log), slightly flat/cool; mostly vertical 4K 59.94p HEVC 10-bit.
+- Bride 1 (60p, 7.0s): door peek reveal. 1.6–3.2 face peeks in then pulls back to medium; 3.0–4.6 medium standing. Indoor home, cool white wall.
+- Bride 2 (60p, 7.3s): back of bride, long curls + floral hair clip, walking to bulb mirror. 1.0–4.2 hair/back with mirror bokeh (moody). 
+- Bride 3 (60p, 5.4s): tilt up from lehenga+mehndi hands (0–0.8) to face looking down (1.0–1.9), smile 2.2–3.6. Dark glass-panel bg (best look).
+- Bride face reveal (60p, 4.65s): back→turns head over shoulder→smiles at camera 1.0–3.4. HERO bride shot.
+- Bride touch jhumka (60p, 4.4s): tilt up lehenga 0–1.5, hands to earring looking up 2.0–4.0.
+- Bride round turn (60p, 7.4s): high-angle spin, lehenga flare 2.4–3.3 and 4.4–5.0; ends smile 6.5–7.2.
+- Bride turn (60p, 12.3s): standing 0–6.5 (static), turn 6.6–8.5 hair swing, back 8.4–9.5 facing.
+- Bride offers ring (30p, 17.7s): wide stage, golden shell backdrop, cold pyro + fog. Photographer hands/cameras bottom-left 0–11 -> crop up. Clean 12.0–15.5 sparklers full.
+- Cake cut shot (25p, 27.6s): wide/medium, green-gold stage. 10–12 feeding, 16–24 closer cut + laughs, 24 groom eats.
+- Cloud entry 2 (60p, 14.8s): couple dancing in fog + cold pyro. Twirl 2.9–3.9 (hand over head), 10.5–11.8. Avoid 12.4+ (person runs through).
+- Bride cousins celebration (60p LANDSCAPE, 13.2s): DJ floor coloured lights, girls dancing 0–4, boys hug/dance 7–11. Energy/peak filler.
+- best shots combination (60p LANDSCAPE, 26.4s, h264): wide venue; groom kneels with roses to bride 9–14, crowd celebration 16–25.
+- Couple Cloud Entry shot (60p, 42s): mostly crew/setup — skip 0–17, 27–35. Couple hand-in-hand wide 18–26; couple standing in dry-ice fog 37–42 (crop off sofa bottom-right).
+- Couple Dance Shot (60p, 99s, DJ floor RGB lights): bride twirl under arm 8.5–9.8, 10.5–12.0; dupatta swirl 15.5–17.5; laughing hand-hold close 31–34; embrace 69.0–70.5; HERO big lehenga twirl 72.5–74.5 & 75.0–77.0; groom holds bride from behind 82.5–83.6; 86.5–88.0. Avoid 81–82, 85, 89 (people/camera in fg).
+- Couple dance 2 (60p, 60s, plain wall + RGB): weaker bg. Close couple 13.0–14.5; groom shy hand-to-face 17.0–17.6; groom laughing 30.0–31.0. Low priority.
+- Couple on stage (25p, 16s): photographers/stands in fg; stage + "A&V" monogram. 8.4–9.8 couple medium (light stand left edge -> crop right). Low priority / photo-burst.
+- Face reveal 2 and turn (60p, 14s): HERO — hands cover face 0–1.0, reveal + laugh 1.0–2.5 (!!), turn & dupatta swirl 5.5–7.5, 9.0–10.5 smile.
+- Family Witnessing Engagement (25p, 24.5s): ladies cheering/phones 0–4 (guest reaction), stage ring exchange wide 6–10.8 w/ photographers. Guests 13–20 (filler).
+- Groom offers ring (25p, 33s): HERO — groom kneels, cold pyro fountain + fog, "A&V" monogram. Clean 3.6–11 (pyro full, kneel), 15.6–22 (pyro, fg heads bottom -> crop up).
+- Last Shot (Cheerup scene) (60p, 5.5s): wide crowd circle cheering, arms up 3.0–4.5. CLIENT-NAMED LAST SHOT -> end of film.
+- Family enjoyment 1 (60p, 25s): family dancing w/ groom, crowded/handheld. Groom + aunts 10.0–12.5; arms up 5.5–6.0. Peak filler.
+- Father dancing (60p, 39s): energetic family dance, wide lens. Fathers arms-up 0–2.5; groom in crowd 8.0–9.5; HERO candid: couple dancing together close 22.5–24.5 (bride smiling). Avoid 30+ (selfie/DJ).
+- Dance 1/2/3, Kids Dance, Sister dance (LANDSCAPE 60p, guest performances on RGB floor, wide/far): energy fillers for chorus/peak only. Dance 2 21–30 mixed group w/ men; Dance 3 ladies 13–14; Kids 13–14; Sister solo red 20–21.
