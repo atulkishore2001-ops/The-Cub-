@@ -73,6 +73,22 @@ These come from visual inspection; the edit doesn't use speed ramps.
 - Camera: slow gimbal/slider push-ins and lateral slides on decor and gift details, rack-focus foreground decor, low-angle tracking of feet. No whip-pans or speed ramps.
 - **Detail → medium → wide** sequencing per subject (e.g., hand on necklace → seated full → close portrait).
 
+### Speed policy for our edit (decided per clip after reviewing the footage)
+Nearly everything gets some slow-motion feel; only the degree varies. Speeds below are relative to real time.
+
+| Tier | Speed | Use for |
+|---|---|---|
+| Hero slow | 25–40% | Twirls, lehenga or dupatta swirls, walking feet, hair flips, petals or confetti in the air, the ring slipping on |
+| Dreamy | 40–60% | Bride and groom portraits, couple romance (forehead touch, hands, glances), slow decor push-ins |
+| Gentle | 60–80% | Candid laughs, couple interactions with dialogue-like motion, guest reactions, gift trays carried in |
+| Near-real | 80–100% | Rituals with fast hand action (tilak, garland, sweets), hugs, the 2-beat peak montage, group photos |
+
+Rules:
+- The speed a clip can go depends on its **frame rate**. 50p can go to 50% cleanly, 60p to 42%, 100/120p to 20–25%. A clip shot at 25/30p stays at 100%, or 80% at the slowest (with frame blending), so it never stutters.
+- Pace builds with the song: the intro and breakdown run in the slowest tiers, the chorus mixes hero-slow moments with gentle ones, and the peak runs near-real so the 1.2 s cuts carry energy.
+- Each clip runs at one constant speed. The reference has no speed ramps, so we won't add any.
+- Speech and lip movement (talking, laughing loudly) look odd below about 60%, so those clips stay in the gentle tier or faster.
+
 ## 5. Story structure mapped to the song (our 1:47 template)
 
 | Song time | Ref V time | Beat-plan | Content in reference | Slot for our footage |
