@@ -159,24 +159,44 @@ def main():
 
     # ---- assembly with transitions
     XF = {'dissolve': 'fade', 'fadein': 'fade', 'leak': 'fade', 'bokeh': 'fade', 'flash': 'fadewhite', 'dipblack': 'fadeblack', 'cut': 'fade'}
-    inputs = []; [inputs.extend(['-i', f]) for f in files]
+    # Stage 1: join shots in small batches (a single 41-input 4K graph runs out of memory),
+    # each batch trimmed to frame-exact boundaries, then stream-copied together into base.mp4
+    base = os.path.join(a.work, 'base.mp4')
+    if not os.path.exists(base):
+        n = len(files); fr = lambda t: round(t * FPS) / FPS
+        start_abs = [0.0] + [cuts[j] - ds[j] / 2 for j in range(1, n)]
+        bounds = list(range(0, n, 7)) + [n]; parts = []
+        for ci in range(len(bounds) - 1):
+            a0, b0 = bounds[ci], bounds[ci + 1]
+            j0, j1 = max(0, a0 - 1), min(n - 1, b0)          # include neighbours for the transitions at the edges
+            T0 = start_abs[j0]; idx = list(range(j0, j1 + 1))
+            cin = []; [cin.extend(['-i', files[j]]) for j in idx]
+            cg = [f'[{k}:v]settb=AVTB,fps={FPS},format=yuv420p10le,tpad=stop_mode=clone:stop_duration=0.5[c{k}]' for k in range(len(idx))]
+            prv = 'c0'
+            for k in range(1, len(idx)):
+                j = idx[k]; d = ds[j]
+                cg.append(f'[{prv}][c{k}]xfade=transition={XF[shots[j].get("tr","cut")]}:duration={d:.3f}:offset={cuts[j]-d/2-T0:.3f}[y{k}]'); prv = f'y{k}'
+            Ba = fr(cuts[a0]) if a0 > 0 else 0.0; Bb = fr(cuts[b0]) if b0 < n else edl['end']
+            cg.append(f'[{prv}]trim=start={Ba-T0:.3f}:end={Bb-T0:.3f},setpts=PTS-STARTPTS,format=yuv420p10le[cout]')
+            part = os.path.join(a.work, f'part_{ci:02d}.mp4'); parts.append(part)
+            sh(['ffmpeg', '-v', 'error', *cin, '-filter_complex', ';'.join(cg), '-map', '[cout]', *enc, '-y', part])
+            print(f'batch {ci} ({a0}-{b0-1}) ok', flush=True)
+        lst = os.path.join(a.work, 'parts.txt'); open(lst, 'w').write(''.join(f"file '{os.path.abspath(p)}'\n" for p in parts))
+        sh(['ffmpeg', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', '-y', base])
+    files_n = 1
+    inputs = ['-i', base]
     fx = []
     for i, s in enumerate(shots):
         if s.get('tr') in ('leak', 'bokeh'):
             dur = 1.1; seq = make_fx(s['tr'], a.work, W, H, dur)
-            fx.append((len(files) + len(fx), s['at'] - dur / 2, seq))
+            fx.append((files_n + len(fx), s['at'] - dur / 2, seq))
     for idx, t0, seq in fx: inputs.extend(['-itsoffset', f'{t0:.3f}', '-framerate', str(FPS), '-i', seq])
     titles = os.path.join(REPO, 'assets', 'titles')
-    ti = len(files) + len(fx)
+    ti = files_n + len(fx)
     inputs.extend(['-loop', '1', '-framerate', str(FPS), '-t', str(edl['end']), '-i', os.path.join(titles, 'credit.png'),
                    '-loop', '1', '-framerate', str(FPS), '-t', str(edl['end']), '-i', os.path.join(titles, 'title.png'),
                    '-ss', '0', '-t', str(edl['end']), '-i', os.path.join(REPO, 'music', 'song_full.mp3')])
-    # tpad: clone a few extra frames on every shot so a tiny length shortfall can never stall the xfade chain
-    g = [f'[{i}:v]settb=AVTB,fps={FPS},format=yuv420p10le,tpad=stop_mode=clone:stop_duration=0.5[s{i}]' for i in range(len(files))]
-    prev = 's0'
-    for i in range(1, len(files)):
-        s = shots[i]; d = ds[i]; off = cuts[i] - d / 2
-        g.append(f'[{prev}][s{i}]xfade=transition={XF[s.get("tr","cut")]}:duration={d:.3f}:offset={off:.3f}[x{i}]'); prev = f'x{i}'
+    g = [f'[0:v]settb=AVTB,fps={FPS},format=yuv420p10le[s0]']; prev = 's0'
     g.append(f'[{prev}]format=yuv420p10le[base0]'); prev = 'base0'
     for k, (idx, t0, seq) in enumerate(fx):
         g.append(f'[{idx}:v]format=rgba[fx{k}];[{prev}][fx{k}]overlay=eof_action=pass:format=auto[fxo{k}]'); prev = f'fxo{k}'
@@ -190,7 +210,7 @@ def main():
              f'[fin][cr]overlay=enable=\'lt(t,3.2)\'[t1];[t1][tt]overlay=enable=\'between(t,4,8.4)\',fade=out:st={edl["end"]-1.3}:d=1.3,format=yuv420p[vout]')
     g.append(f'[{ti+2}:a]afade=out:st={edl["end"]-1.6}:d=1.6[aout]')
     fin_enc = (['-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20'] if a.res == 'draft'
-               else ['-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-profile:v', 'high', '-level', '5.2'])
+               else ['-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-profile:v', 'high', '-level', '5.2', '-threads', '4'])
     cmd = ['ffmpeg', '-v', 'error', *inputs, '-filter_complex', ';'.join(g), '-map', '[vout]', '-map', '[aout]',
            *fin_enc, '-pix_fmt', 'yuv420p', '-r', str(FPS), '-c:a', 'aac', '-b:a', '320k', '-t', str(edl['end']),
            '-movflags', '+faststart', '-y', a.out]
