@@ -3,6 +3,18 @@
 Source: reference video (3:07, 1280×720, 25 fps, AAC stereo).
 Target: recreate this style on our footage, using **the first 1:46 of the same song**.
 
+> **How to use this document:** it is a *style guide*, not a shot list. Our footage differs from the reference.
+> Apply the principles: pacing per song section, transitions, where slow motion goes, and how to pick the strongest moments.
+> Section 5's content column shows what the reference used; we fill each slot with whatever in our footage plays that role best.
+
+### Selection principles (picking from raw footage)
+- Take only the **best 1–3 s of each clip**: the peak of a movement (the smile landing, the twirl at full spread, a hand reaching the face), never the setup or the end of it.
+- Prefer **clean, steady and in-focus moments**. Skip shaky starts, focus hunting and people looking at the camera awkwardly.
+- **Slow-motion clips** go on the emotional moments and on the drop. Real-speed clips go to documentary and ritual moments.
+- Each moment gets **detail → medium → wide** variety; never cut between two near-identical framings.
+- **Hold longer (2 bars) on emotion and cut faster (2 beats) on energy.** Let quiet parts of the song breathe.
+- Movement inside the frame should flow across a cut, and hard cuts land where an action peaks on the beat.
+
 ## 1. Music facts (measured)
 
 | Item | Value |
