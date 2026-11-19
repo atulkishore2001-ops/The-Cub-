@@ -133,3 +133,17 @@ The reference ends with the group photo and then returns to the romantic red-lig
 - The song file, or the song name so we can confirm it's the same track.
 - Studio name for the opening credit and watermark, and the couple's names if there's no name board.
 - Output spec: 4K or 1080p, 16:9, 25 fps (default: 1080p 25 fps to match the reference).
+
+## 9. Agreed output spec (from client)
+
+- **Format: 9:16 vertical reel, 4K (2160×3840), 25 fps, MP4 (H.264/H.265 high bitrate).** One deliverable, no project file.
+- **Duration:** file 0:00–1:47 of `music/song_full.mp3`.
+- **Transitions:** same as the reference: mostly dissolves, white flashes on big hits, a few light-leak/bokeh wipes, the photo-burst before the drop.
+- **Colour:** footage is mixed or unknown. Detect LOG vs normal per clip, convert LOG to Rec.709, then apply one consistent warm, soft-contrast grade.
+
+### Vertical reframing rules
+- Landscape clips are reframed per clip with a **subject-tracked 9:16 crop**: faces and hands are kept in the upper-middle third, and the crop pans slowly with the subject where needed.
+- Wide decor and venue shots that lose too much in a crop either get a slow vertical/lateral pan across the frame or are swapped for a tighter alternative.
+- Vertical-shot clips (if any) are used at full resolution and preferred for hero moments.
+- Sharpness: a 9:16 crop from 4K landscape is about 1215×2160 of real pixels, so a 2160×3840 output from those clips is upscaled about 1.8×. Native vertical or 6K/8K clips stay fully sharp.
+- The photo-burst montage uses vertical insets on the off-white background.
