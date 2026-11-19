@@ -65,14 +65,26 @@ def render_shot(i, shot, nxt_at, nxt_d, raw, work, W, H, grade, enc):
     path = os.path.join(raw, shot['src']); w, h, dur = probe(path)
     sp = shot['speed']; start = max(0.0, shot['in'] - d_in / 2 * sp); span = L * sp
     start = min(start, max(0.0, dur - span - 0.05))
-    if w > h:   # landscape -> 9:16 crop on the people
+    if w > h and shot.get('track'):   # moving camera: crop follows the couple through the shot
+        n = max(3, int(span / 0.35) + 1)
+        ts = [start + span * k / (n - 1) for k in range(n)]
+        cs = [auto_cx(path, t, w, h) for t in ts]
+        cs = [float(np.mean(cs[max(0, k - 1):k + 2])) for k in range(n)]   # smooth
+        shot['_cx'] = [round(c, 3) for c in cs]
+        to = [(t - start) / sp for t in ts]
+        expr = f'{cs[-1]}'
+        for k in range(n - 2, -1, -1):
+            expr = f'if(lt(t,{to[k+1]:.3f}),{cs[k]}+({cs[k+1]}-{cs[k]})*(t-{to[k]:.3f})/{to[k+1]-to[k]:.3f},{expr})'
+        crop = f"crop=ih*9/16:ih:x='clip(({expr})*iw-ih*9/32,0,iw-ih*9/16)':y=0"
+    elif w > h:   # landscape -> 9:16 crop on the people
         cx = shot.get('cx') or auto_cx(path, start + span / 2, w, h); shot['_cx'] = round(cx, 3)
         crop = f"crop=ih*9/16:ih:x='clip({cx}*iw-ih*9/32,0,iw-ih*9/16)':y=0"
     else:
         z = shot.get('zoom', 1.0); cx = shot.get('cx', 0.5); cy = shot.get('cy', 0.5)
         crop = (f"crop=iw/{z}:ih/{z}:x='clip({cx}*iw-iw/{z}/2,0,iw-iw/{z})':y='clip({cy}*ih-ih/{z}/2,0,ih-ih/{z})'"
                 if z > 1.0 else 'null')
-    vf = (f"setpts=(PTS-STARTPTS)/{sp},fps={FPS},{crop},scale={W}:{H}:flags=lanczos,setsar=1,"
+    pre = 'framerate=fps=75,' if shot.get('interp') else ''   # 25p source slowed down: blend in-between frames
+    vf = (f"{pre}setpts=(PTS-STARTPTS)/{sp},fps={FPS},{crop},scale={W}:{H}:flags=lanczos,setsar=1,"
           f"{grade},format=yuv420p10le,trim=duration={L:.3f}")
     sh(['ffmpeg', '-v', 'error', '-ss', f'{start:.3f}', '-t', f'{span + 0.3:.3f}', '-i', path,
         '-vf', vf, '-an', *enc, '-y', out])
@@ -170,7 +182,7 @@ def main():
         g.append(f'[{idx}:v]format=rgba[fx{k}];[{prev}][fx{k}]overlay=eof_action=pass:format=auto[fxo{k}]'); prev = f'fxo{k}'
     # finish: warm bloom (computed at 1/4 res), vignette, fine grain
     g.append(f'[{prev}]format=gbrp,split[fb][fh];[fh]scale={W//4}:{H//4},curves=master=\'0/0 0.70/0 1/1\',gblur=sigma={max(2,W//270)},'
-             f'colorchannelmixer=rr=1:gg=0.6:bb=0.38,scale={W}:{H}[fgl];[fb][fgl]blend=all_mode=screen:all_opacity=0.35,'
+             f'colorchannelmixer=rr=1:gg=0.78:bb=0.62,scale={W}:{H}[fgl];[fb][fgl]blend=all_mode=screen:all_opacity=0.35,'
              f'vignette=angle=PI/4.5:mode=forward,noise=alls=5:allf=t+u,format=yuva420p[fin]')
     # titles: credit 0.4-3.0 on black, couple title 4.0-8.3 ; fade in/out via alpha
     g.append(f'[{ti}:v]scale={W}:{H},format=rgba,fade=in:st=0.5:d=0.7:alpha=1,fade=out:st=2.4:d=0.6:alpha=1[cr];'

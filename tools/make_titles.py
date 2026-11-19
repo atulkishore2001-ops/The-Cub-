@@ -20,8 +20,8 @@ def var(name, wght, size):
 
 # 1) "A FILM BY / ATUL KISHORE" — thin wide-tracked sans on black (reference opening)
 im = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-tracked(d, 'A FILM BY', var('Montserrat[wght].ttf', 300, 46), H//2 - 95, (200, 200, 200, 255), 10)
-tracked(d, 'ATUL KISHORE', var('Montserrat[wght].ttf', 300, 104), H//2 - 10, (235, 235, 235, 255), 16)
+tracked(d, 'A FILM BY', var('Montserrat[wght].ttf', 400, 64), H//2 - 130, (200, 200, 200, 255), 10)
+tracked(d, 'ATUL KISHORE', var('Montserrat[wght].ttf', 400, 132), H//2 - 20, (235, 235, 235, 255), 16)
 im.save(os.path.join(out, 'credit.png'))
 
 # 2) "Engagement Of" gold script + "ANKITA & VANSH" white serif caps (reference thumbnail)
