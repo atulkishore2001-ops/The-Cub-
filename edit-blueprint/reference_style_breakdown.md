@@ -156,3 +156,12 @@ The reference ends with the group photo and then returns to the romantic red-lig
   - Rich but controlled reds, golds and florals; slightly desaturated, teal-leaning cool tones in the shadows for colour separation.
   - Subtle halation/bloom on practical lights and highlights, fine film grain, a gentle vignette.
   - One consistent look across all scenes. Indoor stage, the red-light portrait set and the outdoor night shots are matched to it first, then graded.
+
+### Landscape → 9:16 reframing rule (client requirement)
+The couple, or whoever performs the main action (and the people directly involved), must stay in frame.
+Tool: `tools/reframe_916.py`. It uses pose detection to find heads and hands, plus held objects that overlap the main people (plate, idol, phone, ring box, cake).
+1. If all key subjects fit in 9:16, centre on them. If they are slightly too wide, trim the padding around the heads.
+2. If they still don't fit, do a slow pan across the action, from the initiator to the receiver, over the shot's duration.
+3. If a pan would feel wrong for that moment, use a different moment or clip.
+4. Track the crop through the clip and smooth it, so there's no jitter.
+5. Every reframed shot is checked by eye on a contact sheet before render.
