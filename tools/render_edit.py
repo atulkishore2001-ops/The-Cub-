@@ -79,7 +79,7 @@ def render_shot(i, shot, nxt_at, nxt_d, raw, work, W, H, grade, enc):
     return out
 
 def render_burst(shot, nxt_at, edl, raw, work, W, H, grade, enc):
-    out = os.path.join(work, 'burst.mp4'); L = nxt_at - shot['at'] + 0.02; shot['_L'] = L
+    out = os.path.join(work, 'burst.mp4'); L = nxt_at - shot['at'] + 0.04; shot['_L'] = L
     if os.path.exists(out): return out
     bdir = os.path.join(work, 'burst'); os.makedirs(bdir, exist_ok=True)
     rnd = random.Random(7); stills = []
@@ -115,7 +115,7 @@ def make_fx(kind, work, W, H, dur):
         rgb = np.zeros((h, w, 3), np.float32)
         if kind == 'leak':   # warm red-orange wash sweeping left -> right
             cx = -0.3 * w + 1.6 * w * t
-            for (ox, oy, r, col) in [(0, .35, .55, (1, .35, .08)), (.15, .7, .45, (1, .6, .2)), (-.1, .1, .4, (.9, .15, .05))]:
+            for (ox, oy, r, col) in [(0, .35, .32, (1, .35, .08)), (.15, .7, .26, (1, .6, .2)), (-.1, .1, .24, (.9, .15, .05))]:
                 g = np.exp(-(((xx - cx - ox * w) / (r * w)) ** 2 + ((yy - oy * h) / (r * h * 1.4)) ** 2))
                 rgb += g[..., None] * np.array(col, np.float32)
         else:                # big soft white circles drifting upward
@@ -123,7 +123,7 @@ def make_fx(kind, work, W, H, dur):
                 cyb = by - t * h * 0.25
                 g = np.clip(1.2 - np.sqrt((xx - bx) ** 2 + (yy - cyb) ** 2) / r, 0, 1) ** 1.5
                 rgb += g[..., None] * a * np.array((1, .95, .85), np.float32)
-        rgb = np.clip(rgb * env, 0, 1); alpha = np.clip(rgb.max(axis=2) * 0.95, 0, 1)
+        rgb = np.clip(rgb * env, 0, 1); alpha = np.clip(rgb.max(axis=2) * (0.55 if kind == 'leak' else 0.8), 0, 1)
         im = Image.fromarray((np.dstack([rgb, alpha]) * 255).astype(np.uint8), 'RGBA')
         im.filter(ImageFilter.GaussianBlur(2)).resize((W, H), Image.BICUBIC).save(os.path.join(d, f'f_{f:03d}.png'))
     return os.path.join(d, 'f_%03d.png')
@@ -159,7 +159,8 @@ def main():
     inputs.extend(['-loop', '1', '-framerate', str(FPS), '-t', str(edl['end']), '-i', os.path.join(titles, 'credit.png'),
                    '-loop', '1', '-framerate', str(FPS), '-t', str(edl['end']), '-i', os.path.join(titles, 'title.png'),
                    '-ss', '0', '-t', str(edl['end']), '-i', os.path.join(REPO, 'music', 'song_full.mp3')])
-    g = [f'[{i}:v]settb=AVTB,fps={FPS},format=yuv420p10le[s{i}]' for i in range(len(files))]
+    # tpad: clone a few extra frames on every shot so a tiny length shortfall can never stall the xfade chain
+    g = [f'[{i}:v]settb=AVTB,fps={FPS},format=yuv420p10le,tpad=stop_mode=clone:stop_duration=0.5[s{i}]' for i in range(len(files))]
     prev = 's0'
     for i in range(1, len(files)):
         s = shots[i]; d = ds[i]; off = cuts[i] - d / 2
