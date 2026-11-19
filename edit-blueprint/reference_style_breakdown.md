@@ -147,3 +147,12 @@ The reference ends with the group photo and then returns to the romantic red-lig
 - Vertical-shot clips (if any) are used at full resolution and preferred for hero moments.
 - Sharpness: a 9:16 crop from 4K landscape is about 1215×2160 of real pixels, so a 2160×3840 output from those clips is upscaled about 1.8×. Native vertical or 6K/8K clips stay fully sharp.
 - The photo-burst montage uses vertical insets on the off-white background.
+
+### Client confirmations
+- **True full-frame 9:16:** every shot fills the whole vertical frame. No letterbox bars, no blurred-background "landscape in a portrait box". The only exception is the deliberate photo-burst insets.
+- **Grade: strongly cinematic and appealing.** This goes beyond a light touch:
+  - Warm, glowing skin; protect skin hue and saturation first.
+  - Soft filmic contrast: a gentle S-curve, slightly lifted milky blacks and rolled-off highlights, with no clipped whites on the white outfits.
+  - Rich but controlled reds, golds and florals; slightly desaturated, teal-leaning cool tones in the shadows for colour separation.
+  - Subtle halation/bloom on practical lights and highlights, fine film grain, a gentle vignette.
+  - One consistent look across all scenes. Indoor stage, the red-light portrait set and the outdoor night shots are matched to it first, then graded.
