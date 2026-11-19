@@ -25,7 +25,7 @@ Target: recreate this style on our footage, using **the first 1:47 of `music/son
 
 All times below are given as **song time** (S) with reference video time (V) in brackets. S = V − 3.36.
 
-### Energy map of the first 1:46 of the song
+### Energy map of the first 1:47 of the file
 ```
 S 0–8      soft intro (very low energy)
 S 8–9      first hit — song "opens up"
@@ -61,7 +61,7 @@ Cuts land on the downbeat or on beat 3 of the bar. Cross-dissolves are centred o
 4. **Light-leak / colour-burn.** A red-orange film-burn wash sweeps across over ~0.6 s, between two portrait shots (V 24.6–25.3).
 5. **Bokeh flare overlay.** Big white out-of-focus circles wipe over the frame (V 27.0, V 30.0).
 6. **Photo-burst montage.** A preview of moments coming later (ceremony, gifts, guests). Each still or clip runs 2–3 frames, inset at about 80% scale on an off-white background, with a slight jittery tilt and ghosted edges. It plays on the riser just before the drop (V 53.6–56.0, about 2.4 s = 1 bar, about 20 images).
-7. **Black blink + zoom-blur punch.** One black frame, then a radial zoom-blur into a close-up (V 144.2–144.8). This falls outside our 1:46 window but works well for a ring moment.
+7. **Black blink + zoom-blur punch.** One black frame, then a radial zoom-blur into a close-up (V 144.2–144.8). This falls outside our 1:47 window but works well for a ring moment.
 8. **Fog / haze white-out.** The frame dissolves through soft white haze (V 138.5–139.5). Also outside our window.
 
 ## 4. Slow motion & camera motion
@@ -73,7 +73,7 @@ These come from visual inspection; the edit doesn't use speed ramps.
 - Camera: slow gimbal/slider push-ins and lateral slides on decor and gift details, rack-focus foreground decor, low-angle tracking of feet. No whip-pans or speed ramps.
 - **Detail → medium → wide** sequencing per subject (e.g., hand on necklace → seated full → close portrait).
 
-## 5. Story structure mapped to the song (our 1:46 template)
+## 5. Story structure mapped to the song (our 1:47 template)
 
 | Song time | Ref V time | Beat-plan | Content in reference | Slot for our footage |
 |---|---|---|---|---|
@@ -96,7 +96,7 @@ These come from visual inspection; the edit doesn't use speed ramps.
 | 71.7–79 | 75.1–82.3 | 3 bars | Ladies bringing gift trays (documentary) | Guests/rituals arriving |
 | 79–88.5 | 82.3–91.8 | 2 × 2 bars | Gift-tray detail shots, slow slides | Decor/gift/detail B-roll |
 | 88.5–92 | 91.8–95.3 | ~1.5 bars | Families hugging | Emotional family moments |
-| **92–103 PEAK** | 95.3–106.4 | 9 × 2 beats | **Hard cuts every 1.2 s**: ritual hands, tilak, garland, close-ups alternating with mediums | Fast ritual montage |
+| **92–100 PEAK** | 95.3–103.4 | ~7 × 2 beats | **Hard cuts every 1.2 s**: ritual hands, tilak, garland, close-ups alternating with mediums | Fast ritual montage |
 | 100–103.6 | 103.4–107.0 | — | Peak winds down | End: hold a strong couple shot; audio fade from file 1:45.5 → 1:47, picture fade to black |
 
 ## 6. Look / grade
